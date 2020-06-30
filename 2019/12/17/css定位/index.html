@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>CSS 定位 | </title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="css,">
+  
+
+  <meta name="description" content="positionposition 属性用来指定一个元素在网页上的位置，一共有5种方式，即position属性主要有五个值。 static static是position属性的默认值。如果省略position属性，浏览器就认为该元素是static定位。 这时，浏览器会按照源码的顺序，决定每个元素的位置，这称为”正常的页面流”（normal flow）。每个块级元素占据自己的区块（block），元素与">
+<meta name="keywords" content="css">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS 定位">
+<meta property="og:url" content="http://limoon7.github.io/2019/12/17/css定位/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="positionposition 属性用来指定一个元素在网页上的位置，一共有5种方式，即position属性主要有五个值。 static static是position属性的默认值。如果省略position属性，浏览器就认为该元素是static定位。 这时，浏览器会按照源码的顺序，决定每个元素的位置，这称为”正常的页面流”（normal flow）。每个块级元素占据自己的区块（block），元素与">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-06-30T07:08:42.144Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS 定位">
+<meta name="twitter:description" content="positionposition 属性用来指定一个元素在网页上的位置，一共有5种方式，即position属性主要有五个值。 static static是position属性的默认值。如果省略position属性，浏览器就认为该元素是static定位。 这时，浏览器会按照源码的顺序，决定每个元素的位置，这称为”正常的页面流”（normal flow）。每个块级元素占据自己的区块（block），元素与">
+
+  
+
+  
+    <link rel="icon" href="/images/lemon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-38189205-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+<link rel="alternate" href="/atom.xml" title="null" type="application/atom+xml">
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">小可爱</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">小可爱</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#position"><span class="toc-text">position</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#static"><span class="toc-text">static</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#relative-absolute-fixed"><span class="toc-text">relative,absolute,fixed</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#relative"><span class="toc-text">relative</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#absolute"><span class="toc-text">absolute</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#fixed"><span class="toc-text">fixed</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sticky"><span class="toc-text">sticky</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#sticky-应用"><span class="toc-text">sticky 应用</span></a></li></ol></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-css定位" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">CSS 定位</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2019.12.17</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>lemon</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/前端/">前端</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h1 id="position"><a href="#position" class="headerlink" title="position"></a>position</h1><p>position 属性用来指定一个元素在网页上的位置，一共有5种方式，即position属性主要有五个值。</p>
+<h2 id="static"><a href="#static" class="headerlink" title="static"></a>static</h2><ol>
+<li>static是position属性的默认值。如果省略position属性，浏览器就认为该元素是static定位。</li>
+<li>这时，浏览器会按照源码的顺序，决定每个元素的位置，这称为”正常的页面流”（normal flow）。每个块级元素占据自己的区块（block），元素与元素之间不产生重叠，这个位置就是元素的默认位置</li>
+<li>注意，static定位所导致的元素位置，是浏览器自主决定的，所以这时top、bottom、left、right这四个属性无效。</li>
+</ol>
+<h2 id="relative-absolute-fixed"><a href="#relative-absolute-fixed" class="headerlink" title="relative,absolute,fixed"></a>relative,absolute,fixed</h2><ol>
+<li>三个属性的共同点是 ”都是相对于某个基点的定位“，不同之处在于”基点不同“</li>
+</ol>
+<h3 id="relative"><a href="#relative" class="headerlink" title="relative"></a>relative</h3><ol>
+<li>relative表示，相对于默认位置（即static时的位置）进行偏移，即定位基点是元素的默认位置。</li>
+<li>它必须搭配top、bottom、left、right这四个属性一起使用，用来指定偏移的方向和距离。</li>
+</ol>
+<h3 id="absolute"><a href="#absolute" class="headerlink" title="absolute"></a>absolute</h3><ol>
+<li>absolute相对于上级元素（一般是父元素）进行偏移，即定位基点是父元素</li>
+<li><strong>注意</strong>：定位基点（一般是父元素）不能时static定位，否则定位基点就会变成整个网页的根元素html（会一直向上寻找不是static定位的父元素）。另外，absolute定位也必须搭配top、bottom、left、right这四个属性一起使用。</li>
+<li>注意，absolute定位的元素会被”正常页面流”忽略，即在”正常页面流”中，该元素所占空间为零，周边元素不受影响。</li>
+</ol>
+<h3 id="fixed"><a href="#fixed" class="headerlink" title="fixed"></a>fixed</h3><ol>
+<li>fixed表示，相对于视口（viewport，浏览器窗口）进行偏移，即定位基点是浏览器窗口。这会导致元素的位置不随页面滚动而变化，好像固定在网页上一样</li>
+<li>它如果搭配top、bottom、left、right这四个属性一起使用，表示元素的初始位置是基于视口计算的，否则初始位置就是元素的默认位置。</li>
+</ol>
+<h2 id="sticky"><a href="#sticky" class="headerlink" title="sticky"></a>sticky</h2><ol>
+<li>sticky跟前面四个属性值都不一样，它会产生动态效果，很像relative和fixed的结合：一些时候是relative定位（定位基点是自身默认位置），另一些时候自动变成fixed定位（定位基点是视口）。</li>
+<li>因此，它能够形成”动态固定”的效果。比如，网页的搜索工具栏，初始加载时在自己的默认位置（relative定位）。</li>
+<li>sticky生效的前提是，必须搭配top、bottom、left、right这四个属性一起使用，不能省略，否则等同于relative定位，不产生”动态固定”的效果。原因是这四个属性用来定义”偏移距离”，浏览器把它当作sticky的生效门槛。</li>
+<li>它的具体规则是，当页面滚动，父元素开始脱离视口时（即部分不可见），只要与sticky元素的距离达到生效门槛，relative定位自动切换为fixed定位；等到父元素完全脱离视口时（即完全不可见），fixed定位自动切换回relative定位。</li>
+</ol>
+<h3 id="sticky-应用"><a href="#sticky-应用" class="headerlink" title="sticky 应用"></a>sticky 应用</h3><ol>
+<li>堆叠效果</li>
+</ol>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: sticky;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>表格的表头锁定</li>
+</ol>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">th</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: sticky;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">0</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>需要注意的是，sticky必须设在<th>元素上面，不能设在<thead>和<tr>元素，因为这两个元素没有relative定位，也就无法产生sticky效果</tr></thead></th></li>
+</ol>
+
+    
+  </div>
+
+</article>
+
+
+   
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2019/11/17/算法图解/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2020/01/28/是谁出的题这么难，到处都是正确答案/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

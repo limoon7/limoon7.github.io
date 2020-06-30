@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>React Hooks 学习 | </title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="React,React Hooks,">
+  
+
+  <meta name="description" content="为什么出现React Hooks React 需要为共享状态逻辑提供更好的原生途径。为了避开嵌套地狱。 复杂组件变得难以理解 Hook 使你在非 class 的情况下可以使用更多的 React 特性  Hooks APIuseState 在函数组件里面使用 class 的 setState  使用： 1const [name, setName] = useState(&quot;rose&quot;); useEff">
+<meta name="keywords" content="React,React Hooks">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React Hooks 学习">
+<meta property="og:url" content="http://limoon7.github.io/2020/02/26/React-Hooks/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="为什么出现React Hooks React 需要为共享状态逻辑提供更好的原生途径。为了避开嵌套地狱。 复杂组件变得难以理解 Hook 使你在非 class 的情况下可以使用更多的 React 特性  Hooks APIuseState 在函数组件里面使用 class 的 setState  使用： 1const [name, setName] = useState(&quot;rose&quot;); useEff">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-06-30T06:46:23.781Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="React Hooks 学习">
+<meta name="twitter:description" content="为什么出现React Hooks React 需要为共享状态逻辑提供更好的原生途径。为了避开嵌套地狱。 复杂组件变得难以理解 Hook 使你在非 class 的情况下可以使用更多的 React 特性  Hooks APIuseState 在函数组件里面使用 class 的 setState  使用： 1const [name, setName] = useState(&quot;rose&quot;); useEff">
+
+  
+
+  
+    <link rel="icon" href="/images/lemon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-38189205-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+<link rel="alternate" href="/atom.xml" title="null" type="application/atom+xml">
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">小可爱</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">小可爱</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#为什么出现React-Hooks"><span class="toc-text">为什么出现React Hooks</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Hooks-API"><span class="toc-text">Hooks API</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#useState"><span class="toc-text">useState</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#useEffect"><span class="toc-text">useEffect</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#useRef"><span class="toc-text">useRef</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#useMemo"><span class="toc-text">useMemo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#useCallback"><span class="toc-text">useCallback</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#useReducer"><span class="toc-text">useReducer</span></a></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-React-Hooks" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">React Hooks 学习</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2020.02.26</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>lemon</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/前端/">前端</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h1 id="为什么出现React-Hooks"><a href="#为什么出现React-Hooks" class="headerlink" title="为什么出现React Hooks"></a>为什么出现React Hooks</h1><ol>
+<li>React 需要为共享状态逻辑提供更好的原生途径。为了避开嵌套地狱。</li>
+<li>复杂组件变得难以理解</li>
+<li>Hook 使你在非 class 的情况下可以使用更多的 React 特性</li>
+</ol>
+<h1 id="Hooks-API"><a href="#Hooks-API" class="headerlink" title="Hooks API"></a>Hooks API</h1><h2 id="useState"><a href="#useState" class="headerlink" title="useState"></a>useState</h2><blockquote>
+<p>在函数组件里面使用 class 的 setState</p>
+</blockquote>
+<p>使用：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [name, setName] = useState(<span class="string">"rose"</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="useEffect"><a href="#useEffect" class="headerlink" title="useEffect"></a><a href="https://overreacted.io/zh-hans/a-complete-guide-to-useeffect/" target="_blank" rel="noopener">useEffect</a></h2><blockquote>
+<p>在函数组件里面使用 class 的生命周期函数，是所有函数的合体</p>
+</blockquote>
+<p>使用：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 基础使用</span></span><br><span class="line">useEffect(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<ol>
+<li><code>useEffect</code>最后，加了[]就表示只第一次执行，同 <code>componentDidMount</code></li>
+</ol>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> users = <span class="string">"获取全国人民的信息()"</span>;</span><br><span class="line">&#125;, []);</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li><code>useEffect</code>最后，加[]，并且[]里面加入了字段，就表示这个字段更改了，当前<code>effect</code>才执行</li>
+</ol>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> users = <span class="string">"(name改变了我才获取全国人民的信息())"</span>;</span><br><span class="line">&#125;, [name]);</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li><code>useEffect</code>最后，不加[]就表示每一次渲染都执行，用于替代每次渲染都会执行的生命周期函数，如 <code>willUpdate</code></li>
+</ol>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> users = <span class="string">"每次都获取全国人民的信息()"</span>;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>在<code>effect</code>的<code>return</code>里面可以做取消订阅的事,用于替代<code>willUnmount</code></li>
+</ol>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> subscription = <span class="string">"订阅全国人民吃饭的情报！"</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="string">"取消订阅全国人民吃饭的情报！"</span>;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;, []);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>为什么要取消订阅？</p>
+<p>大家都知道，render 了之后会执行重新 useEffect，如果 useEffect 里面有一个 setInterval…那么每次 render 了，再次执行 useEffect 就会再创建一个 setInterval，然后就混乱了</p>
+</blockquote>
+<ol start="5">
+<li>useEffect 里面使用到的 state 的值, 固定在了 useEffect 内部， 不会被改变，除非 useEffect 刷新，重新固定 state 的值</li>
+</ol>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [count, setCount] = useState(<span class="number">0</span>);</span><br><span class="line">useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"use effect..."</span>, count);</span><br><span class="line">  <span class="keyword">const</span> timer = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"timer...count:"</span>, count);</span><br><span class="line">    setCount(count + <span class="number">1</span>);</span><br><span class="line">  &#125;, <span class="number">1000</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> clearInterval(timer);</span><br><span class="line">&#125;, []);</span><br></pre></td></tr></table></figure>
+<ol start="6">
+<li>useEffect 不能被判断包裹</li>
+<li>useEffect 不能被打断 (后期看文档)</li>
+</ol>
+<h2 id="useRef"><a href="#useRef" class="headerlink" title="useRef"></a>useRef</h2><blockquote>
+<p>相当于全局作用域，一处被修改，其他地方全更新…</p>
+</blockquote>
+<p>使用：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> countRef = useRef(<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+<ol>
+<li>普遍操作，用来操作 dom</li>
+</ol>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Hook = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = useState(<span class="number">0</span>);</span><br><span class="line">  <span class="keyword">const</span> btnRef = useRef(<span class="literal">null</span>);</span><br><span class="line"></span><br><span class="line">  useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"use effect..."</span>);</span><br><span class="line">    <span class="keyword">const</span> onClick = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      setCount(count + <span class="number">1</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">    btnRef.current.addEventListener(<span class="string">"click"</span>, onClick, <span class="literal">false</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> btnRef.current.removeEventListener(<span class="string">"click"</span>, onClick, <span class="literal">false</span>);</span><br><span class="line">  &#125;, [count]);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;div&gt;&#123;count&#125;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">      &lt;button ref=&#123;btnRef&#125;&gt;click me &lt;/</span>button&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;;</span></span><br></pre></td></tr></table></figure>
+<h2 id="useMemo"><a href="#useMemo" class="headerlink" title="useMemo"></a>useMemo</h2><ol>
+<li>memo 的用法是：与函数组件里面的<code>PureComponent</code>异同，都是对接收的props参数进行浅比较，解决组件在运行时的效率问题，优化组件的重渲染行为。但是，如果函数组件被 React.memo 包裹，且其实现中拥有 useState 或 useContext 的 Hook，当 context 发生变化时，它仍会重新渲染。</li>
+<li>memo是浅比较，意思是，对象只比较内存地址，只要你内存地址没变，管你对象里面的值千变万化都不会触发render</li>
+<li>React.memo()是判断一个函数组件的渲染是否重复执行。useMemo()是定义一段函数逻辑是否重复执行。useMemo 解决了值的缓存的问题。</li>
+</ol>
+<h2 id="useCallback"><a href="#useCallback" class="headerlink" title="useCallback"></a>useCallback</h2><ol>
+<li>useMemo 与 useCallback 类似，都是有着缓存的作用。本质的区别可能就是：useMemo 是缓存值的。useCallback 是缓存函数的</li>
+<li>没有依赖，添加空的依赖，就是空数组！</li>
+</ol>
+<h2 id="useReducer"><a href="#useReducer" class="headerlink" title="useReducer"></a>useReducer</h2><p>使用redux中存储的数据</p>
+
+    
+  </div>
+
+</article>
+
+
+   
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2020/01/28/是谁出的题这么难，到处都是正确答案/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2020/03/05/单元测试/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

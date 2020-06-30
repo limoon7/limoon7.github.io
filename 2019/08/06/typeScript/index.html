@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>TypeScript | </title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="typeScript,">
+  
+
+  <meta name="description" content="类型基础 在强类型语言中，当一个对象从调用函数传递到被调用函数时，其类型必须与被调用函数中声明的类型兼容强类型语言不允许改变变量的数据类型，除非进行强制类型转换弱类型语言中，变量可以被赋予不同的数据类型   静态类型语言：在编译阶段确定所有变量的类型（如c++） 1. 对类型要求极其严格 2. 立即发现错误 3. 运行时性能较好 4. 自文档化 动态类型语言：在执行阶段确定所有变量的类型（如js）">
+<meta name="keywords" content="typeScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TypeScript">
+<meta property="og:url" content="http://limoon7.github.io/2019/08/06/typeScript/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="类型基础 在强类型语言中，当一个对象从调用函数传递到被调用函数时，其类型必须与被调用函数中声明的类型兼容强类型语言不允许改变变量的数据类型，除非进行强制类型转换弱类型语言中，变量可以被赋予不同的数据类型   静态类型语言：在编译阶段确定所有变量的类型（如c++） 1. 对类型要求极其严格 2. 立即发现错误 3. 运行时性能较好 4. 自文档化 动态类型语言：在执行阶段确定所有变量的类型（如js）">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1ggabqdv9m6j30dy07bwef.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1g8v1yhhynmj30j208ijrr.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gcnuytb77qj30hw0btq3f.jpg">
+<meta property="og:updated_time" content="2020-06-30T07:26:12.161Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="TypeScript">
+<meta name="twitter:description" content="类型基础 在强类型语言中，当一个对象从调用函数传递到被调用函数时，其类型必须与被调用函数中声明的类型兼容强类型语言不允许改变变量的数据类型，除非进行强制类型转换弱类型语言中，变量可以被赋予不同的数据类型   静态类型语言：在编译阶段确定所有变量的类型（如c++） 1. 对类型要求极其严格 2. 立即发现错误 3. 运行时性能较好 4. 自文档化 动态类型语言：在执行阶段确定所有变量的类型（如js）">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1ggabqdv9m6j30dy07bwef.jpg">
+
+  
+
+  
+    <link rel="icon" href="/images/lemon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-38189205-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+<link rel="alternate" href="/atom.xml" title="null" type="application/atom+xml">
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">小可爱</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">小可爱</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#类型基础"><span class="toc-text">类型基础</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ts基础"><span class="toc-text">ts基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#webpack-配置"><span class="toc-text">webpack 配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本类型"><span class="toc-text">基本类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类型系统"><span class="toc-text">类型系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#类型注解"><span class="toc-text">类型注解</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#联合类型"><span class="toc-text">联合类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#元组"><span class="toc-text">元组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined-amp-amp-null"><span class="toc-text">undefined &amp;&amp; null</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#void"><span class="toc-text">void</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#any类型"><span class="toc-text">any类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#never"><span class="toc-text">never</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#枚举类型"><span class="toc-text">枚举类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#数字枚举-amp-amp-字符串枚举"><span class="toc-text">数字枚举 &amp;&amp; 字符串枚举</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#异构枚举"><span class="toc-text">异构枚举</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#枚举成员"><span class="toc-text">枚举成员</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#const-member"><span class="toc-text">const member</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#computed-member"><span class="toc-text">computed member</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常量枚举"><span class="toc-text">常量枚举</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#接口"><span class="toc-text">接口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#泛型"><span class="toc-text">泛型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类型推断"><span class="toc-text">类型推断</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类型兼容性"><span class="toc-text">类型兼容性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类型保护"><span class="toc-text">类型保护</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#高级类型：交叉类型和联合类型"><span class="toc-text">高级类型：交叉类型和联合类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#高级类型：索引类型"><span class="toc-text">高级类型：索引类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#映射类型"><span class="toc-text">映射类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#条件类型"><span class="toc-text">条件类型</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#工程篇"><span class="toc-text">工程篇</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实战"><span class="toc-text">实战</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-typeScript" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">TypeScript</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2019.08.06</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>lemon</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/前端/">前端</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h1 id="类型基础"><a href="#类型基础" class="headerlink" title="类型基础"></a>类型基础</h1><blockquote>
+<p>在强类型语言中，当一个对象从调用函数传递到被调用函数时，其类型必须与被调用函数中声明的类型兼容<br>强类型语言不允许改变变量的数据类型，除非进行强制类型转换<br>弱类型语言中，变量可以被赋予不同的数据类型</p>
+</blockquote>
+<blockquote>
+<p>静态类型语言：在编译阶段确定所有变量的类型（如c++）</p>
+<pre><code>1. 对类型要求极其严格
+2. 立即发现错误
+3. 运行时性能较好
+4. 自文档化
+</code></pre><p>动态类型语言：在执行阶段确定所有变量的类型（如js）</p>
+<pre><code>1. 对类型非常宽松
+2. Bug可能隐藏很久
+3. 运行性能较差
+4. 可读性差
+</code></pre></blockquote>
+<pre><code>注意：有人提出强类型语言在程序发生错误后不允许继续执行，但是c++并没有对数组越界进行处理，所以认为它是弱类型语言。（归属特殊定义).
+</code></pre><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1ggabqdv9m6j30dy07bwef.jpg" alt="语言象限图"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">                    强类型</span><br><span class="line">                      ^</span><br><span class="line">                      |</span><br><span class="line">        Python————————|———————  Java C#</span><br><span class="line">动态类型———————————————|————————C——C++————&gt;静态类型</span><br><span class="line">        JavaScript    |</span><br><span class="line">            PHP       |</span><br><span class="line">                    弱类型</span><br></pre></td></tr></table></figure>
+<p>注意：如果把ts当做一门语言看待，那么它是强类型还是弱类型，是静态类型还是动态类型</p>
+<p>我认为是静态+强类型语言</p>
+<h1 id="ts基础"><a href="#ts基础" class="headerlink" title="ts基础"></a>ts基础</h1><h2 id="webpack-配置"><a href="#webpack-配置" class="headerlink" title="webpack 配置"></a>webpack 配置</h2><p>webpack的配置写在build文件夹里，对应的去安装npm包，项目想要使用的包写在package.json文件中。</p>
+<p>生产和开发环境对应的其实是webpack的不同配置文件。</p>
+<p>打包对应的也是一个webpack的文件</p>
+<ol>
+<li>项目启动不起来，报如下错误</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">errno: <span class="string">'ENOTFOUND'</span>,</span><br><span class="line">code: <span class="string">'ENOTFOUND'</span>,</span><br><span class="line">syscall: <span class="string">'getaddrinfo'</span>,</span><br><span class="line">hostname: <span class="string">'localhost'</span></span><br></pre></td></tr></table></figure>
+<p>刚开始怎么改配置文件都不对，后来仔细看了看提示，再网上搜了一下，发现是host绑定的不对，然后去看了下自己的host文件，果然，localhost绑定的并不是本地的。修改host即可正常启动。</p>
+<ol start="2">
+<li>安装包的时候如果没有指定版本安装就会报找不到包的错误</li>
+</ol>
+<p>会报E404的问题，<code>Not Found - GET http://r.cnpmjs.org/typecript - [not_found] document not found</code>，这个问题我还没有找到为什么，现在是通过安装指定版本的包来解决的。</p>
+<p>有可能：</p>
+<ol>
+<li>基于-D依赖安装，npm自动安装的版本没有对应的依赖，所以安装错误</li>
+</ol>
+<h2 id="基本类型"><a href="#基本类型" class="headerlink" title="基本类型"></a>基本类型</h2><h2 id="类型系统"><a href="#类型系统" class="headerlink" title="类型系统"></a>类型系统</h2><p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g8v1yhhynmj30j208ijrr.jpg" alt="类型系统"></p>
+<h3 id="类型注解"><a href="#类型注解" class="headerlink" title="类型注解"></a>类型注解</h3><p>作用：相当于强类型语言中的类型声明</p>
+<p>语法：(变量/函数)：type</p>
+<ol>
+<li>变量的基本类型定义之后就不可改变</li>
+</ol>
+<h2 id="联合类型"><a href="#联合类型" class="headerlink" title="联合类型"></a>联合类型</h2><p>表示数组的类型既可以是number也可以是string类型。</p>
+<p><code>let arr2: Array&lt;number | string&gt; = [1, 2, 3, &#39;4&#39;]</code></p>
+<h3 id="元组"><a href="#元组" class="headerlink" title="元组"></a>元组</h3><p>可以通过push方法为元组新增元素，但无法对越界元素进行访问。开发过程中不建议这样使用。</p>
+<h3 id="undefined-amp-amp-null"><a href="#undefined-amp-amp-null" class="headerlink" title="undefined &amp;&amp; null"></a>undefined &amp;&amp; null</h3><p>在ts文档中，undefined和null是任何类型的子类型可以被赋值给任意类型。可以通过设置tsconfig.json中的”strictNullChecks”: false来避免报错</p>
+<h3 id="void"><a href="#void" class="headerlink" title="void"></a>void</h3><p>void类型标识没有任何返回值的函数或方法</p>
+<h3 id="any类型"><a href="#any类型" class="headerlink" title="any类型"></a>any类型</h3><p>不标识类型，非特殊情况，不建议使用any类型。通过any类型实现对js的兼容</p>
+<h3 id="never"><a href="#never" class="headerlink" title="never"></a>never</h3><p>表示永远不会有返回值的类型，比如一个函数抛出了一个异常，还有死循环函数</p>
+<h2 id="枚举类型"><a href="#枚举类型" class="headerlink" title="枚举类型"></a><a href="https://ts.xcatliu.com/advanced/enum" target="_blank" rel="noopener">枚举类型</a></h2><p>一组有名字的常量集合，enum关键字。</p>
+<h3 id="数字枚举-amp-amp-字符串枚举"><a href="#数字枚举-amp-amp-字符串枚举" class="headerlink" title="数字枚举 &amp;&amp; 字符串枚举"></a>数字枚举 &amp;&amp; 字符串枚举</h3><p>数字枚举的实现原理为反向映射。</p>
+<p>但字符串枚举不是反向映射</p>
+<h3 id="异构枚举"><a href="#异构枚举" class="headerlink" title="异构枚举"></a>异构枚举</h3><p>当数字枚举和字符串枚举混合使用就形成了异构枚举，但是不建议这样做</p>
+<h3 id="枚举成员"><a href="#枚举成员" class="headerlink" title="枚举成员"></a>枚举成员</h3><p>枚举成员的值在定义后变为只读类型，在定义之后是不能修改的</p>
+<h4 id="const-member"><a href="#const-member" class="headerlink" title="const member"></a>const member</h4><ol>
+<li>无初始值</li>
+<li>对已有枚举成员的引用</li>
+<li>常量表达式</li>
+</ol>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// const member</span></span><br><span class="line">a,</span><br><span class="line">b = Char.a,</span><br><span class="line">c = <span class="number">1</span> + <span class="number">3</span>,</span><br></pre></td></tr></table></figure>
+<h4 id="computed-member"><a href="#computed-member" class="headerlink" title="computed member"></a>computed member</h4><ol>
+<li>这些值会在程序执行的时候被赋值，而不是在编译阶段</li>
+</ol>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">d = <span class="built_in">Math</span>.random(),</span><br><span class="line">e = <span class="string">'123'</span>.length,</span><br><span class="line">f = <span class="number">4</span></span><br></pre></td></tr></table></figure>
+<p>在此状态下的，枚举成员必须需要初始值。</p>
+<h3 id="常量枚举"><a href="#常量枚举" class="headerlink" title="常量枚举"></a>常量枚举</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">enum</span> Month &#123;</span><br><span class="line">  Jan,</span><br><span class="line">  Feb,</span><br><span class="line">  Mar,</span><br><span class="line">  Apr = Month.Mar + <span class="number">1</span>,</span><br><span class="line">  <span class="comment">// May = () =&gt; 5</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>常量枚举会在编译阶段被移除。当我们不需要一个对象，但需要对象的值得时候可以使用常量枚举</p>
+<h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><ol>
+<li>接口约束对象 函数 类的结构</li>
+<li>对象的接口如何定义</li>
+<li>关键字 interface</li>
+<li>作用 ：规范对象的属性 属性的类型 属性值的类型</li>
+<li>类型断言 用as 或者&lt;&gt;的形式 ，后者在react中使用会出问题</li>
+<li>可选属性 通过？来设置</li>
+<li>只读属性 通过readonly 来设置</li>
+<li>当不确定接口中属性个数时需要使用 索引签名</li>
+<li>索引签名包括字符串索引签名和数字索引签名</li>
+<li>当接口中定义了一个索引后，例如设置了 【x:string】= string，就不能设置y：number了。<br>因为设置了【x:string】= string相当于这个接口的字符串索引返回值都是字符串，而y：number违背这一原则，冲突了。反过来 如果定义了【x:string】=Number, 就不能设置 y:string了。</li>
+<li>可以同时使用两种类型的索引，但是数字索引的返回值必须是字符串索引返回值类型的子类型。因为 数字索引或转化为字符串索引，而转化的这部分索引对应的值的类型范围 超过了 字符串索引类型的范围，就会报错，相当于超出范围</li>
+<li>一旦定义了任意属性，那么确定属性和可选属性的类型都必须是它的类型的子集</li>
+</ol>
+<h2 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h2><h2 id="类型推断"><a href="#类型推断" class="headerlink" title="类型推断"></a>类型推断</h2><h2 id="类型兼容性"><a href="#类型兼容性" class="headerlink" title="类型兼容性"></a>类型兼容性</h2><p>当一个类型Y可以被赋值给另一个类型X时，我们就可以说类型X兼容类型Y。</p>
+<p>X 兼容 Y：X（目标类型） = Y（源类型）</p>
+<p>源类型必须具备目标类型的所有属性。</p>
+<p>结构之间兼容：成员少的兼容成员多的<br>函数之间兼容：参数多的兼容参数少的</p>
+<h2 id="类型保护"><a href="#类型保护" class="headerlink" title="类型保护"></a>类型保护</h2><p>typescript 能够在特定的区块中保证变量属于某种确定的类型，可以在此区块中放心的引用此类型的属性，或者调用此类型的方法。</p>
+<p>类型保护方法：</p>
+<ol>
+<li>使用instanceof 可以判断一个实例是不是属于某个类</li>
+<li>使用in 可以判断一个属性是不是属于某个对象</li>
+<li>使用 typeof 可以判断一个基本类型</li>
+<li>类型保护函数：某些判断可能不是一条语句能够搞定的，需要更多复杂的逻辑，适合封装到一个函数内</li>
+</ol>
+<h2 id="高级类型：交叉类型和联合类型"><a href="#高级类型：交叉类型和联合类型" class="headerlink" title="高级类型：交叉类型和联合类型"></a>高级类型：交叉类型和联合类型</h2><p>ts为了保障语言的灵活性而引入的类型：交叉类型和联合类型</p>
+<p>交叉类型是取所有类型的并集，使用 &amp; 符。比较适合做类型的混入</p>
+<p>联合类型使用 | 符，具有不确定性，可以增强代码的灵活性</p>
+<p>可区分的联合类型：利用两个类型的共有属性建立类型保护区块。 </p>
+<h2 id="高级类型：索引类型"><a href="#高级类型：索引类型" class="headerlink" title="高级类型：索引类型"></a>高级类型：索引类型</h2><p>keyof T</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">interface obj &#123;</span><br><span class="line">  a: number,</span><br><span class="line">  b: string</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let key: keyof T</span><br><span class="line"></span><br><span class="line">这时key的类型将变为number:string</span><br></pre></td></tr></table></figure>
+<p>T[K]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let value: Obj[&apos;a&apos;]</span><br><span class="line"></span><br><span class="line">这时value的类型就是number类型</span><br></pre></td></tr></table></figure>
+<p>T extends U</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">function getValues&lt;T, K extends keyof T&gt;(obj: T,keys: K[]): T[k]&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>索引类型可以实现对对象属性的查询和访问，再配合泛型约束就可以使我们建立对象、对象属性以及属性值之间的约束关系。</p>
+<h2 id="映射类型"><a href="#映射类型" class="headerlink" title="映射类型"></a>映射类型</h2><p>从旧类型中创建新类型的一种方式。新的类型以相同的形式去转换旧的类型，比如可以令每个属性成为readonly或者可选的。</p>
+<p>Readonly：只读</p>
+<p>Partial：可选</p>
+<h2 id="条件类型"><a href="#条件类型" class="headerlink" title="条件类型"></a>条件类型</h2><p>由条件表达式所决定的类型：<code>T extends U ? X : Y</code>，含义是：如果类型T可以被赋值为U，那么结果类型就是X，否则就是Y。</p>
+<h1 id="工程篇"><a href="#工程篇" class="headerlink" title="工程篇"></a>工程篇</h1><p>TypeScript 工具体系分为 babel系和非babel系</p>
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcnuytb77qj30hw0btq3f.jpg" alt="TypeScript 工具体系"></p>
+<h1 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h1><ol>
+<li>定义组件继承：<code>class componentName extends Component&lt;componentNameProps, componentNameState&gt; {}</code></li>
+<li>定义props 数据类型</li>
+<li>定义state 数据类型</li>
+</ol>
+
+    
+  </div>
+
+</article>
+
+
+   
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2019/07/31/react-redux/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2019/08/06/TS泛型/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

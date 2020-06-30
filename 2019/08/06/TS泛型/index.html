@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>TypeScript 泛型学习 | </title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="typeScript,">
+  
+
+  <meta name="description" content="参考文章 泛型泛型是什么设计泛型的关键目的是在成员之间提供有意义的约束，这些成员可以是：类的实例成员、类的方法、函数参数和函数返回值。 泛型接口1234567891011121314151617interface Identities&amp;lt;V,M&amp;gt; &amp;#123;  value: V;  message: M;&amp;#125;identity&amp;lt;T, U&amp;gt; (value: T, me">
+<meta name="keywords" content="typeScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TypeScript 泛型学习">
+<meta property="og:url" content="http://limoon7.github.io/2019/08/06/TS泛型/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="参考文章 泛型泛型是什么设计泛型的关键目的是在成员之间提供有意义的约束，这些成员可以是：类的实例成员、类的方法、函数参数和函数返回值。 泛型接口1234567891011121314151617interface Identities&amp;lt;V,M&amp;gt; &amp;#123;  value: V;  message: M;&amp;#125;identity&amp;lt;T, U&amp;gt; (value: T, me">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1gfvpewnitlj30zk0bp0t8.jpg">
+<meta property="og:updated_time" content="2020-06-30T07:04:07.201Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="TypeScript 泛型学习">
+<meta name="twitter:description" content="参考文章 泛型泛型是什么设计泛型的关键目的是在成员之间提供有意义的约束，这些成员可以是：类的实例成员、类的方法、函数参数和函数返回值。 泛型接口1234567891011121314151617interface Identities&amp;lt;V,M&amp;gt; &amp;#123;  value: V;  message: M;&amp;#125;identity&amp;lt;T, U&amp;gt; (value: T, me">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1gfvpewnitlj30zk0bp0t8.jpg">
+
+  
+
+  
+    <link rel="icon" href="/images/lemon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-38189205-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+<link rel="alternate" href="/atom.xml" title="null" type="application/atom+xml">
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">小可爱</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">小可爱</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#泛型"><span class="toc-text">泛型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#泛型是什么"><span class="toc-text">泛型是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#泛型接口"><span class="toc-text">泛型接口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#泛型类"><span class="toc-text">泛型类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#泛型约束"><span class="toc-text">泛型约束</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#泛型参数默认类型"><span class="toc-text">泛型参数默认类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#泛型工具类型"><span class="toc-text">泛型工具类型</span></a></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-TS泛型" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">TypeScript 泛型学习</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2019.08.06</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>lemon</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/前端/">前端</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfvpewnitlj30zk0bp0t8.jpg" alt="泛型"></p>
+<p><a href="https://juejin.im/post/5ee00fca51882536846781ee#heading-0" target="_blank" rel="noopener">参考文章</a></p>
+<h1 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h1><h2 id="泛型是什么"><a href="#泛型是什么" class="headerlink" title="泛型是什么"></a>泛型是什么</h2><p>设计泛型的关键目的是在成员之间提供有意义的约束，这些成员可以是：类的实例成员、类的方法、函数参数和函数返回值。</p>
+<h2 id="泛型接口"><a href="#泛型接口" class="headerlink" title="泛型接口"></a>泛型接口</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">interface Identities&lt;V,M&gt; &#123;</span><br><span class="line">  value: V;</span><br><span class="line">  message: M;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">identity&lt;T, U&gt; (value: T, <span class="attr">message</span>: U): Identities&lt;T, U&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(value + <span class="string">": "</span> + <span class="keyword">typeof</span> (value));</span><br><span class="line">  <span class="built_in">console</span>.log(message + <span class="string">": "</span> + <span class="keyword">typeof</span> (message));</span><br><span class="line">  <span class="keyword">let</span> identities: Identities&lt;T, U&gt; = &#123;</span><br><span class="line">    value,</span><br><span class="line">    message</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">return</span> identities;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">this</span>.identity(<span class="string">'111111111'</span>, <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="泛型类"><a href="#泛型类" class="headerlink" title="泛型类"></a>泛型类</h2><p>我们在什么时候需要使用泛型呢？通常在决定是否使用泛型时，我们有以下两个参考标准：</p>
+<ol>
+<li>当你的函数、接口或类将处理多种数据类型时；</li>
+<li>当函数、接口或类在多个地方使用该数据类型时。</li>
+</ol>
+<h2 id="泛型约束"><a href="#泛型约束" class="headerlink" title="泛型约束"></a>泛型约束</h2><ol>
+<li>确保属性存在</li>
+<li>检查对象上的键是否存在</li>
+</ol>
+<h2 id="泛型参数默认类型"><a href="#泛型参数默认类型" class="headerlink" title="泛型参数默认类型"></a>泛型参数默认类型</h2><ol>
+<li>有默认类型的类型参数被认为是可选的。</li>
+<li>必选的类型参数不能在可选的类型参数后。</li>
+<li>如果类型参数有约束，类型参数的默认类型必须满足这个约束。</li>
+<li>当指定类型实参时，你只需要指定必选类型参数的类型实参。 未指定的类型参数会被解析为它们的默认类型。</li>
+<li>如果指定了默认类型，且类型推断无法选择一个候选类型，那么将使用默认类型作为推断结果。</li>
+<li>一个被现有类或接口合并的类或者接口的声明可以为现有类型参数引入默认类型。</li>
+<li>一个被现有类或接口合并的类或者接口的声明可以引入新的类型参数，只要它指定了默认类型。</li>
+</ol>
+<h2 id="泛型工具类型"><a href="#泛型工具类型" class="headerlink" title="泛型工具类型"></a>泛型工具类型</h2><ol>
+<li>Partial<t> 的作用就是将某个类型里的属性全部变为可选项 ?。</t></li>
+<li>Record<k extends keyof any, t> 的作用是将 K 中所有的属性的值转化为 T 类型。</k></li>
+<li>Pick&lt;T, K extends keyof T&gt; 的作用是将某个类型中的子属性挑出来，变成包含这个类型部分属性的子类型。</li>
+<li>Exclude&lt;T, U&gt; 的作用是将某个类型中属于另一个的类型移除掉。</li>
+<li>ReturnType<t> 的作用是用于获取函数 T 的返回类型。</t></li>
+</ol>
+<p>项目中不一定要强制使用泛型，还是应该用在对的场景。</p>
+
+    
+  </div>
+
+</article>
+
+
+   
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2019/08/06/typeScript/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2019/11/17/算法图解/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

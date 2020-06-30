@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>《算法图解》读书笔记 | </title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="读书笔记,">
+  
+
+  <meta name="description" content="大O时间大O表示法指出了算法有多快。例如，假设列表包含n个元素。简单查找需要检查每个元素，因此需要执行n次操作。使用大O表示法。这个运行时间为O(n)。大O表示法指的并非以秒为单位的速度。大O表示法让你能够比较操作数，它指出了算法运行时间的增速。  算法的速度指的并非时间，而是操作数的增速。 谈论算法的速度时，我们说的是随着输入的增加，其运行时间将以什么样的速度增加。 算法的运行时间用大O表示法表">
+<meta name="keywords" content="读书笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《算法图解》读书笔记">
+<meta property="og:url" content="http://limoon7.github.io/2019/11/17/算法图解/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="大O时间大O表示法指出了算法有多快。例如，假设列表包含n个元素。简单查找需要检查每个元素，因此需要执行n次操作。使用大O表示法。这个运行时间为O(n)。大O表示法指的并非以秒为单位的速度。大O表示法让你能够比较操作数，它指出了算法运行时间的增速。  算法的速度指的并非时间，而是操作数的增速。 谈论算法的速度时，我们说的是随着输入的增加，其运行时间将以什么样的速度增加。 算法的运行时间用大O表示法表">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-06-30T07:11:52.456Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《算法图解》读书笔记">
+<meta name="twitter:description" content="大O时间大O表示法指出了算法有多快。例如，假设列表包含n个元素。简单查找需要检查每个元素，因此需要执行n次操作。使用大O表示法。这个运行时间为O(n)。大O表示法指的并非以秒为单位的速度。大O表示法让你能够比较操作数，它指出了算法运行时间的增速。  算法的速度指的并非时间，而是操作数的增速。 谈论算法的速度时，我们说的是随着输入的增加，其运行时间将以什么样的速度增加。 算法的运行时间用大O表示法表">
+
+  
+
+  
+    <link rel="icon" href="/images/lemon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-38189205-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+<link rel="alternate" href="/atom.xml" title="null" type="application/atom+xml">
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">小可爱</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">小可爱</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#大O时间"><span class="toc-text">大O时间</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#递归"><span class="toc-text">递归</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#快排"><span class="toc-text">快排</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#散列表"><span class="toc-text">散列表</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#广度优先搜索"><span class="toc-text">广度优先搜索</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#狄克斯特拉算法（Dijkstra’s-algorithm）"><span class="toc-text">狄克斯特拉算法（Dijkstra’s algorithm）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#四个步骤"><span class="toc-text">四个步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现"><span class="toc-text">实现</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#贪心算法"><span class="toc-text">贪心算法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#NP完全问题"><span class="toc-text">NP完全问题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#动态规划"><span class="toc-text">动态规划</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#背包问题"><span class="toc-text">背包问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最长公共子串"><span class="toc-text">最长公共子串</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#K最近邻算法"><span class="toc-text">K最近邻算法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#算法介绍"><span class="toc-text">算法介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#读后感"><span class="toc-text">读后感</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-算法图解" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">《算法图解》读书笔记</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2019.11.17</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>lemon</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/读书笔记/">读书笔记</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h1 id="大O时间"><a href="#大O时间" class="headerlink" title="大O时间"></a>大O时间</h1><p>大O表示法指出了算法有多快。例如，假设列表包含n个元素。简单查找需要检查每个元素，因此需要执行n次操作。使用大O表示法。这个运行时间为O(n)。大O表示法指的并非以秒为单位的速度。大O表示法让你能够比较操作数，它指出了算法运行时间的增速。</p>
+<ol>
+<li>算法的速度指的并非时间，而是操作数的增速。</li>
+<li>谈论算法的速度时，我们说的是随着输入的增加，其运行时间将以什么样的速度增加。</li>
+<li>算法的运行时间用大O表示法表示。</li>
+<li>O(log n)比O(n)快，当需要搜索的元素越多时，前者比后者快得越多。</li>
+</ol>
+<h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h1><p>编写递归函数时，必须告诉它何时停止递归。正因为如此，每个递归函数都有两部分:基线 条件(base case)和递归条件(recursive case)。递归条件指的是函数调用自己，而基线条件则 指的是函数不再调用自己，从而避免形成无限循环。</p>
+<p>递归主要使用栈，使用栈虽然很方便，但是也要付出代价:存储详尽的信息可能占用大量的内存。每个函数调 用都要占用一定的内存，如果栈很高，就意味着计算机存储了大量函数调用的信息。在这种情况 下，你有两种选择。</p>
+<p> 递归指的是调用自己的函数。<br> 每个递归函数都有两个条件:基线条件和递归条件。<br> 栈有两种操作:压入和弹出。<br> 所有函数调用都进入调用栈。<br> 调用栈可能很长，这将占用大量的内存。</p>
+<h1 id="快排"><a href="#快排" class="headerlink" title="快排"></a>快排</h1><p>归纳证明分为两步：基线条件和归纳条件。</p>
+<p>快排的独特之处在于，其排序的速度取决于基准值的选择。（高度依赖）</p>
+<p>对于快排和合并排序来说，常量的影响非常大，快排的常量比合排小，因此，如果它们的运行时间都为O(nlogn),快排的速度将会更快。</p>
+<h1 id="散列表"><a href="#散列表" class="headerlink" title="散列表"></a>散列表</h1><p>缓存的原理就是使用散列表。</p>
+<p>缓存是一种常用的加速方式，所有的大型网站都使用缓存，而缓存的数据则存储在散列表中。</p>
+<p>散列表适用于：模拟映射关系，防止重复，缓存/记住数据，以免服务器再通过处理来生成它们。</p>
+<p>散列表避免冲突：较低的填装因子，良好的散列函数。</p>
+<p>填装因子为=占用数/位置总数。如果填装因子开始增大，你就需要在散列表中添加位置，这被称为调整长度。tips：一旦填装因子大于0.7就开始调整散列表的长度。</p>
+<h1 id="广度优先搜索"><a href="#广度优先搜索" class="headerlink" title="广度优先搜索"></a>广度优先搜索</h1><p>广度优先搜索使你能够找出两样东西的最短距离。</p>
+<p>图由节点和边组成，图用于模拟不同的东西是如何连接的。</p>
+<p>栈是后进先出，队列是先进先出</p>
+<p>广度优先搜索的运行时间为O(V+E),V为顶点数，E为边数。</p>
+<p>如果任务A依赖于任务B，在列表中任务A就必须在任务B后面。这被称为拓扑排序，使用它可根据图创建一个有序列表。</p>
+<h1 id="狄克斯特拉算法（Dijkstra’s-algorithm）"><a href="#狄克斯特拉算法（Dijkstra’s-algorithm）" class="headerlink" title="狄克斯特拉算法（Dijkstra’s algorithm）"></a>狄克斯特拉算法（Dijkstra’s algorithm）</h1><p>（多看几次）</p>
+<p>找出最快的路径</p>
+<h2 id="四个步骤"><a href="#四个步骤" class="headerlink" title="四个步骤"></a>四个步骤</h2><ol>
+<li>找出”最便宜”的节点,即可在最短时间内到达的节点，并确保没有到该节点的更便宜的路径。</li>
+<li>更新该节点的邻居的开销，对该节点的邻居，检查是否有前往他们的更短路径，如果有，就更新其开销。</li>
+<li>重复这个过程，直到对图中的每个节点都这样做了</li>
+<li>计算最终路径</li>
+</ol>
+<p>最后得到完整的交换路径使用 沿父节点回溯的方法。</p>
+<p>最短路径值得并不一定是物理距离，也可能是让某种度量指标最小。</p>
+<p>如果有负权边，就不能使用狄克斯特拉算法。这是因为算法选择了权重最低的边之后就不会对该点的最短路径进行更新。</p>
+<p>在包含负权边的图中，要找出最短路径，可以使用贝尔曼-福德算法（BellMan-Ford algorithm）。</p>
+<ol>
+<li>加权图》提高或降低某些边的权重。带有权重的图为加权图，否则为非加权图</li>
+<li>计算非加权图的最短路径，可使用狄克斯特拉算法。图还可能有环</li>
+<li>在无向图中，每条边都是一个环，狄克斯特拉算法只适用于有向无环图。</li>
+</ol>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>Dijkstra’s algorithm 三个散列表分别用来记录图结构、节点的成本、节点的父节点</p>
+<h1 id="贪心算法"><a href="#贪心算法" class="headerlink" title="贪心算法"></a>贪心算法</h1><p>每步都选择局部最优解，最终得到的就是全局最优解</p>
+<p>有些情况下，完美是优秀的敌人。</p>
+<p>集合也不能包含重复的元素。</p>
+<h2 id="NP完全问题"><a href="#NP完全问题" class="headerlink" title="NP完全问题"></a>NP完全问题</h2><p>需要计算所有的解，并从中选出最小/最短的那个。</p>
+<p>面对NP完全问题，最佳的做法就是使用近似算法</p>
+<h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><p>动态规划用于解决棘手问题，可将问题分为小问题，并先着手解决这些小问题。</p>
+<p>仅当每个子问题都是离散的，即不依赖于其它子问题时，动态规划才管用。</p>
+<h2 id="背包问题"><a href="#背包问题" class="headerlink" title="背包问题"></a>背包问题</h2><h2 id="最长公共子串"><a href="#最长公共子串" class="headerlink" title="最长公共子串"></a>最长公共子串</h2><h1 id="K最近邻算法"><a href="#K最近邻算法" class="headerlink" title="K最近邻算法"></a>K最近邻算法</h1><ol>
+<li>特征抽取</li>
+</ol>
+<p>使用KNN做两项基本工作：分类和回归。分类就是编组，回归就是预测结果。</p>
+<p>OCR：光学字符识别。也是基于KNN简单理念。OCR的第一步是查看大量的数字图像并提取特征，这被称为训练。</p>
+<h1 id="算法介绍"><a href="#算法介绍" class="headerlink" title="算法介绍"></a>算法介绍</h1><ol>
+<li>二叉查找树</li>
+<li>反向索引：一个散列表，将单词映射到包含它的页面。这种数据结构被称为反向索引。常用于创建搜索引擎。</li>
+<li>傅里叶变换：傅里叶变换可将一首歌曲中的各种频率分离出来。还被用来地震预测和DNA分析。</li>
+<li>并行算法：能在多个内核中并行执行的算法。</li>
+<li>分布式算法：特殊的并行算法。如MapReduce.基于两个简单的理念：映射（map）函数和归并（reduce）函数。</li>
+<li>布隆过滤器和HyperLogLog。布隆过滤器是一种概率性数据结构，它提供的答案有可能不对，但很有可能是正确的。HyperLogLog是一种类似于布隆过滤器的算法。</li>
+<li>SHA算法：SHA算法被广泛用于计算密码的散列值，这种散列算法是单向的。局部不敏感</li>
+<li>Simhash：局部敏感的散列算法，当需要检查两项内容的相似程度时，Simhash很有用。</li>
+<li>Diffie-Hellman：双方无需知道加密算法。</li>
+<li>线性规划：用于在给定约束条件下最大限度地改善指定的指标。线性算法使用SImplex算法。</li>
+</ol>
+<h1 id="读后感"><a href="#读后感" class="headerlink" title="读后感"></a>读后感</h1><ol>
+<li>时间拖得太长，最早看的有一些内容已经忘记了。看完之后需要进行研究。</li>
+</ol>
+
+    
+  </div>
+
+</article>
+
+
+   
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2019/08/06/TS泛型/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2019/12/17/css定位/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
