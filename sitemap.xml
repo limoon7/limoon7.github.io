@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://limoon7.github.io/2020/08/07/about/</loc>
+    <loc>http://limoon7.github.io/2018/08/07/about/</loc>
     
     <lastmod>2020-08-07</lastmod>
     
@@ -214,14 +214,14 @@
   </url>
   
   <url>
-    <loc>http://limoon7.github.io/tags/%E8%AF%BB%E5%90%8E%E6%84%9F/</loc>
+    <loc>http://limoon7.github.io/tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/</loc>
     <lastmod>2020-08-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://limoon7.github.io/tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/</loc>
+    <loc>http://limoon7.github.io/tags/%E8%AF%BB%E5%90%8E%E6%84%9F/</loc>
     <lastmod>2020-08-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -251,14 +251,14 @@
   </url>
   
   <url>
-    <loc>http://limoon7.github.io/categories/%E8%AF%BB%E5%90%8E%E6%84%9F/</loc>
+    <loc>http://limoon7.github.io/categories/technology/</loc>
     <lastmod>2020-08-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://limoon7.github.io/categories/technology/</loc>
+    <loc>http://limoon7.github.io/categories/%E8%AF%BB%E5%90%8E%E6%84%9F/</loc>
     <lastmod>2020-08-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
