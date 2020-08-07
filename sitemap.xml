@@ -200,6 +200,13 @@
   </url>
   
   <url>
+    <loc>http://limoon7.github.io/tags/redux/</loc>
+    <lastmod>2020-08-07</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://limoon7.github.io/tags/%E5%B7%A5%E5%85%B7/</loc>
     <lastmod>2020-08-07</lastmod>
     <changefreq>daily</changefreq>
@@ -214,13 +221,6 @@
   </url>
   
   <url>
-    <loc>http://limoon7.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2020-08-07</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://limoon7.github.io/tags/%E8%AF%BB%E5%90%8E%E6%84%9F/</loc>
     <lastmod>2020-08-07</lastmod>
     <changefreq>daily</changefreq>
@@ -228,7 +228,7 @@
   </url>
   
   <url>
-    <loc>http://limoon7.github.io/tags/redux/</loc>
+    <loc>http://limoon7.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2020-08-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -258,14 +258,14 @@
   </url>
   
   <url>
-    <loc>http://limoon7.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</loc>
+    <loc>http://limoon7.github.io/categories/%E8%AF%BB%E5%90%8E%E6%84%9F/</loc>
     <lastmod>2020-08-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://limoon7.github.io/categories/%E8%AF%BB%E5%90%8E%E6%84%9F/</loc>
+    <loc>http://limoon7.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2020-08-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
