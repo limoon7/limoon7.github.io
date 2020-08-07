@@ -3,12 +3,12 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 
-subtitle:
+title: Thatched house
+subtitle: 痴心才能妄想
 description:
-keywords:
+keywords: lemon, TypeScript, React, blog
 author: lemon
-language:
+language: zh-CN
 timezone:
 
 # URL
@@ -43,16 +43,16 @@ highlight:
   line_number: true
   auto_detect: false
   tab_replace:
-  
+
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
 # per_page: Posts displayed per page. (0 = disable pagination)
 # order_by: Posts order. (Order by date descending by default)
 index_generator:
-  path: ''
+  path: ""
   per_page: 10
   order_by: -date
-  
+
 # Category & Tag
 default_category: uncategorized
 category_map:
@@ -73,7 +73,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: fexo
+theme: ayer
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
@@ -81,3 +81,9 @@ deploy:
   type: git
   repo: git@github.com:limoon7/limoon7.github.io.git
   branch: master
+
+# 搜索，安装hexo-generator-searchdb
+search:
+  path: search.xml
+  field: post
+  format: html
