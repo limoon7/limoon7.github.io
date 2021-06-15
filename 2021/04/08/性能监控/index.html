@@ -11,7 +11,7 @@
    
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    前端 |  
+    性能监控 |  
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -38,326 +38,203 @@
       
     <main class="content on">
       <section class="outer">
-  <article class="articles">
+  <article
+  id="post-性能监控"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
     
-    
-    <h1 class="page-type-title">前端</h1>
-    
-    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  性能监控
+</h1>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/04/08/性能监控/" class="article-date">
+  <time datetime="2021-04-07T16:00:00.000Z" itemprop="datePublished">2021-04-08</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/前端/">前端</a>
+  </div>
   
-  
-  
-  
-  
-  
-  <div class="archives-wrap">
-    <div class="archive-year-wrap">
-      <a href="/archives/2021" class="archive-year">2021</a>
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">406</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">1 分钟</span>
+        </span>
+    </span>
+</div>
+ 
     </div>
-    <div class="archives">
       
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2021/06/01/React软件架构设计和最佳实践/" class="archive-article-date">
-  <time datetime="2021-05-31T16:00:00.000Z" itemprop="datePublished">06/01</time>
-</a>
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
        
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2021/06/01/React软件架构设计和最佳实践/"
-    >React 软件架构设计和最佳实践</a> 
-</h2>
+  <h1 id="性能监控"><a href="#性能监控" class="headerlink" title="性能监控"></a>性能监控</h1><h2 id="合成监控（SYN）"><a href="#合成监控（SYN）" class="headerlink" title="合成监控（SYN）"></a>合成监控（SYN）</h2><ol>
+<li>如 Lighthouse、audit 等</li>
+<li>适用于团队自有业务、对性能做定性分析，或配合 CI 做小数据的监控分析</li>
+</ol>
+<h2 id="真实用户监控（RUM）"><a href="#真实用户监控（RUM）" class="headerlink" title="真实用户监控（RUM）"></a>真实用户监控（RUM）</h2><ol>
+<li>如蚂蚁的九色鹿等 (京东的埋点更多的类似是业务级别的)</li>
+<li>自建或者一些市面上可用的系统</li>
+<li>适用于中台产品支持前台业务，对性能做定量分析，结合业务数据进行深度挖掘</li>
+<li>真实用户性能数据采集方案<ol>
+<li>使用标准的 API：performance.timing(已废弃)<ol>
+<li>High Resolution Time, HRTime</li>
+<li>performance Timeline API</li>
+<li>优先抹平 Navigation Timing spec 差异，优先使用 performance Timeline API（polyfill）</li>
+</ol>
+</li>
+<li>定义合适的指标<ol>
+<li>PLT(Page Load Time)：易受到特殊情况影响、FP、FCP、FMP(首次有效渲染：First Meaingful Paint)、SR</li>
+<li>DOM 相关</li>
+<li>Spec 相关</li>
+<li>算法相关</li>
+<li>视觉相关</li>
+<li>根据业务特性及性能监控方案选择最适合的性能指标，必要情况下可使用自定义性能点位</li>
+</ol>
+</li>
+<li>采集正确的数据<ol>
+<li>上报页面加载开始时间，以及后续各时间点相对增量，在数据端进行阶段清洗和异常处理</li>
+</ol>
+</li>
+<li>上报关联的维度<ol>
+<li>常规维度：时间、页面、浏览器、操作系统、地理位置</li>
+<li>专业维度：页面是否可见、页面加载方式、等效网络连接类型、是否启用 service worker、是否启用 HTTP/2、是否启用 GXIP 压缩</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>分析性能监控数据<ol>
+<li>分析性能指标时建议关注百分位数，对性能的要求越高，使用越大的百分位数</li>
+</ol>
+</li>
+</ol>
  
-
-    </header>
-    
+      <!-- reward -->
       
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/前端/">前端</a>
-  </div>
-
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2021/04/08/性能监控/" class="archive-article-date">
-  <time datetime="2021-04-07T16:00:00.000Z" itemprop="datePublished">04/08</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2021/04/08/性能监控/"
-    >性能监控</a> 
-</h2>
- 
-
-    </header>
-    
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/前端/">前端</a>
-  </div>
-
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2021/01/07/FE性能checkList/" class="archive-article-date">
-  <time datetime="2021-01-06T16:00:00.000Z" itemprop="datePublished">01/07</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2021/01/07/FE性能checkList/"
-    >2021前端性能优化清单</a> 
-</h2>
- 
-
-    </header>
-    
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/前端/">前端</a>
-  </div>
-
-    
-    
-  </div>
-</article>
-      
-  
-  
-  
-  </div>
-  </div>
-  
-  
-  <div class="archives-wrap">
-    <div class="archive-year-wrap">
-      <a href="/archives/2020" class="archive-year">2020</a>
-    </div>
-    <div class="archives">
-      
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/12/28/css2020报告/" class="archive-article-date">
-  <time datetime="2020-12-27T16:00:00.000Z" itemprop="datePublished">12/28</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2020/12/28/css2020报告/"
-    >CSS 2020报告</a> 
-</h2>
- 
-
-    </header>
-    
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/前端/">前端</a>
-  </div>
-
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/08/07/TypeScript分享/" class="archive-article-date">
-  <time datetime="2020-08-06T16:00:00.000Z" itemprop="datePublished">08/07</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2020/08/07/TypeScript分享/"
-    >TypeScript 分享</a> 
-</h2>
- 
-
-    </header>
-    
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/前端/">前端</a>
-  </div>
-
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/04/16/es2020/" class="archive-article-date">
-  <time datetime="2020-04-16T07:36:31.000Z" itemprop="datePublished">04/16</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2020/04/16/es2020/"
-    >ES2020</a> 
-</h2>
- 
-
-    </header>
-    
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/前端/">前端</a>
-  </div>
-
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/02/26/React-Hooks/" class="archive-article-date">
-  <time datetime="2020-02-26T08:40:24.000Z" itemprop="datePublished">02/26</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2020/02/26/React-Hooks/"
-    >React Hooks 学习</a> 
-</h2>
- 
-
-    </header>
-    
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/前端/">前端</a>
-  </div>
-
-    
-    
-  </div>
-</article>
-      
-  
-  
-  
-  </div>
-  </div>
-  
-  
-  <div class="archives-wrap">
-    <div class="archive-year-wrap">
-      <a href="/archives/2019" class="archive-year">2019</a>
-    </div>
-    <div class="archives">
-      
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/12/17/css定位/" class="archive-article-date">
-  <time datetime="2019-12-17T00:49:24.000Z" itemprop="datePublished">12/17</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2019/12/17/css定位/"
-    >CSS 定位</a> 
-</h2>
- 
-
-    </header>
-    
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/前端/">前端</a>
-  </div>
-
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/08/06/TS泛型/" class="archive-article-date">
-  <time datetime="2019-08-06T00:30:29.000Z" itemprop="datePublished">08/06</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2019/08/06/TS泛型/"
-    >TypeScript 泛型学习</a> 
-</h2>
- 
-
-    </header>
-    
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/前端/">前端</a>
-  </div>
-
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/08/06/typeScript/" class="archive-article-date">
-  <time datetime="2019-08-05T16:00:00.000Z" itemprop="datePublished">08/06</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2019/08/06/typeScript/"
-    >TypeScript</a> 
-</h2>
- 
-
-    </header>
-    
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/前端/">前端</a>
-  </div>
-
-    
-    
-  </div>
-</article>
-      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
       
     </div>
-  </div>
-  
-  
-
-  
-  <nav class="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/categories/前端/page/2/">2</a><a class="extend next" rel="next" href="/categories/前端/page/2/">下一页</a>
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://limoon7.github.io/2021/04/08/性能监控/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2021/04/15/贫穷的终结/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            《贫穷的终结》
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2021/04/01/贫穷的本质/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">《贫穷的本质》</div>
+      </a>
+    
   </nav>
+
   
+     
+</article>
+
 </section>
       <footer class="footer">
   <div class="outer">
@@ -496,6 +373,21 @@
     <script src="/js/jquery-2.0.3.min.js"></script>
 <script src="/js/lazyload.min.js"></script>
 <!-- Tocbot -->
+
+<script src="/js/tocbot.min.js"></script>
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
