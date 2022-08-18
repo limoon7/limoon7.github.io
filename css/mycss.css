@@ -1,0 +1,79 @@
+/* 背景渐变 */
+#web_bg{
+  background-image: linear-gradient(to top, #9890e3 0%, #b1f4cf 100%);
+  /* background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); */
+}
+#footer, #nav {
+  background: none
+}
+
+/* 文章页H1-H6图标样式效果 */
+h1::before, h2::before, h3::before, h4::before, h5::before, h6::before {
+  -webkit-animation: ccc 1.6s linear infinite ;
+  animation: ccc 1.6s linear infinite ;
+}
+@-webkit-keyframes ccc {
+  0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg)
+  }
+  to {
+      -webkit-transform: rotate(-1turn);
+      transform: rotate(-1turn)
+  }
+}
+@keyframes ccc {
+  0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg)
+  }
+  to {
+      -webkit-transform: rotate(-1turn);
+      transform: rotate(-1turn)
+  }
+}
+
+#content-inner.layout h1::before {
+  color: #ef50a8 ;
+  margin-left: -31px;
+  font-size: 26px;
+  margin-top: -5px;
+}
+#content-inner.layout h2::before {
+  color: #fb7061 ;
+  margin-left: -27px;
+  font-size: 22px;
+  margin-top: -3px;
+}
+#content-inner.layout h3::before {
+  color: #ffbf00 ;
+  margin-left: -25px;
+  font-size: 20px;
+  margin-top: -2px;
+}
+#content-inner.layout h4::before {
+  color: #a9e000 ;
+  font-size: 16px;
+  margin-top: -2px;
+}
+#content-inner.layout h5::before {
+  color: #57c850 ;
+  margin-left: -18px;
+  font-size: 14px;
+  margin-top: 0;
+}
+#content-inner.layout h6::before {
+  color: #5ec1e0 ;
+  margin-left: -18px;
+  font-size: 13px;
+  margin-top: 0;
+}
+
+#content-inner.layout h1:hover, #content-inner.layout h2:hover, #content-inner.layout h3:hover, #content-inner.layout h4:hover, #content-inner.layout h5:hover, #content-inner.layout h6:hover {
+  color: #49b1f5 ;
+}
+#content-inner.layout h1:hover::before, #content-inner.layout h2:hover::before, #content-inner.layout h3:hover::before, #content-inner.layout h4:hover::before, #content-inner.layout h5:hover::before, #content-inner.layout h6:hover::before {
+  color: #49b1f5 ;
+  -webkit-animation: ccc 3.2s linear infinite ;
+  animation: ccc 3.2s linear infinite ;
+}

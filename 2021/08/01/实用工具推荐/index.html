@@ -1,0 +1,242 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>实用工具&amp;资源推荐 | Thatched house</title><meta name="keywords" content="工具"><meta name="author" content="lemon"><meta name="copyright" content="lemon"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="实用工具&amp;资源推荐环境配置 nvm 切换 node 版本 nrm 切换 npm 源 switchHost 切换 host Oh-My-Zsh 命令行工具  js 相关推荐 javaScript 秘密花园。主要会写如何去避免一些常见的错误，以及找到很难发现的 bug ，比较深入 JavaScript 的语言特性 每天一个 js 小技巧 js 代码库集合 js 代码片段 js 1024 ES6">
+<meta property="og:type" content="article">
+<meta property="og:title" content="实用工具&amp;资源推荐">
+<meta property="og:url" content="http://limoon7.github.io/2021/08/01/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E6%8E%A8%E8%8D%90/index.html">
+<meta property="og:site_name" content="Thatched house">
+<meta property="og:description" content="实用工具&amp;资源推荐环境配置 nvm 切换 node 版本 nrm 切换 npm 源 switchHost 切换 host Oh-My-Zsh 命令行工具  js 相关推荐 javaScript 秘密花园。主要会写如何去避免一些常见的错误，以及找到很难发现的 bug ，比较深入 JavaScript 的语言特性 每天一个 js 小技巧 js 代码库集合 js 代码片段 js 1024 ES6">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://limoon7.github.io/img/cover.jpg">
+<meta property="article:published_time" content="2021-07-31T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-08-18T06:55:15.583Z">
+<meta property="article:author" content="lemon">
+<meta property="article:tag" content="工具">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://limoon7.github.io/img/cover.jpg"><link rel="shortcut icon" href="/img/lemon.ico"><link rel="canonical" href="http://limoon7.github.io/2021/08/01/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E6%8E%A8%E8%8D%90/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '实用工具&资源推荐',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-08-18 14:55:15'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/mycss.css"><meta name="generator" content="Hexo 6.2.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/lemon.ico" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">57</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Thatched house</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">实用工具&amp;资源推荐</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2021-07-31T16:00:00.000Z" title="发表于 2021-08-01 00:00:00">2021-08-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">458</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>1分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="实用工具&amp;资源推荐"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><h1 id="实用工具-amp-资源推荐"><a href="#实用工具-amp-资源推荐" class="headerlink" title="实用工具&amp;资源推荐"></a>实用工具&amp;资源推荐</h1><h2 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h2><ol>
+<li>nvm 切换 node 版本</li>
+<li>nrm 切换 npm 源</li>
+<li>switchHost 切换 host</li>
+<li>Oh-My-Zsh 命令行工具</li>
+</ol>
+<h2 id="js-相关推荐"><a href="#js-相关推荐" class="headerlink" title="js 相关推荐"></a>js 相关推荐</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://bonsaiden.github.io/JavaScript-Garden/zh/">javaScript 秘密花园</a>。主要会写如何去避免一些常见的错误，以及找到很难发现的 bug ，比较深入 JavaScript 的语言特性</li>
+<li><a target="_blank" rel="noopener" href="https://www.jstips.co/">每天一个 js 小技巧</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.javascript.fun/">js 代码库集合</a></li>
+<li><a target="_blank" rel="noopener" href="https://pianduan.fun/?utm_source=xinquji&language_id=3&page=1">js 代码片段</a></li>
+<li><a target="_blank" rel="noopener" href="https://js1024.fun/results/2020#16">js 1024</a></li>
+<li><a target="_blank" rel="noopener" href="http://es6-features.org/#Constants">ES6 演示</a></li>
+<li><a target="_blank" rel="noopener" href="https://recursion.vercel.app/">递归演示网站</a></li>
+</ol>
+<h2 id="css-推荐"><a href="#css-推荐" class="headerlink" title="css 推荐"></a>css 推荐</h2><ol>
+<li>一些 css 的小技巧可以从此网站上学习。<a target="_blank" rel="noopener" href="https://css-tricks.com/">css Tricks</a></li>
+<li>实用 HTML 和 CSS 100% 还原它给出的页面，然后尽量减少代码，可以查看排行榜，及解决方案。 <a target="_blank" rel="noopener" href="https://cssbattle.dev/">CSS Battle</a></li>
+<li><a target="_blank" rel="noopener" href="http://learnlayout.com/">学习 CSS 布局</a>，理论+页面演示讲解</li>
+<li><a target="_blank" rel="noopener" href="http://flexboxfroggy.com/">以游戏的方式学习 flex 布局</a></li>
+<li><a target="_blank" rel="noopener" href="https://codepip.com/">类似于 css flex 的小游戏</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.toptal.com/developers/css/sprite-generator">选择多张图片生成雪碧图并给出 css</a></li>
+</ol>
+<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://ps.gaoding.com/#/">在线 ps</a></li>
+<li><a target="_blank" rel="noopener" href="https://tableconvert.com/">表格转换工具</a>，可以设定表格，然后转换为各种语言的表格</li>
+<li><a target="_blank" rel="noopener" href="https://carbon.now.sh/">在线生成代码图片</a></li>
+<li><a target="_blank" rel="noopener" href="https://ray.so/">在线生成漂亮的代码图片</a></li>
+<li><a target="_blank" rel="noopener" href="https://markmap.js.org/repl/">markdown 转为 思维导图</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.islide.cc/">iSlide</a>, PPT 插件工具</li>
+<li><a target="_blank" rel="noopener" href="https://random-data-api.com/">生成随机数据</a></li>
+<li><a target="_blank" rel="noopener" href="https://coding-fonts.css-tricks.com/fonts/cartograph-cf/?language=js">coding font</a></li>
+<li><a target="_blank" rel="noopener" href="https://sharkle.com/">随机访问一个网站</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.editcsvonline.com/">在线 csv</a></li>
+<li><code>tinypng</code>: png 图片压缩的一个在线工具</li>
+<li><a target="_blank" rel="noopener" href="https://app.diagrams.net/">流程图工具</a></li>
+<li><a target="_blank" rel="noopener" href="https://static.jixun.moe/json2tsinterface.html">Json 对象 → TypeScript Interface 在线转换器</a></li>
+<li><a target="_blank" rel="noopener" href="https://untools.co/">思考工具和框架的集合</a>，思考工具和框架的集合，帮助解决问题，做出决定和理解系统</li>
+<li><a target="_blank" rel="noopener" href="https://docschina.org/">前端的一些中文文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://alexkondov.com/tao-of-react/">React 软件架构设计和最佳实践</a></li>
+</ol>
+<h2 id="vscode-插件推荐"><a href="#vscode-插件推荐" class="headerlink" title="vscode 插件推荐"></a>vscode 插件推荐</h2><ol>
+<li><p>Add jsdoc comments</p>
+</li>
+<li><p>Auto Close Tag、Auto Rename Tag、Auto Complete Tag</p>
+</li>
+<li><p>Highlight Matching Tag</p>
+</li>
+<li><p>koroFileHeader</p>
+</li>
+<li><p>Back &amp; Forth</p>
+</li>
+<li><p>Better Comments</p>
+</li>
+<li><p>Colored Console Log</p>
+</li>
+<li><p>Tabnine Autocomplete AI</p>
+</li>
+<li><p>TODO Highlight</p>
+</li>
+<li><p>Turbo Console Log</p>
+</li>
+<li><p>Bracket Pair Colorizer</p>
+</li>
+<li><p>Color Highlight</p>
+</li>
+<li><p>Bookmarks</p>
+</li>
+<li><p>code-translate</p>
+</li>
+<li><p>Codelf</p>
+</li>
+<li><p>CodeSnap、Polacode</p>
+</li>
+<li><p>CSS Peek</p>
+</li>
+<li><p>ES7 React&#x2F;Redux&#x2F;GraphQL&#x2F;React-Native snippets</p>
+</li>
+<li><p>filesize</p>
+</li>
+<li><p>Git Graph</p>
+</li>
+<li><p>Import Cost</p>
+</li>
+<li><p>peacock</p>
+</li>
+<li><p>Prettier - Code formatter</p>
+</li>
+<li><p>Project Manager</p>
+</li>
+<li><p>Quokka.js</p>
+</li>
+<li><p>Search node_modules</p>
+</li>
+<li><p>Settings Sync</p>
+</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://limoon7.github.io">lemon</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://limoon7.github.io/2021/08/01/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E6%8E%A8%E8%8D%90/">http://limoon7.github.io/2021/08/01/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E6%8E%A8%E8%8D%90/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://limoon7.github.io" target="_blank">Thatched house</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%B7%A5%E5%85%B7/">工具</a></div><div class="post_share"><div class="social-share" data-image="/img/cover.jpg" data-sites="wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.png" target="_blank"><img class="post-qr-code-img" src="/img/wechat.png" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/alipay.png" target="_blank"><img class="post-qr-code-img" src="/img/alipay.png" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/08/31/21%E5%B9%B408%E6%9C%88/"><img class="prev-cover" src="/img/cover.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">21年08月</div></div></a></div><div class="next-post pull-right"><a href="/2021/07/30/21%E5%B9%B407%E6%9C%88/"><img class="next-cover" src="/img/cover.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">21年07月</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2020/09/02/Mac%E4%BF%AE%E6%94%B9%E7%AC%AC%E4%B8%89%E6%96%B9%E5%9B%BE%E6%A0%87/" title="Mac修改第三方应用图标"><img class="cover" src="/img/cover.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-09-02</div><div class="title">Mac修改第三方应用图标</div></div></a></div><div><a href="/2020/10/21/scrcpy/" title="scrcpy使用"><img class="cover" src="/img/cover.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-10-21</div><div class="title">scrcpy使用</div></div></a></div><div><a href="/2019/07/02/vim%E4%BD%BF%E7%94%A8%E4%B8%8E%E5%91%BD%E4%BB%A4/" title="vim使用与命令"><img class="cover" src="/img/cover.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-07-02</div><div class="title">vim使用与命令</div></div></a></div><div><a href="/2021/02/26/webpack%E6%89%93%E5%8C%85%E5%88%86%E6%9E%90/" title="webpack打包分析"><img class="cover" src="/img/cover.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-02-26</div><div class="title">webpack打包分析</div></div></a></div><div><a href="/2018/07/18/%E4%BD%BF%E7%94%A8Github+hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" title="使用Github+hexo搭建博客"><img class="cover" src="/img/cover.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2018-07-18</div><div class="title">使用Github+hexo搭建博客</div></div></a></div><div><a href="/2021/10/09/%E6%9C%AC%E5%9C%B0%E5%90%AF%E5%8A%A8%E9%A1%B9%E7%9B%AE%E4%BD%BF%E7%94%A8Charles%E8%BF%9B%E8%A1%8C%E5%9F%9F%E5%90%8D%E8%BD%AC%E5%8F%91/" title="本地启动项目使用Charles进行域名转发"><img class="cover" src="/img/cover.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-10-09</div><div class="title">本地启动项目使用Charles进行域名转发</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/lemon.ico" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">lemon</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">57</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/limoon7"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">愿坚定而有力量，自信而有内涵</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7-amp-%E8%B5%84%E6%BA%90%E6%8E%A8%E8%8D%90"><span class="toc-text">实用工具&amp;资源推荐</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="toc-text">环境配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#js-%E7%9B%B8%E5%85%B3%E6%8E%A8%E8%8D%90"><span class="toc-text">js 相关推荐</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#css-%E6%8E%A8%E8%8D%90"><span class="toc-text">css 推荐</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E5%AE%83"><span class="toc-text">其它</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vscode-%E6%8F%92%E4%BB%B6%E6%8E%A8%E8%8D%90"><span class="toc-text">vscode 插件推荐</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/05/30/22%E5%B9%B45%E6%9C%88/" title="22年5月"><img src="/img/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="22年5月"/></a><div class="content"><a class="title" href="/2022/05/30/22%E5%B9%B45%E6%9C%88/" title="22年5月">22年5月</a><time datetime="2022-05-29T16:00:00.000Z" title="发表于 2022-05-30 00:00:00">2022-05-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/04/30/22%E5%B9%B44%E6%9C%88/" title="22年4月"><img src="/img/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="22年4月"/></a><div class="content"><a class="title" href="/2022/04/30/22%E5%B9%B44%E6%9C%88/" title="22年4月">22年4月</a><time datetime="2022-04-29T16:00:00.000Z" title="发表于 2022-04-30 00:00:00">2022-04-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/31/22%E5%B9%B43%E6%9C%88/" title="22年3月"><img src="/img/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="22年3月"/></a><div class="content"><a class="title" href="/2022/03/31/22%E5%B9%B43%E6%9C%88/" title="22年3月">22年3月</a><time datetime="2022-03-30T16:00:00.000Z" title="发表于 2022-03-31 00:00:00">2022-03-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/02/28/22%E5%B9%B42%E6%9C%88/" title="22年2月"><img src="/img/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="22年2月"/></a><div class="content"><a class="title" href="/2022/02/28/22%E5%B9%B42%E6%9C%88/" title="22年2月">22年2月</a><time datetime="2022-02-27T16:00:00.000Z" title="发表于 2022-02-28 00:00:00">2022-02-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/01/29/22%E5%B9%B41%E6%9C%88/" title="22年1月"><img src="/img/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="22年1月"/></a><div class="content"><a class="title" href="/2022/01/29/22%E5%B9%B41%E6%9C%88/" title="22年1月">22年1月</a><time datetime="2022-01-28T16:00:00.000Z" title="发表于 2022-01-29 00:00:00">2022-01-29</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2018 - 2022 By lemon</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
