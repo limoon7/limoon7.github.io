@@ -1,0 +1,817 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>2021前端性能优化清单 | Thatched house</title><meta name="keywords" content="性能优化"><meta name="author" content="lemon"><meta name="copyright" content="lemon"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="原文 Front-End Performance Checklist 2021我们需要知道目前我们的项目在性能等级中处于什么等级，以及我们的性能瓶颈是什么。我们是否已经通过 tree-shaking(删除 js 文件中未引用的代码)，scope hoisting(作用域提升),Code Splitting 以及所有能够想象到的载入模式比如 intersection observer(提供了一种异步">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2021前端性能优化清单">
+<meta property="og:url" content="http://limoon7.github.io/2021/01/07/tech/FE%E6%80%A7%E8%83%BDcheckList/index.html">
+<meta property="og:site_name" content="Thatched house">
+<meta property="og:description" content="原文 Front-End Performance Checklist 2021我们需要知道目前我们的项目在性能等级中处于什么等级，以及我们的性能瓶颈是什么。我们是否已经通过 tree-shaking(删除 js 文件中未引用的代码)，scope hoisting(作用域提升),Code Splitting 以及所有能够想象到的载入模式比如 intersection observer(提供了一种异步">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://limoon7.github.io/img/cover4.jpg">
+<meta property="article:published_time" content="2021-01-06T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-08-18T06:55:15.541Z">
+<meta property="article:author" content="lemon">
+<meta property="article:tag" content="性能优化">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://limoon7.github.io/img/cover4.jpg"><link rel="shortcut icon" href="/img/lemon.ico"><link rel="canonical" href="http://limoon7.github.io/2021/01/07/tech/FE%E6%80%A7%E8%83%BDcheckList/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '2021前端性能优化清单',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-08-18 14:55:15'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/mycss.css"><meta name="generator" content="Hexo 6.2.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/lemon.ico" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">59</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Thatched house</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">2021前端性能优化清单</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2021-01-06T16:00:00.000Z" title="发表于 2021-01-07 00:00:00">2021-01-07</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">27.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>88分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="2021前端性能优化清单"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><p><a target="_blank" rel="noopener" href="https://www.smashingmagazine.com/2021/01/front-end-performance-2021-free-pdf-checklist/">原文</a></p>
+<h1 id="Front-End-Performance-Checklist-2021"><a href="#Front-End-Performance-Checklist-2021" class="headerlink" title="Front-End Performance Checklist 2021"></a>Front-End Performance Checklist 2021</h1><p>我们需要知道目前我们的项目在性能等级中处于什么等级，以及我们的性能瓶颈是什么。我们是否已经通过 tree-shaking(删除 js 文件中未引用的代码)，scope hoisting(作用域提升),Code Splitting 以及所有能够想象到的载入模式比如 intersection observer(提供了一种异步观察目标元素与其祖先元素或顶级文档视窗(viewport)交叉状态的方法)、progressive hydration（渐进式注水）、Client Hints(HTTP 客户端（通常可以认为是浏览器）能够主动将一些特性告诉服务端，以便服务端更有针对性地输出内容)、HTTP&#x2F;3、service workers 做了充分的优化。最重要的是，我们要从哪里着手开始做性能优化，如何建立长期性能优化的氛围。</p>
+<p>在过去，性能优化通常是在开发完成之后才想到的，通常延迟到项目的后期，它可以归结为源码压缩、连接、静态资源优化和对服务器配置文件的一些潜在的微调，但现在性能不仅仅是一个技术问题: 它影响到从可访问性到可用性到搜索引擎优化的所有方面，当将其融入工作流程时，设计决策必须考虑到它们对性能的影响。性能必须被不断地测量、监控和改进，网络的日益增长的复杂性提出了新的挑战，使得跟踪衡量标准变得更加困难，因为指标将发生显著的变化取决于设备，浏览器，协议，网络类型和延迟(发布商、isp、缓存、代理、防火墙、负载平衡器和服务器所有的方式)。</p>
+<p>所以，如果我们对在 coding 时提高性能必须做的所有事情做一个概括的话，从项目一开始到最终发布，会是怎样一个流程，以下是 2021 年 front-end checkList.</p>
+<h2 id="计划和度量"><a href="#计划和度量" class="headerlink" title="计划和度量"></a>计划和度量</h2><p>关键词：性能文化，核心 Web 要素，性能选项，难点，Lighthouse，FID，TTI，CLS，设备</p>
+<p>关键词：性能预算，性能目标，RAIL 框架，170KB&#x2F;30KB</p>
+<p>在保持性能方面微优化是非常重要的，但是对于性能有一个明确的目标是更加重要的，这个目标是可衡量的，可以影响整个过程中的任何决定。以下讨论的几种是相当经典的，只需要确保优先级即可。</p>
+<h3 id="在团队内培养性能文化的氛围"><a href="#在团队内培养性能文化的氛围" class="headerlink" title="在团队内培养性能文化的氛围"></a>在团队内培养性能文化的氛围</h3><p>在很多部门内部，前端开发人员明确知道什么是常见的性能问题，以及该如何解决这些问题。然而，如果一个部门内部没有性能文化的氛围，那么相关的性能文化决策就很难被推行。所以如果想在部门内有一个良好的性能优化的氛围，可以提供一个案例，尤其是关于速度方面的。</p>
+<p>比如，为了使性能现状更加具体，你可以通过展示应用加载时间与用户转换率的关系来说明性能的影响。</p>
+<p>如果开发&#x2F;设计团队和业务&#x2F;营销团队之间没有比较好的平衡的话，性能将无法被长期维持。研究分析用户和业务方提出的一些常见问题，分析高跳出率和转化率下降的原因。探索如何提高性能可以帮助解决这些问题。</p>
+<p>在移动设备和桌面设备上进行性能实验和测量，它将帮助你用真实的数据建立一个案例研究。除此之外，使用 WPO 统计数据发表的案例和实验数据，有助于提高企业对于性能重要性的敏感度，以及它对用户体验和业务指标的影响。不过，仅仅说明性能本身是不够的，还需要建立一些可衡量和可跟踪的目标，并且逐步观察它们。</p>
+<p>就像用户体验是一系列用户体验一样，应用性能也是一系列的内容所组成的，<a target="_blank" rel="noopener" href="https://res.cloudinary.com/indysigner/image/fetch/f_auto,q_auto/w_2000/https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/9e69134f-4ec0-4bb7-803b-ebce880b8029/bounce-rate-time-to-app-load-opt.png">并非是一个数字或者一个评级就可以描述的</a>。因此，性能优化目标需要是粒度的、可追踪的并且是切实可以完成的。</p>
+<p>可参考资料：</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://vimeo.com/showcase/4970467/video/254947097">如何长期的保持性能优化</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=SE0HhF4TO0Q">高效性能团队的习惯</a></li>
+<li><a target="_blank" rel="noopener" href="https://medium.com/firebase-developers/how-fast-should-your-site-load-cfb14be48e8b">How Fast Should Your Site Load</a></li>
+<li><a target="_blank" rel="noopener" href="https://res.cloudinary.com/indysigner/image/fetch/f_auto,q_auto/w_2000/https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/9b76f03b-6b76-4d18-9c54-f1280ba3e91b/conversion-rate-tracking-performance-szptss.jpg">性能与用户</a></li>
+</ol>
+<h3 id="比你最快的竞争对手至少快-20"><a href="#比你最快的竞争对手至少快-20" class="headerlink" title="比你最快的竞争对手至少快 20%"></a>比你最快的竞争对手至少快 20%</h3><p>摘要：</p>
+<ol>
+<li>在能够代表用户的设备上收集数据。首选真实设备而不是模拟。</li>
+<li>选择 Moto G4 &#x2F; G5 Plus，中档三星设备（Galaxy A50，S8），出色的中端设备（如 Nexus 5X，小米 Mi A3 或小米 Redmi Note 7）和速度较慢的设备 Alcatel 1X 或 Cubot X19。</li>
+<li>或者，通过在节流的 CPU（速度降低 5 倍）下对节流的网络（例如 300ms RTT，1.6 Mbps 降速，0.8 Mbps 向上）进行测试，从而在台式机上模拟移动体验。</li>
+<li>然后切换到常规 3G，慢速 4G（例如 170ms RTT，降低 9 Mbps，提高 9 Mbps）和 Wi-Fi。</li>
+<li>收集数据，设置电子表格，削减 20％并设置目标（性能目标）</li>
+</ol>
+<p>如果你想让用户觉得自己的应用比竞争对手更快，那么至少需要快到 20%。研究主要的竞争对手，收集他们应用各种表现指标，并设定阈值，以帮助你超越他们。为了得到准确的结果和目标，首先要确保通过学习分析，对用户的体验有一个全面的了解。然后通过测试模拟。</p>
+<p>可以通过一系列的工具进行对比，或者使用工具来逐步的分析项目中的性能现状和瓶颈</p>
+<p>但是在部门内部，性能优化计划不应该是空想的，而应该是务实的，作为一个控制指标，防止应用超过临界点。在这种情况下，可以选择现有数据中最差的数据点作为阈值，然后从那里开始做计划。</p>
+<p>同时，制定绩效计划和当前性能现状，可以借助一些图表报告类的工具。</p>
+<p>另外，性能意识不应该仅仅来自性能计划，就像 <a target="_blank" rel="noopener" href="https://medium.com/pinterest-engineering/a-one-year-pwa-retrospective-f4a2f4129e05">Pinterest</a> 一样，你可以创建一个自定义的 eslint 规则，这个规则不允许从依赖性很强并且会使包膨胀的文件和目录导入内容，并建立一个能够导入的包的清单。除此之外，研究、讨论一些重要的业务可接受的时间临界点，建立各业务的关键指标阈值，根据可接受的指标阈值来进行未来的工作安排，确保增加的资源和特性的额外成本是可见的和可理解的。</p>
+<p>将性能方面的工作与其它技术开发相关工作的计划结合起来，不管是正开发产品的新特性还是重构，在每一次开发相关的工作讨论中，性能也是需要讨论的一部分。</p>
+<p>尽早进行一些快速能达成的优化成功可能很有吸引力，但是如果没有一个计划的话，很难在未来的业务发展中保持性能优先级</p>
+<p>可参考资料：</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://datastudio.google.com/navigation/datasources">谷歌数据洞察</a></li>
+<li><a target="_blank" rel="noopener" href="https://web.dev/chrome-ux-report/">使用 Chrome UX 报告查看真实性能</a></li>
+<li><a target="_blank" rel="noopener" href="https://treo.sh/sites">使用 Treo 检测性能</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.thinkwithgoogle.com/feature/testmysite/">Speed Scorecard</a></li>
+<li><a target="_blank" rel="noopener" href="https://insights.dexecure.com/">用户体验测试比较</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.sitespeed.io/">SiteSpeed CI</a></li>
+<li><a target="_blank" rel="noopener" href="https://ux-speed-calculator.netlify.app/">UX 速度计算器</a></li>
+<li><a target="_blank" rel="noopener" href="https://calendar.perfplanet.com/2019/visualizing-speed-without-real-data/">UX 速度计算器介绍</a></li>
+<li><a target="_blank" rel="noopener" href="https://csswizardry.com/2020/11/site-speed-topography/">按照关键页面类型分解性能，并跟踪不同的关键指标</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.npmjs.com/package/lighthouse-parade">lighthouse 进行性能分析</a></li>
+<li><a target="_blank" rel="noopener" href="https://cloudfour.com/thinks/big-picture-performance-analysis-using-lighthouse-parade/">lighthouse 进行性能分析</a></li>
+<li><a target="_blank" rel="noopener" href="https://web.dev/use-lighthouse-for-performance-budgets/">使用 lightwallet 整合 lighthouse 的性能计划</a></li>
+<li><a target="_blank" rel="noopener" href="https://res.cloudinary.com/indysigner/image/fetch/f_auto,q_auto/w_2000/https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/b5eebba0-3123-4d14-8ead-4be33834e6c0/smashing-distribution-opt.png">一段时间内性能分布的概述</a></li>
+<li><a target="_blank" rel="noopener" href="https://res.cloudinary.com/indysigner/image/fetch/f_auto,q_auto/w_2000/https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/430e2362-e8f8-4db9-9ac2-2187fd638d52/16-ux-speed-calculator-front-end-performance-checklist-2020.png">性能模拟器，强有力的说服进行性能优化的依据</a></li>
+<li><a target="_blank" rel="noopener" href="https://res.cloudinary.com/indysigner/image/fetch/f_auto,q_auto/w_2000/https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/cc19294f-7bed-4974-ab6f-6344b51e538c/milestones-chart-opt.png">网站重要页面关键指标分析</a></li>
+<li><a target="_blank" rel="noopener" href="https://res.cloudinary.com/indysigner/image/fetch/f_auto,q_auto/w_2000/https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/dbbae59c-44fa-4967-9598-33e56ab07475/10-treo-front-end-performance-checklist-2020.jpeg">数据竞争分析</a></li>
+<li><a target="_blank" rel="noopener" href="https://res.cloudinary.com/indysigner/image/fetch/f_auto,q_auto/w_2000/https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/0ae6761d-b6d6-4a0f-baa6-22e7543a3830/11-metrics-front-end-performance-checklist-2020.png">新的度量标准在 lighthouse 中的预览</a></li>
+</ol>
+<h3 id="选择正确的指标"><a href="#选择正确的指标" class="headerlink" title="选择正确的指标"></a>选择正确的指标</h3><p>研究什么度量指标对你的应用程序是最重要的，它将由你可以多久开始渲染你的界面的最重要的指标和你多久可以为这些渲染的指标提供响应来决定。这些信息可以为你提供持续可努力的最佳优化目标。最后，定义体验和性能的不是加载事件或服务器响应时间，而是对界面是否有流畅、丝滑的感觉。</p>
+<p>这意味着与其关注整个页面的加载事件，不如根据用户的感知优先加载页面，这也意味着没有标准的正确指标，最好的是从现状出发去选择合适的指标度量。</p>
+<p>传统的指标度量标准可以分为几组：</p>
+<ol>
+<li>统计请求的数量，大小和性能得分。对于随着时间推移而提高的警报和监控变化很有用，但是对于理解用户体验则不那么有用</li>
+<li>里程碑指标：比如说 TTFB、TTI，用于描述用户体验和监控，而不是用于知道这些指标之间发生了什么</li>
+<li>渲染指标：比如 SI，适用于测量和调整渲染性能，但不太适用于测量何时内容出现和可以互动</li>
+<li>自定义度量：用于精确的描述用户体验，但不适合扩展度量标准</li>
+</ol>
+<p>为了完成整个性能优化过程，我们通常会在以上这些组里面寻找有用的指标，通常，最具体和相关的是：</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://calibreapp.com/blog/time-to-interactive">Time to Interactive (TTI)</a>：用户可以与界面进行交互的时间标记。主要用于了解用户在使用应用时需要经历多少等待时间的关键指标。它测量的是根据条件确定一个交互性能以令人满意的方式发生所需的时间。</li>
+<li><a target="_blank" rel="noopener" href="https://web.dev/fid/">First Input Delay (FID)</a>：交互响应时间，可以很好的补充 TTI</li>
+<li><a target="_blank" rel="noopener" href="https://web.dev/lcp/">Largest Contentful Paint (LCP)</a>：最大元素首次渲染时间，假定页面加载时最大的元素也是最重要的元素，这个时间也将成为考量的指标之一。当这个元素为可见部分时。</li>
+<li><a target="_blank" rel="noopener" href="https://web.dev/tbt/">Total Blocking Time (TBT)</a>：总的阻塞时间，一个有助于量化 在页面成为可靠的交互之前，也就是说主线程已经没有任何运行超过 50ms 的任务。该指标度量从 FP 到 TTI 之间，主线程被阻塞了多长的时间以影响页面的响应。</li>
+<li><a target="_blank" rel="noopener" href="https://web.dev/cls/">Cumulative Layout Shift (CLS)</a>：累计布局偏移。这个指标强调了用户在访问网站时遇到意料之外的布局变化的频率，它检查不稳定元素对整体体验的影响，分数越低越好。</li>
+<li><a target="_blank" rel="noopener" href="https://dev.to/borisschapira/web-performance-fundamentals-what-is-the-speed-index-2m5i">Speed Index</a>：速度指数，测量页面内容在视觉上的填充速度，得分越低越好。速度指数的得分基于视觉进程的速度计算的，但它只是一个计算值，对于视口的大小也比较敏感。计算 SI 需要限定与目标受众相关的测试设备。</li>
+<li>CPU 时间消耗：显示主线程阻塞的频率和时间，用于 绘制、渲染、脚本和加载。如果用户的操作和响应之间存在明显的延迟，则可以使用 <a target="_blank" rel="noopener" href="https://www.webpagetest.org/">WebPageTest</a> 来进行测试。</li>
+<li><a target="_blank" rel="noopener" href="https://calendar.perfplanet.com/2019/javascript-component-level-cpu-costs/">组件级 CPU 成本</a>：通过了解组件所消耗的 CPU 成本，来针对性的给出解决方案</li>
+<li><a target="_blank" rel="noopener" href="https://www.frustrationindex.com/">FrustrationIndex</a>：沮丧指数，上面许多指标解释了特定事件发生的时间，而这个指标则着眼于各个里程碑之间的间隔，而不是独立的去衡量他们</li>
+<li><a target="_blank" rel="noopener" href="https://calendar.perfplanet.com/2017/measuring-adweight/">Ad Weight Impact</a>：广告占比的影响</li>
+<li><a target="_blank" rel="noopener" href="https://phabricator.wikimedia.org/phame/live/7/post/117/performance_testing_in_a_controlled_lab_environment_-_the_metrics/">Deviation metrics</a>：偏差指标，关注每次测试所体现的差异性数据，以及应该对偏差和异常值给予多大的关注。</li>
+<li><a target="_blank" rel="noopener" href="https://speedcurve.com/blog/user-timing-and-custom-metrics/">Custom metrics</a>：自定义指标，根据特定的业务需求和客户体验所定义的。</li>
+</ol>
+<p>需要注意的是，虽然 TTI 是在 实验室环境下运行 audits 来获得的，但 FID 代表的是真实用户体验，因此实际用户在体验的时候会明显感觉比测试中的慢，总而言之，始终测量和跟踪这两个指标是有利的。</p>
+<p>同时，根据您的业务类型的不同，关注的首选指标可能会有所不同，举两个例子：对于 Netflix TV UI，输入响应性，内存使用率和 TTI 更为关键，而对于 Wikipedia 而言，最先&#x2F;最后的视觉变化时间点和 CPU 响应时间指标则更为重要。</p>
+<p>注意: FID 和 TTI 都不考虑滚动行为; 滚动可以独立发生，因为它是非主线程的，所以对于许多内容消费网站来说，这些指标可能不那么重要</p>
+<p>可参考资料：</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://speedcurve.com/blog/rendering-metrics/">衡量渲染指标</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.dareboost.com/en/2019/05/time-to-interactive-tti-measure-interactivity/">如何可靠的测量 TTI</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/GoogleChromeLabs/first-input-delay">用于测量 FID 的 js 库</a></li>
+<li><a target="_blank" rel="noopener" href="https://deanhume.com/ten-things-you-didnt-know-about-webpagetest-org/">webPageTest 使用</a></li>
+<li><a target="_blank" rel="noopener" href="https://calendar.perfplanet.com/2019/frustrationindex-mind-the-gap/">衡量 FrustrationIndex</a></li>
+<li><a target="_blank" rel="noopener" href="https://res.cloudinary.com/indysigner/image/fetch/f_auto,q_auto/w_2000/https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/5d80f91c-9807-4565-b616-a4735fcd4949/network-requests-first-input-delay.png">以用户为中心的性能指标</a></li>
+<li><a target="_blank" rel="noopener" href="https://res.cloudinary.com/indysigner/image/fetch/f_auto,q_auto/w_2000/https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/7231a3c8-f610-4609-9829-27628aaf54bf/core-web-vitals-opt.jpg">关键 Web 指标</a></li>
+</ol>
+<h3 id="测量和优化关键-Web-指标"><a href="#测量和优化关键-Web-指标" class="headerlink" title="测量和优化关键 Web 指标"></a>测量和优化关键 Web 指标</h3><p>很长一段时间，性能指标都是技术化的，主要关注服务器响应速度和浏览器加载速度。近年来，衡量标准已经发生了变化，开始试图找到一种方法来获取实际的用户体验，而不是通过服务器的计时。2020 年 5 月，谷歌发布关键性能指标，一个新的以用户为中心的性能指标，每一个指标代表用户体验的一个方面。</p>
+<p>对于每一个指标，谷歌推荐了一个可接受的速度目标范围。至少 75%的页面浏览量应超过良好范围才能通过此评估。并且随着 关键 Web 指标将会在 2021 年 5 月成为谷歌搜索的排名影响因素之一，许多公司已经开始关注这些指标</p>
+<p>接下来，对这些指标进行详细的解释，同时使用有用的技术和工具来优化体验。</p>
+<hr>
+<h4 id="Largest-Contentful-Paint-LCP-lt-2-5-s"><a href="#Largest-Contentful-Paint-LCP-lt-2-5-s" class="headerlink" title="Largest Contentful Paint (LCP) &lt; 2.5 s"></a><a target="_blank" rel="noopener" href="https://web.dev/optimize-lcp/">Largest Contentful Paint (LCP) &lt; 2.5 s</a></h4><p>LCP 指标测量页面的加载，并报告在视口中可见的最大图像或文本块的渲染时间。因此，LCP 会受到延迟重要信息渲染的所有因素的影响，比如说服务器响应速度慢，CSS 阻塞，JS 阻塞，web 字体加载，耗费性能的绘制和渲染，懒加载的图片，骨架屏或者客户端渲染等等。</p>
+<p>一个好的用户体验，LCP 应该在页面第一次开始加载的 2.5 秒内发生。这意味着我们需要尽早渲染页面的第一个可见部分。</p>
+<p>LCP 评分低的主要原因通常是图像。如果需要在 fast 3G 上提供小于 2.5s 的 LCP，基础环境是在一个优化的服务器上，所有的静态图像都不是由客服的渲染，并且图像来自于专用的 CDN，这意味着理论上的最大图像大小只有 144KB 左右，这就是为什么响应式图像很重要，以及 早期要使用 preload 预加载关键图像</p>
+<p>可以在 performance 面板中将鼠标停留在 LCP 的 标志上以查看 LCP 的内容。</p>
+<h4 id="First-Input-Delay-FID-lt-100ms"><a href="#First-Input-Delay-FID-lt-100ms" class="headerlink" title="First Input Delay (FID) &lt; 100ms"></a><a target="_blank" rel="noopener" href="https://web.dev/fid/">First Input Delay (FID) &lt; 100ms</a></h4><p>交互响应时间。衡量 UI 的响应能力，即浏览器在对一个离散的用户输入时间（如点击）做出反应之前，忙着处理其它任务所花费的时间。它的设计目的是统计由于主线程忙碌而导致的延迟，尤其是在页面加载期间。</p>
+<p>我们的目标是 每次交互 保持在 50-100ms 以内，为了达到这个目标，我们需要做的是</p>
+<ol>
+<li>识别出长任务（阻塞大于 50ms）并将其分解</li>
+<li>进行 code-split</li>
+<li>减少 js 执行时间</li>
+<li>优化数据获取</li>
+<li>延迟第三方脚本的执行</li>
+<li>使用 Web workers 将 JavaScript 移动到后台线程</li>
+<li>使用 progressive hydration 减少 SPA 中的渲染代价</li>
+</ol>
+<p>获取 FID 分数的可靠策略是将主线程上的任务最小化，将较大的包拆分成较小的包，并在用户需要的时候提供相应的服务，这样用户交互就不会被延迟。</p>
+<h4 id="Cumulative-Layout-Shift-CLS-lt-0-1"><a href="#Cumulative-Layout-Shift-CLS-lt-0-1" class="headerlink" title="Cumulative Layout Shift (CLS) &lt; 0.1"></a><a target="_blank" rel="noopener" href="https://web.dev/cls/">Cumulative Layout Shift (CLS) &lt; 0.1</a></h4><p>衡量 UI 的视觉稳定性以确保流畅和自然的交互，它统计的是所有发生在页面中意料之外的布局偏移分数的总和。当已经可见的元素改变其在页面上的位置时，就会发生单独的布局偏移。它的得分基于内容的大小和移动的距离。</p>
+<p>因此每次出现改变时，比如说后备字体和网页字体有不同的字体指标，或者广告、嵌入或后来加入的 iframe，或者图像&#x2F;视频尺寸没有被保留，或者后期 CSS 强制重新绘制，后者后期 JavaScript 注入了更改，这些都会对 CLS 得分产生影响。良好体验的推荐值是 CLS&lt;0.1</p>
+<hr>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?t=89&v=iNfz9tg-wyg&feature=youtu.be">关键性能指标将会随着周期时间而有所改变</a>，对于第一年的更新，可能更加期待 FCP 被推广到 core Web Vitals 中，降低 FID 阈值，并且更好地支持单页应用程序。</p>
+<p>与关键性能指标有关的参考资料：</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://vitals-leaderboard.pazguille.me/">Web Vitals Leaderboard</a>：在各种设备和网络状况下来比较自己应用的得分</li>
+<li><a target="_blank" rel="noopener" href="https://defaced.dev/tools/core-serp-vitals/">Core SERP Vitals</a>：在谷歌搜索中显示 core web Vitals</li>
+<li><a target="_blank" rel="noopener" href="https://defaced.dev/tools/layout-shift-gif-generator/">CLS 生成 GIF</a>：<strong>CLS 生成 GIF，也可以使用命令行</strong></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/GoogleChrome/web-vitals">web-vitals library</a>：收集核心数据到谷歌分析</li>
+<li><a target="_blank" rel="noopener" href="https://calendar.perfplanet.com/2020/analyzing-web-vitals-with-webpagetest/">使用 WebPageTest 分析 Web Vitals</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=AQqFZ5t8uNc&feature=youtu.be">优化关键性能指标</a>：一个视频，使用一个电商网站的案例强调如何提高关键性能指标</li>
+<li><a target="_blank" rel="noopener" href="https://nicj.net/cumulative-layout-shift-in-practice/">Cumulative Layout Shift in Practice</a></li>
+<li><a target="_blank" rel="noopener" href="https://nicj.net/cumulative-layout-shift-in-the-real-world/">Cumulative Layout Shift in the Real World</a>：这两篇文章几乎涵盖了关于 CLS 的所有内容以及它是如何和跳出率、愤怒的点击等相关联的。</li>
+<li><a target="_blank" rel="noopener" href="https://gist.github.com/paulirish/5d52fb081b3570c81e3a">What Forces Reflow</a>：当在 JavaScript 中请求&#x2F;调用属性或方法时，它将触发浏览器同步计算样式和布局</li>
+<li><a target="_blank" rel="noopener" href="https://csstriggers.com/">CSS Triggers</a>：显示哪些属性触发了 Layout，Paint 和 Composite</li>
+<li><a target="_blank" rel="noopener" href="https://web.dev/fixing-layout-instability/">Fixing Layout Instability</a>：<strong>是一个使用</strong> webPageTest 来识别和修复布局不稳定问题的演示。</li>
+<li><a target="_blank" rel="noopener" href="https://blog.dareboost.com/en/2020/09/cumulative-layout-shift-visual-instability/">CLS 和布局不稳定性度量</a>：另一个非常详细的指南，关于 CLS，如何计算，如何衡量和如何优化它。</li>
+<li><a target="_blank" rel="noopener" href="https://simonhearne.com/2020/core-web-vitals/">如何提高关键性能指标</a>：对每个指标(包括其他 Web 重要指标，如 FCP、TTI、TBT)的详细指南，它们何时出现以及如何度量。</li>
+</ol>
+<p>需要注意的是，Core Web Vitals 并非是最终的衡量标准，至少，不完全是，它们确实已经出现在大多数的平台中，比如 PageSpeed Insights、 Lighthouse + CI、控制台等等，但是它的主要问题是缺乏跨浏览器支持，我们不能真正衡量用户体验的整个生命周期，而且很难将 FID 和 CLS 的变化与业务结果联系起来。</p>
+<p>可参考资料：</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://web.dev/vitals/">谷歌发布的 关键性能指标</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.chromium.org/2020/05/the-science-behind-web-vitals.html">关键性能指标背后的科学性</a></li>
+<li><a target="_blank" rel="noopener" href="https://developers.google.com/search/blog/2020/11/timing-for-page-experience">关键性能指标影响谷歌搜索排名</a></li>
+<li><a target="_blank" rel="noopener" href="https://web.dev/vitals/lcp_8x2.svg">LCP 分数解析</a></li>
+<li><a target="_blank" rel="noopener" href="https://web.dev/vitals/fid_8x2.svg">FID 分数解析</a></li>
+<li><a target="_blank" rel="noopener" href="https://web.dev/vitals/cls_8x2.svg">CLS 分数解析</a></li>
+</ol>
+<h3 id="在具有用户代表性的设备上收集数据"><a href="#在具有用户代表性的设备上收集数据" class="headerlink" title="在具有用户代表性的设备上收集数据"></a>在具有用户代表性的设备上收集数据</h3><p>为了收集准确的数据，我们需要仔细的选择需要测试的设备。对于大部分公司来说，这意味着研究分析并基于最常见的设备类型创建用户配置文件。然而大部分情况下，单独的分析无法提供一个完整的场景。很大一部分目标用户可能会因为体验太慢而放弃该网站并且不再返回，而他们的设备也不太可能因此成为分析中最受欢迎的设备。所以，在目标群体中去选择一个常用的设备是更好的。</p>
+<p>根据 IDC 的数据，2020 年全球 84.8% 的移动电话是安卓设备。普通消费者每两年升级一次手机，而在美国手机更换周期是 33 个月。全球最畅销的手机平均售价将低于 200 美元。</p>
+<p>一个比较典型的安卓设备：至少使用了两年，成本价 200 美元或者更少，运行缓慢的 3G，RTT 在 400ms 左右和约 400kb 的传输（悲观一点）（可能跟中国没有那么符合）</p>
+<p>对于设备的选择，建议是高中低档各选取一个典型的代表，同时检查各个设备中的芯片组，选择具有代表性的芯片组设备</p>
+<p>如果没有足够多的设备，可以通过在桌面上模拟移动体验来达到类似效果并进行多次的对比测量</p>
+<p>与 PC 相比，在移动设备上，我们要有 4 到 5 倍减速的心理预期。移动设备具有不同的 gpu，cpu，内存和不同的电池特性。这也是为什么有一个良好的配置文件和总是在典型的设备上测试时非常重要的。</p>
+<p>幸运的是，有很多选择可以帮助自动收集这些数据，并且根据这些数据来衡量一段时间内的表现。一个好的性能图涵盖了一系列的性能指标，实验室数据和真实数据。</p>
+<ol>
+<li>收集：在一个可复制的环境中，使用预先设定的设备和网络</li>
+<li>真实的用户指标监测工具：不断地评估用户交互，不断收集</li>
+</ol>
+<p>前者在开发过程中特别有用，因为它可以帮助您在开发产品时识别、隔离和修复性能问题。后者对于长期维护非常有用，因为它将帮助您了解性能瓶颈，因为这些瓶颈正在实时发生——当用户真正访问站点时。</p>
+<p>可以通过使用内置的 RUM api 进行监控，比如 Navigation Timing, Resource Timing, Paint Timing, Long Tasks, 等等。也可以使用 Calibre, Treo, SpeedCurve, mPulse 和 Boomerang, Sitespeed.io，都是性能监控好的选择。</p>
+<p>注意：选择浏览器以外的网络状态设置工具是一个比较好的选择（DevTools 与 HTTP&#x2F;2 push 交互存在问题），对于 Mac OS，我们可以使用 Network Link conditions，Windows Traffic Shaper，Linux netem，以及 FreeBSD dummynet。</p>
+<p>因为你很可能会在 Lighthouse 中进行测试，所以请记住你可以:</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://github.com/GoogleChrome/lighthouse-ci">使用 Lighthouse CI</a>：<strong>长期的追踪性能评分</strong></li>
+<li><a target="_blank" rel="noopener" href="https://calendar.perfplanet.com/2020/running-lighthouse-in-github-actions/">在每次 commit 的时候执行 Lighthouse</a></li>
+<li><a target="_blank" rel="noopener" href="https://cloudfour.com/thinks/big-picture-performance-analysis-using-lighthouse-parade/">在网站的每一个页面上执行 Lighthouse</a></li>
+<li><a target="_blank" rel="noopener" href="https://twitter.com/TheRealNooshu/status/1273045993035005952">使用 Lighthouse 分数计算器</a>：如果需要了解更多的细节时</li>
+<li><a target="_blank" rel="noopener" href="https://addons.mozilla.org/en-US/firefox/addon/google-lighthouse/">在火狐浏览器上同样是可用的</a>：它使用了 PageSpeed Insights API 和 基于无头 Chrome 79 用户代理生成报告.</li>
+</ol>
+<p>可参考资料：</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?t=892&v=JvJ0v5OohNg&feature=youtu.be">PC 测试移动页面比较</a>：预期有 4 到 5 倍的减速</li>
+<li><a target="_blank" rel="noopener" href="https://twitter.com/izzionfire/status/1326102215573041152">lab data and field data</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Navigation_timing_API">Navigation Timing API</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Resource_Timing_API">Resource Timing API</a></li>
+<li><a target="_blank" rel="noopener" href="https://css-tricks.com/paint-timing-api/">Paint Timing API</a></li>
+<li><a target="_blank" rel="noopener" href="https://w3c.github.io/longtasks/">Long Tasks API</a></li>
+<li><a target="_blank" rel="noopener" href="https://res.cloudinary.com/indysigner/image/fetch/f_auto,q_auto/w_2000/https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/9c380575-7a95-48cc-bd49-08bbd2c006bd/lighthouse-ci-opt.png">通过 Lighthouse 对性能指标持续监测和保存</a></li>
+</ol>
+<h3 id="在测试时使用干净的网站配置，排除变量"><a href="#在测试时使用干净的网站配置，排除变量" class="headerlink" title="在测试时使用干净的网站配置，排除变量"></a>在测试时使用干净的网站配置，排除变量</h3><p>在我们进行测试的时候，关闭一切可能影响到性能测试的任务或者统一测试环境，关闭所有的浏览器扩展，使用干净的用户配置文件进行测试</p>
+<p>不过，研究一下目标用户经常使用的浏览器扩展，并用专门的用户配置文件进行测试也是一个好主意，除了排除变量得到理想数据之外，也可以添加变量模拟真实情况。干净的变量本身就是极其乐观情况下才存在。</p>
+<p>可参考资料：</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://res.cloudinary.com/indysigner/image/fetch/f_auto,q_auto/w_2000/https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/78d6672a-013c-4b55-b258-7efd153a30d9/chrome-extension-page-cpu-time-opt.png">扩展对网站测试的影响</a></li>
+</ol>
+<h3 id="与同事共担性能优化目标"><a href="#与同事共担性能优化目标" class="headerlink" title="与同事共担性能优化目标"></a>与同事共担性能优化目标</h3><p>确保团队的每个成员都熟悉性能优化目标，以避免有误解。每一个决定，无论是设计还是开发，或是介于两者之间的任何决定，并将责任和所有权分配给整个团队。</p>
+<h2 id="设定现实改进目标"><a href="#设定现实改进目标" class="headerlink" title="设定现实改进目标"></a>设定现实改进目标</h2><h3 id="100ms-的响应时间，60fps"><a href="#100ms-的响应时间，60fps" class="headerlink" title="100ms 的响应时间，60fps"></a>100ms 的响应时间，60fps</h3><p>为了让交互感觉更加流畅，页面有 100ms 来反应用户的输入事件。超过这个时间，用户就会感觉应用是滞后的。以用户为中心的性能模型 <a target="_blank" rel="noopener" href="https://www.smashingmagazine.com/2015/10/rail-user-centric-model-performance/">RAIL</a> 提供了一个应用健康的目标：为了达到&lt;100 毫秒的响应，页面必须在每隔&lt;50 毫秒后将控制权交还给主线程。<a target="_blank" rel="noopener" href="https://web.dev/lighthouse-max-potential-fid/">Estimated Input Latency</a>这篇文章告诉我们是否达到了这个临界点，理想情况下，它应该小于 50ms。对于像动画这样的高压点，最好在你能做的地方什么也不做，在你不能做的地方绝对最小。</p>
+<p>此外，每一帧动画应该在 16ms 以内完成，从而达到 60 帧率&#x2F;s（1s&#x2F;60 &#x3D; 16.6 ms），即最好在 10ms 以内。因为浏览器需要时间在屏幕上绘制新的帧，所以你的代码应该在 16.6ms 之前完成执行。目前已经开始讨论 120 帧&#x2F;s（比如 ipad 的屏幕是 120hz），<a target="_blank" rel="noopener" href="https://dassur.ma/things/120fps/">Surma</a>已经介绍了一些 120 帧&#x2F;s 的渲染性能解决方案，但这还不是我们目前需要考虑的目标。</p>
+<p>在性能预期上要悲观，但在<a target="_blank" rel="noopener" href="https://www.smashingmagazine.com/2016/11/true-lies-of-optimistic-user-interfaces/">接口设计</a>上要乐观，明智地使用<a target="_blank" rel="noopener" href="https://philipwalton.com/articles/idle-until-urgent/">空闲时间</a>(检查 idlize、 idle-until-urgent 和 react-idle)。显然，这些目标适用于运行时性能，而不是加载性能。</p>
+<p>可参考资料：</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://res.cloudinary.com/indysigner/image/fetch/f_auto,q_auto/w_2000/https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/c91c910d-e934-4610-9dc5-369ec9071b57/rail-perf-model-opt.png">以用户为中心的性能模型</a></li>
+</ol>
+<h3 id="FID-lt-100ms-LCP-lt-2-5s-TTI-lt-5s-on-3G-关键文件大小-lt-170KB"><a href="#FID-lt-100ms-LCP-lt-2-5s-TTI-lt-5s-on-3G-关键文件大小-lt-170KB" class="headerlink" title="FID &lt; 100ms, LCP &lt; 2.5s, TTI &lt; 5s on 3G, 关键文件大小 &lt; 170KB"></a>FID &lt; 100ms, LCP &lt; 2.5s, TTI &lt; 5s on 3G, 关键文件大小 &lt; 170KB</h3><p>虽然这可能很难实现，但一个好的最终目标是 TTI 在 5s 以下，对于重复性的访问，目标在 2s 以下。还有就是 LCP 在 2.5s 以下，TBT 和 CLS 的指标尽量最小化，一个可接受的 FID 在 100ms 到 70ms。正如上面提到的，我们考虑的基准是 200 美元左右的安卓手机，在 3G 网络下，模拟 400msRTT 和 400kbps 的传输速度。</p>
+<p>另一方面，由于 JavaScript 解析和执行时间，我们队内存和 CPU 有硬件约束。为了达到第一阶段所述的目标，我们必须考虑 JavaScript 的关键大小预算。关于预算有多少其实有不同的看法，但是 JavaScript gzipped 的 170kb 预算在中端手机上解析和编译已经需要多达 1s。假设 179Kb 在减压时扩展到 3x 的大小（约 0.7M），这个用户体验其实已经非常差了。</p>
+<p>以 wiki 的网站为例，在 2020 你，全球范围内，维基百科用户的代码执行速度提高的 19。所以，如果你的网络表现指标相对稳定，这其实是一个警告信号，因为随着环境不断改善，你其实正在倒退。</p>
+<p>事实上，谷歌的 ALex Russell 建议将 <a target="_blank" rel="noopener" href="https://infrequently.org/2017/10/can-you-afford-it-real-world-web-performance-budgets/">130-170Kb</a> 作为一个合理的上限。在现实场景中，大多数产品其实都是没有达到的：目前打包的平均大小在 <a target="_blank" rel="noopener" href="https://beta.httparchive.org/reports/state-of-javascript#bytesJs">452KB</a>，与 2015 年初相比增加了 53.6%。在中产阶级的移动设备上，这占用了 12-20s 的交互时间</p>
+<p>我们也可以超过打包的预算。比如，我们可以根据浏览器主线程的活动来设置性能预算，比如在开始渲染之前的绘制时间，<a target="_blank" rel="noopener" href="https://calendar.perfplanet.com/2017/tracking-cpu-with-long-tasks-api/">或者跟踪占用前端 CPU 的内容</a>，像 Calibre, SpeedCurve 和 Bundlesize 这些工具可以帮助去检查预算，并且可以继承到构建过程中。</p>
+<p>最后，性能预算不应该是一个固定值，根据网络状态的不同，性能预算也应该进行相应调整，但是无论如何，在较慢的连接上的有效负载都要昂贵的多</p>
+<p>可参考资料：</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://res.cloudinary.com/indysigner/image/fetch/f_auto,q_auto/w_2000/https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/02143033-61ad-4808-bf3e-9c5f6a515927/12-30kb-front-end-performance-checklist-2020.png">对于延迟加载的路由，推荐的大小也小于 35kb</a></li>
+<li><a target="_blank" rel="noopener" href="https://res.cloudinary.com/indysigner/image/fetch/f_auto,q_auto/w_2000/https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/d9d1033f-f45f-4789-aca1-1bb61fbd44c5/13-prpl-budget-front-end-performance-checklist-2020.jpeg">PRPL-30 性能预算</a></li>
+<li><a target="_blank" rel="noopener" href="https://res.cloudinary.com/indysigner/image/fetch/f_auto,q_auto/w_2000/https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/1b311ffb-7c1e-442c-8122-53ee39fe5b7b/11-perf-phones-front-end-performance-checklist-2020.png">智能手机 CPU 性能基准</a></li>
+<li><a target="_blank" rel="noopener" href="https://twitter.com/katiehempenius/status/1075478356311924737">性能预算也应该进行相应调整</a></li>
+<li><a target="_blank" rel="noopener" href="https://res.cloudinary.com/indysigner/image/fetch/f_auto,q_auto/w_2000/https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/3bb4ab9e-978a-4db0-83c3-57a93d70516d/file-size-budget-fast-default-addy-osmani-opt.png">170KB 预算分配</a></li>
+<li><a target="_blank" rel="noopener" href="https://twitter.com/katiehempenius/status/1075478356311924737">性能预算应根据一般移动设备的网络条件调整</a></li>
+</ol>
+<h2 id="定义环境"><a href="#定义环境" class="headerlink" title="定义环境"></a>定义环境</h2><p>关键词：选择一个框架，基线性能成本，WebPack，依赖，CDN，前端架构，CSR，SSR，CSR+SSR，静态渲染，预编译，PRPL 模式</p>
+<h3 id="选择并配置构建工具"><a href="#选择并配置构建工具" class="headerlink" title="选择并配置构建工具"></a>选择并配置构建工具</h3><p>坚持使用你的构建环境，只要你得到了需要的结果，并且在你的构建过程上没有问题，就已经很好了。</p>
+<p>在众多的构建工具中，Rollup 和 <a target="_blank" rel="noopener" href="https://www.snowpack.dev/">Snowpack</a> 都获得了越来越多的关注，但 Webpack 似乎是最成熟的一个，它提供了几百个插件来优化你的构建的大小。关注 <a target="_blank" rel="noopener" href="https://webpack.js.org/blog/2020-12-08-roadmap-2021/">Webpack 路线图 2021</a>。</p>
+<p>最近出现的一个最值得关注的的策略是使用 <a target="_blank" rel="noopener" href="https://web.dev/granular-chunking-nextjs/">Next.js 和 Gatsby 中的 Webpack</a> 进行细粒度分块，以最小化重复代码。默认情况下，对于不使用它的路由，如果仍在每个入口点共享的模块进行请求，随着下载的代码超过必要的数量，这最终会成为一种开销。通过 Next.js 中的粒度分块，我们可以使用服务器端的构建清单文件来确定不同入口点使用的输出块。</p>
+<p>使用 <a target="_blank" rel="noopener" href="https://webpack.js.org/plugins/split-chunks-plugin/">SplitChunksPlugin</a>，可以根据许多条件创建多个分割块，以防止跨多个路由获取重复的代码。这可以改善导航<br>期间的页面加载时间和缓存</p>
+<p>学习和深入研究 Webpack 可能有些困难，以下是一些比较好的资源：</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://webpack.js.org/concepts/">Webpack 官方文档</a>，还有<a target="_blank" rel="noopener" href="https://medium.com/@rajaraodv/webpack-the-confusing-parts-58712f8fcad9">Webpack — The Confusing Bits</a>和<a target="_blank" rel="noopener" href="https://nystudio107.com/blog/an-annotated-webpack-4-config-for-frontend-web-development">An Annotated Webpack Config</a>，都是比较好的学习 WebPack 的文档。</li>
+<li><a target="_blank" rel="noopener" href="https://webpack.academy/p/the-core-concepts">Sean Larkin</a>和<a target="_blank" rel="noopener" href="https://laracasts.com/series/webpack-for-everyone">Jeffrey</a>发布了一些免费的课程，它们都是深入 Webpack 的很好的介绍。</li>
+<li><a target="_blank" rel="noopener" href="https://frontendmasters.com/courses/webpack-fundamentals/">Webpack 基础</a>是一个非常全面的 4h 课程。</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/webpack/webpack/tree/master/examples">Webpack examples</a>有数百个现成的 Webpack 配置，它们按主题和目的分类。额外的好处:还有一个 <a target="_blank" rel="noopener" href="https://createapp.dev/">Webpack 配置器</a>，可以生成一个基本配置文件。</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/webpack-contrib/awesome-webpack">awesome-webpack</a> 是一个有用的 Webpack 资源、库和工具的列表，包括 Angular、React 和框架无关项目的文章、视频、课程、书籍和示例。</li>
+<li><a target="_blank" rel="noopener" href="https://codeascraft.com/2020/02/03/production-webpack-builds/">使用 Webpack 文件</a>快速构建的案例是 Etsy 的案例研究，研究团队从如何使用基于 requirejs 的 JavaScript 构建系统转换到使用 Webpack，以及他们如何优化他们的构建，平均在 4 分钟内管理超过 13200 个 asset 文件。</li>
+<li><a target="_blank" rel="noopener" href="https://twitter.com/iamakulov/status/1275769142809944064">Webpack 性能技巧</a> 是 Ivan Akulov 写的一个非常棒的资源，它提供了许多关注性能的技巧，包括一些专门针对 Webpack 的技巧。</li>
+</ol>
+<p>可参考资料：</p>
+<ol start="5">
+<li><a target="_blank" rel="noopener" href="https://24ways.org/2017/all-that-glisters/">不要过于追求新技术（不稳定的）的使用</a></li>
+<li><a target="_blank" rel="noopener" href="https://res.cloudinary.com/indysigner/image/fetch/f_auto,q_auto/w_2000/https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/733b3ac0-489e-44d5-b7ed-bcfa67a6a575/js-size-reductions-across-all-routes.jpg">JS Size Reduction Across Routes</a></li>
+<li><a target="_blank" rel="noopener" href="https://res.cloudinary.com/indysigner/image/fetch/f_auto,q_auto/w_2000/https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/df28a3b5-b899-4a9e-93d1-be97569e9198/etsy-journey-fast-production-builds-webpack.jpg">Etsy</a></li>
+</ol>
+<h3 id="使用渐进增强作为默认值"><a href="#使用渐进增强作为默认值" class="headerlink" title="使用渐进增强作为默认值"></a>使用渐进增强作为默认值</h3><p>尽管如此，在这么多年之后，保持<a target="_blank" rel="noopener" href="https://briefs.video/videos/is-progressive-enhancement-dead-yet/">渐进增强</a>作为前端架构和部署的指导原则是安全的。首先设计和构建核心体验，然后使用功能强大的浏览器的高级功能增强体验，创建弹性体验。如果你的网站在一个较慢的机器上、在一个不理想的网络上、在一个糟糕的浏览器上、在一个糟糕的屏幕上运行得很快，那么它只会在一个较快的机器上、在一个不错的网络上、在一个好的浏览器上运行得更快。</p>
+<p>事实上，通过<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=puUPpVrIRkc&t=488s">自适应模块服务</a>，我们似乎将渐进性增强带到另一个层次，即为低端设备提供“精简”核心体验，并为高端设备提供更复杂的功能。渐进式增强不太可能在短期内消失。</p>
+<h3 id="选择一个强有力的性能基准"><a href="#选择一个强有力的性能基准" class="headerlink" title="选择一个强有力的性能基准"></a>选择一个强有力的性能基准</h3><p>有太多的未知因素影响着负载-网络，中央处理器热节流，缓存替换策略，第三方脚本，解析器阻塞模式，磁盘 i&#x2F;o，IPC 延迟，浏览器扩展，防病毒软件和防火墙、后台 CPU 任务、硬件和内存约束、L2&#x2F;L3 缓存的差异、字体渲染，图像渲染等等。<a target="_blank" rel="noopener" href="https://calendar.perfplanet.com/2017/tracking-cpu-with-long-tasks-api/">随着性能瓶颈从服务器转移到客户端</a>，作为开发人员，我们必须更详细地考虑所有这些未知因素。</p>
+<p>由于 170KB 的预算已经包含了关键路径 HTML&#x2F;CSS&#x2F;JavaScript、路由器、状态管理、实用程序、框架和应用程序逻辑，我们必须彻底检查<a target="_blank" rel="noopener" href="https://twitter.com/kristoferbaxter/status/908144931125858304">我们选择的框架的网络传输成本、解析&#x2F;编译时间和运行时成本</a>。幸运的是，在过去的几年中，我们已经看到浏览器解析和编译脚本的速度有了巨大的提高。然而 JavaScript 的执行仍然是主要的瓶颈，所以密切关注脚本的执行时间和网络是很有必要的。</p>
+<p>Tim Kadlec 对现代框架的性能进行了非常棒的研究，并将其总结为 “<a target="_blank" rel="noopener" href="https://timkadlec.com/remembers/2020-04-21-the-cost-of-javascript-frameworks/">JavaScript frameworks have a cost</a>“ 一文。我们经常谈论独立框架的影响，但是正如 Tim 指出的，在实践中，使用多个框架并不罕见。也许是一个老版本的 jQuery 正在慢慢地迁移到一个现代的框架中，还有一些使用老版本的 Angular 的遗留应用程序。因此，探索 JavaScript 字节和 CPU 执行时间的累积成本更为合理，这些成本很容易使用户体验几乎无法使用，即使是在高端设备上。</p>
+<p>一般来说，现代框架并没有优先考虑功能不那么强大的设备，因此在手机和桌面上的体验往往在性能方面有很大的不同。根据研究，拥有 React 或 Angular 的站点比其他站点在 CPU 上花费的时间更多(当然，这并不一定意味着 React 在 CPU 上比 Vue.js 更昂贵)。</p>
+<p>Tim 认为，有一点是显而易见的: “如果你使用一个框架来构建你的网站，那么你在初始性能方面做出了权衡——即使是在最好的情况下。”</p>
+<p>可参考资料：</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://res.cloudinary.com/indysigner/image/fetch/f_auto,q_auto/w_2000/https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/f892dfcd-f690-40b5-ad33-218a33cc85b3/cost-of-frameworks-cpu-mobile-only.png">JavaScript CPU Time</a></li>
+<li><a target="_blank" rel="noopener" href="https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/876d32d5-0a68-4a08-b3f1-d4c103729cfa/cost-of-frameworks-bytes-desktop.png">JavaScript Bytes</a></li>
+</ol>
+<h3 id="评估框架和依赖性"><a href="#评估框架和依赖性" class="headerlink" title="评估框架和依赖性"></a>评估框架和依赖性</h3><p><a target="_blank" rel="noopener" href="https://twitter.com/jaffathecake/status/923805333268639744">不是所有的项目都需要引入框架</a>，<a target="_blank" rel="noopener" href="https://medium.com/dev-channel/a-netflix-web-performance-case-study-c0bcde26a9d9">也不是单页应用程序的每个页面都需要加载框架</a>。在 Netflix 的例子中，从客户端移除 React、几个库和相应的应用程序代码，总共减少了超过 200KB 的 JavaScript，导致 Netflix 在 <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?t=11m32s&v=V8oTJ8OZ5S0&feature=youtu.be">注销登录上的交互时间减少了将近 50%</a>，然后，团队利用用户在登录页面上花费的时间来预获取用户可能登陆的后续页面的响应(<a target="_blank" rel="noopener" href="https://jakearchibald.com/2017/netflix-and-react/">请阅读详细信息</a>)。</p>
+<p>所以，如果你完全删除关键页面上的一个现有框架又会怎样呢？通过 Gatsby，您可以检查 <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/gatsby-plugin-no-javascript">Gatsby-plugin-no-JavaScript</a>，它可以从静态 HTML 文件中删除 Gatsby 创建的所有 JavaScript 文件。在 <a target="_blank" rel="noopener" href="https://github.com/vercel/next.js/pull/11949">Vercel</a> 上，您还可以在某些页面(实验性的)的生产中禁用运行时 JavaScript。</p>
+<p>一旦选择了一个框架，我们将使用它至少几年，所以如果我们需要使用一个框架，我们需要确保我们的选择是<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=6I_GwgoGm1w">有依据的</a>，<a target="_blank" rel="noopener" href="https://medium.com/@ZombieCodeKill/choosing-a-javascript-framework-535745d0ab90#.2op7rjakk">考虑周到的</a>，特别是对于我们关心的关键性能指标。</p>
+<p>数据显示，默认情况下，使用框架的代价是很昂贵的： <a target="_blank" rel="noopener" href="https://twitter.com/hdjirdeh/status/1280731085379211265">58.6%的 React 页面使用了超过 1mb 的 JavaScript</a>，只有 36%的 vue 页面加载时的 FCP &lt; 1.6ms。根据 Ankur Sethi：你的 React 应用程序的加载速度永远不会超过 1.1s，你的 Angular 应用程序启动起码需要 2.7s，你的 Vue 应用程序的用户至少需要等待 1s 才能开始使用。</p>
+<p>当然，让 spa 变得快速是可能的，但它们并不是现成的快速，所以我们需要考虑制作和保持 spa 快速所需的时间和精力。尽早选择一个轻量级的基线性能成本可能会更容易。</p>
+<p>那么我们如何选择一个框架呢?在选择一个选项之前，至少考虑大小和初始执行时间的总成本是一个好主意;诸如 Preact、Inferno、Vue、slimte、Alpine 或 Polymer 等轻量级的选择都可以很好地完成这项工作。基线的大小将定义应用程序代码的约束条件。</p>
+<p>正如 Seb Markbage 所指出的，衡量框架启动成本的一个好方法是首先渲染一个视图，然后删除它，然后再次渲染，因为它可以告诉你框架是如何扩展的。第一次渲染往往会预热一堆延迟编译的代码，当树变大时，可以从中受益。第二次渲染基本上模拟了页面上的代码重用如何随着页面复杂性的增加而影响性能指标。</p>
+<p>你可以在 Sacha Greif 的 <a target="_blank" rel="noopener" href="https://medium.freecodecamp.org/the-12-things-you-need-to-consider-when-evaluating-any-new-javascript-library-3908c4ed3f49">12-point scale system</a>上通过探索特性、可访问性、稳定性、性能、包生态系统、社区、学习曲线、文档、工具、跟踪记录、团队、兼容性、安全性等来评估你的候选(或任何 JavaScript 库)。</p>
+<p>您也可以依靠在较长一段时间内从网上收集的数据。例如，大规模数据跟踪的性能跟踪框架 <a target="_blank" rel="noopener" href="https://perf-track.web.app/">Perf Track</a>，展示 Angular, React, Vue, Polymer, Preact, Ember, Svelte 和 AMP 的关键性能指标。你甚至可以指定比较通过 Gatsby、 Next.js 或 Create React App 构建的网站的区别。</p>
+<p>一个好的起点是为您的应用程序选择一个好的默认堆栈。Gatsby (React)、Next.js (React)、Vuepress (Vue)、Preact CLI 和 PWA Starter Kit 提供了合理的默认设置，用于在普通移动硬件上快速加载。另外，也可以看看 React 和 Angular 的特定于 <a target="_blank" rel="noopener" href="https://web.dev/learn/#frameworks">web.dev 框架的性能指南</a>。</p>
+<p>也许您可以采用一种稍微更新颖的方法来构建单页应用程序-<a target="_blank" rel="noopener" href="https://github.com/turbolinks/turbolinks">Turbolinks</a>，它是一个 15KB 的 javascript 库，使用 HTML 而不是 JSON 来渲染视图。因此，当你跟随一个链接时，turbollinks 会自动获取页面，交换<body>，并合并<head>，所有这些都不会导致整个页面加载的成本。您可以查看关于堆栈的<a target="_blank" rel="noopener" href="https://twitter.com/dhh/status/1341420143239450624">简介</a>和<a target="_blank" rel="noopener" href="https://hotwire.dev/">完整文档</a>。</p>
+<p>可参考资料：</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://res.cloudinary.com/indysigner/image/fetch/f_auto,q_auto/w_2000/https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/6c1d426d-cf12-43de-a926-cea743ac1bf3/perf-track-opt.png">通过大规模的数据跟踪框架的性能</a></li>
+<li><a target="_blank" rel="noopener" href="https://res.cloudinary.com/indysigner/image/fetch/f_auto,q_auto/w_2000/https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/fb9e201e-6247-4cf2-911f-ab968623981c/09-high-sell-phones-front-end-performance-checklist-2020.jpg">热销手机的 CPU 和计算性能</a></li>
+</ol>
+<h3 id="客户端渲染还是服务端渲染？两种一起"><a href="#客户端渲染还是服务端渲染？两种一起" class="headerlink" title="客户端渲染还是服务端渲染？两种一起"></a>客户端渲染还是服务端渲染？两种一起</h3><p>那是一场相当激烈的谈话。最终的方法是设置某种<a target="_blank" rel="noopener" href="https://aerotwist.com/blog/when-everything-is-important-nothing-is/">渐进式启动</a>：使用服务器端 render 来获得快速的第一个有内容的绘制，但也包含一些必要的 JavaScript，使交互时间接近第一个有内容的绘制。如果 JavaScript 在 FCP 之后出现得太晚，浏览器将在解析、编译和执行最新发现的 JavaScript 时<a target="_blank" rel="noopener" href="https://davidea.st/articles/measuring-server-side-rendering-performance-is-tricky">锁定主线程</a>，<a target="_blank" rel="noopener" href="https://philipwalton.com/articles/why-web-developers-need-to-care-about-interactivity/">从而限制站点或应用程序的交互性</a>。</p>
+<p>为了避免这种情况，始终将函数的执行任务分解为单独的异步任务，并在可能的情况下使用 requestIdleCallback。考虑使用 WebPack 的动态导入，支持延迟加载 Ui 部分，避免加载、解析和编译成本增加，知道用户真正的需要它们为止。</p>
+<p>如上所示，交互时间（TTI）告诉我们导航和交互的时间。具体来说，这个度量是通过在初始内容渲染后的前 5s 窗口来定义的，在这 5s 窗口中没有 JavaScript 任务需要超过 50ms。如果出现一个 50ms 的长任务。则重新开始搜索一个 5s 的窗口。因此，浏览器会首先假设它达到了交互式，再切换到停用模式，最终切换回可交互模式</p>
+<p>一旦我们达到可交互状态，我们可以根据需要或者时间允许启动不必要的部分应用。不幸的是, 正如<a target="_blank" rel="noopener" href="https://aerotwist.com/blog/when-everything-is-important-nothing-is/#which-to-use-progressive-booting">Paul Lewis</a>所提到的, 框架通常没有向开发人员提供简单的优先级概念，因此使用大多数库和框架来实现渐进引导并不容易。</p>
+<p>不过，我们正在朝着这个目标前进。现在我们有几个选择可以探索，Houssein Djirdeh 和 Jason Miller 在他们关于 <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=k-A2VfuUROg">Web 渲染的演讲</a>和 Jason 和 Addy 关于<a target="_blank" rel="noopener" href="https://developers.google.com/web/updates/2019/02/rendering-on-the-web">现代前端架构</a>的文章中对这些选项进行了很好的概述。下面的概述是基于他们出色的产出</p>
+<ol>
+<li>完全使用 Server-Side Rendering(SSR)<ol>
+<li>在经典的 SSR（如 WordPress）中，所有请求都完全在服务器上处理，请求的内容为完成的 HTML 页面，浏览器可以立即渲染。因此 SSR-apps 不能真正的利用 DOM API。第一次有内容的绘制与交互时间的差距通常很小，当 HTML 到浏览器时，可以立即进行页面的渲染。这避免了在客户端和服务器之间额外的请求时间，因为它是在浏览器获得相应之前处理的。然而，我们最终会有更长的服务器响应时间，因为直到获取到第一个字节之前，我们都没有利用到现代应用程序的响应性和丰富的特性。</li>
+</ol>
+</li>
+<li>静态渲染<ol>
+<li>我们将产品构建为单个页面应用程序，但是所有页面都预先渲染为静态 HTML，并使用最少的 JavaScript 作为构建步骤。这意味着，使用静态渲染，我们可以提前为每个可能的 URL 生成单独的 HTML 文件，这不是很多应用程序能够负担得起的。但是，因为页面的 HTML 不必动态生成，所以我们可以始终快速地完成第一个字节。因此，我们可以快速显示登录页面，然后为后续页面预取 spa 框架。<a target="_blank" rel="noopener" href="https://medium.com/dev-channel/a-netflix-web-performance-case-study-c0bcde26a9d9">Netflix</a> 采用了这种方法来减少加载和 TTI 时间。</li>
+</ol>
+</li>
+<li>Server-Side Rendering 和 (Re)Hydration (通用渲染, SSR + CSR)<ol>
+<li>我们可以同时利用 SSR 和 CSR 的优势，通过 Hydration，从服务器返回的 HTML 页面还包含一个加载完成的客户端应用程序的脚本。理想情况下实现一个快速的 FCP，然后继续渲染和进行 hydration。不幸的是，这种情况很少发生，更常见的情况可能是页面看起来确实准备好了，但是它不能响应用户的输入，导致用户愤怒的放弃了。</li>
+<li>有了 React，我们可以在像 Express 这样的节点服务器上使用 ReactDOMServer 模块，然后调用 renderToString 方法将顶级组件渲染为静态 HTML 字符串。</li>
+<li>有了 Vue，我们可以使用 Vue-server-renderer 使用 renderToString 将 Vue 实例渲染成 HTML。</li>
+<li>在 Angular 中，我们可以使用@nguniversal 将客户端请求转换为完全由服务器渲染的 HTML 页面。使用 Next.js (React)或 Nuxt.js (Vue)也可以实现完全的服务器渲染体验。</li>
+<li>这种方法也有缺点。虽然，我们在提供更快的服务器端渲染的同时，也获得了客户端应用程序的完全灵活性，但我们最终也会在第一次绘制内容和交互时间之间有更长的间隔，并增加了第一次输入延迟，Rehydration 是非常昂贵的，通常这一策略本身并不够好，因为它会严重延迟互动时间。</li>
+</ol>
+</li>
+<li>流式服务器端渲染与 Progressive Hydration(SSR + CSR）<ol>
+<li>为了减少交互时间和第一个内容绘制之间的时间间隔，我们一次渲染多个请求，并在生成内容时将其分成块发送下去。因此，我们不必等待完整的 HTML 字符串才向浏览器发送内容，从而提高了第一个字节的时间。在 React 中，代替 renderToString()，我们可以使用 <a target="_blank" rel="noopener" href="https://reactjs.org/docs/react-dom-server.html#rendertonodestream">renderToNodeStream()</a>来响应并将 HTML 分成块发送下来。在 Vue 中，我们可以使用 renderToStream()，它可以被 piped 和流化。有了 React，我们也可以使用<a target="_blank" rel="noopener" href="https://medium.com/maxime-heckel/asynchronous-rendering-with-react-c323cda68f41">异步渲染</a>来实现这个目的</li>
+<li>在客户端，我们不是一次性启动整个应用程序，而是逐步启动组件。应用程序的各个部分首先被分解成独立的脚本，并进行代码拆分，然后虚部进行 hydration（按照我们所定义的优先级）。事实上，我们可以先对关键成功进行 hydration，然后再对其余部分进行 hydration。客户端和服务器端渲染的角色可以根据每个组件的不同定义。然后我们还可以去推迟一些组件的 hydration，直到他们出现在视图中，或者在用户需要的时候，或者当浏览器空闲时。</li>
+<li>对于 Vue, Markus Oberlehner 发表了一份关于减少 SSR 应用交互时间的指南，该指南在用户交互中使用 <a target="_blank" rel="noopener" href="https://markus.oberlehner.net/blog/how-to-drastically-reduce-estimated-input-latency-and-time-to-interactive-of-ssr-vue-applications/">hydration</a>（按照我们所定义的优先级）。事实上，我们可以先对关键成功进行，以及 Vue-lazy-hydration（按照我们所定义的优先级）。</li>
+</ol>
+</li>
+<li><a target="_blank" rel="noopener" href="https://developers.google.com/web/updates/2019/02/rendering-on-the-web#trisomorphic">同构渲染</a><ol>
+<li>随着 service workers 的使用，我们可以使用 streaming server rendering，然后让 service worker 在安装完成后为网站呈现 HTML，在这种情况下，service worker 会预渲染内容，并支持在同一会话中呈现新视图的 spa 风格导航。当您可以在服务器、客户端页面和 service worker 之间共享相同的模板和路由代码时，可以很好地工作。</li>
+</ol>
+</li>
+<li>CSR 和预渲染<ol>
+<li>预渲染类似于服务器端渲染，但我们不是在服务器上动态渲染页面，而是在构建时将应用程序渲染为静态 HTML。虽然静态页面是完全交互式的，没有太多的客户端 JavaScript，但预渲染的工作方式不同。基本上，它在构建时将客户端应用程序的初始状态捕获为静态 HTML，而通过预渲染，应用程序必须在客户端启动，以便页面具有交互性。</li>
+<li>使用 Next.js，我们可以通过预先渲染一个应用程序到静态 HTML 来使用<a target="_blank" rel="noopener" href="https://nextjs.org/docs/advanced-features/static-html-export">静态 HTML 导出</a>。在 Gatsby 中，一个使用 React 的开源静态站点生成器，在构建过程中使用 renderToStaticMarkup 方法而不是 renderToString 方法，主 JS 块被预加载，未来的路由被预获取，没有简单静态页面不需要的 DOM 属性。</li>
+<li>对于 Vue，我们可以使用 Vuepress 来实现同样的目标。你也可以在 Webpack 中使用预渲染加载器。Navi 也提供了静态渲染。</li>
+<li>结果是更好的时间进行第一个字节和第一个内容绘制，我们减少了时间之间的交互和第一个内容绘制之间的差距。如果我们期望内容会有很大的变化，我们就不能使用这种方法。另外，所有的 url 必须提前知道，以生成所有的页面。有些组件可能会使用预渲染，但如果我们需要一些动态的东西，我们就需要依赖应用来获取内容。</li>
+</ol>
+</li>
+<li>完全使用 客户端渲染 (CSR)<ol>
+<li>所有的逻辑、渲染和引导都在客户端完成。结果通常是在交互和第一个内容绘制之间存在巨大的时间差距。因此，应用程序经常会感到缓慢，因为整个应用程序必须在客户端启动来渲染任何东西。</li>
+<li>由于 JavaScript 具有性能成本，随着应用程序中 JavaScript 数量的增长，积极的 code-splitting 和延迟 JavaScript 将是绝对必要的，以减少 JavaScript 的影响。对于这种情况，在不需要太多交互的情况下，服务器端渲染通常是一种更好的方法。如果这不是一个选择，考虑使用<a target="_blank" rel="noopener" href="https://developers.google.com/web/fundamentals/architecture/app-shell">app shell 体系结构模型</a>。</li>
+<li>一般来说，SSR 比 CSR 快。然而，CSR 仍然是很多应用程序的常见实现。</li>
+</ol>
+</li>
+</ol>
+<p>那么，客户端还是服务器端渲染？一般来说，将完全客户端框架的使用限制在绝对需要它们的页面上是一个好主意。对于高级应用程序，单独依赖服务器端呈现也不是一个好主意。如果做得不好，服务器呈现和客户端呈现都是一场灾难。</p>
+<p>无论您是倾向于 CSR 还是 SSR，请确保您正在尽可能快地渲染重要的元素，并尽量减少渲染和交互时间之间的差距。如果页面变化不大，可以考虑预渲染，如果可以，可以推迟框架的启动。用服务器端呈现的方式将 HTML 流成块，并实现客户端渲染实现 progressive hydration。以及在可见性、交互性或空间时间进行 hydration 功能。</p>
+<p>可参考资料：</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://res.cloudinary.com/indysigner/image/fetch/f_auto,q_auto/w_2000/https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/d1c78c47-f803-4923-96ff-99c6a4a14cbb/08-trisomorphic-front-end-performance-checklist-2020.png">同构渲染，在任何 3 个地方都具有相同的代码渲染: 在服务器上、在 DOM 中或在 service workers</a></li>
+<li><a target="_blank" rel="noopener" href="https://res.cloudinary.com/indysigner/image/fetch/f_auto,q_auto/w_2000/https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/e8d2728f-ab3c-4b56-a265-e6c6d456e600/03-jason-front-end-performance-checklist-2020.png">客户端和服务器端渲染的选项范围</a></li>
+<li><a target="_blank" rel="noopener" href="https://res.cloudinary.com/indysigner/image/fetch/f_auto,q_auto/w_2000/https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/f7b675e3-6338-40ea-b7a1-5a07ee6e52cc/08-progressive-hydration-front-end-performance-checklist-2020.png">progressive hydration，延迟加载不需要的部件、用户交互的负载或者空闲时间</a></li>
+</ol>
+<h3 id="我们可以提供多少静态的内容"><a href="#我们可以提供多少静态的内容" class="headerlink" title="我们可以提供多少静态的内容"></a>我们可以提供多少静态的内容</h3><p>无论你是在开发大型应用程序还是小型站点，都需要考虑哪些内容可以通过 CDN(即 JAM Stack)静态提供，而不是动态生成。即使您有数千种产品和数百个带有大量个性化选项的过滤器，您可能仍然希望静态地服务于关键的登录页面，并将这些页面从您所选择的框架中分离出来。</p>
+<p>有很多静态站点生成器，它们生成的页面<a target="_blank" rel="noopener" href="https://www.11ty.dev/speedlify/">通常非常快</a>。当我们可以提前构建的内容越多，而不是在请求时在服务器或客户机上生成页面视图，那么我们将获得更好的性能。</p>
+<p>在<a target="_blank" rel="noopener" href="https://markus.oberlehner.net/blog/building-partially-hydrated-progressively-enhanced-static-websites-with-isomorphic-preact-and-eleventy/">构建部分 hydration 和逐步增强</a>的静态网站中，Markus Oberlehner 展示了如何使用静态网站生成器和 SPA 构建网站，同时实现渐进增强和最小的 JavaScript 包大小。Markus 使用 Eleventy 和 Preact 作为他的工具，并展示了如何设置这些工具，添加 partial hydration, lazy hydration,，客户端输入文件，为 Preact 配置 Babel 和从开始到结束用 Rollup 打包 Preact。</p>
+<p>如今，随着 JAMStack 在大型站点上的使用，出现了一个新的性能考虑因素：构建时间。事实上，每次新部署都需要花费数分钟来构建数千个页面，所以<a target="_blank" rel="noopener" href="https://www.gatsbyjs.com/blog/2020-04-22-announcing-incremental-builds/">Gatsby 的增量构建</a>很有希望，它可以将构建时间提高 60 倍，与 WordPress、Contentful、Drupal、Netlify CMS 等流行的 CMS 解决方案集成在一起。</p>
+<p>此外，Next.js 发布了<a target="_blank" rel="noopener" href="https://nextjs.org/blog/next-9-5#stable-incremental-static-regeneration">增量静态生成</a>，这允许我们在运行时添加新的静态页面，并在已有页面构建完成后更新它们，在流量到来时在后台重新渲染它们。</p>
+<p>需要更轻量级的方法吗？在《<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=taOyVmLgym4">Eleventy, Alpine and Tailwind: towards a lightweight Jamstack</a>》中，Nicola Goutay 解释了 CSR、SSR 和一切之间的区别，并展示了如何使用一个更轻量级的方法，以及一个 GitHub repo，展示了这种方法的实践。</p>
+<p>可参考资料：</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://res.cloudinary.com/indysigner/image/fetch/f_auto,q_auto/w_2000/https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/93501951-ccc7-48be-8f01-f148cbfa6c75/incremental-static-regeneration.png">使用 Next.js 进行增量静态生成功能</a></li>
+</ol>
+<h3 id="考虑使用-PRPL-模式和-app-shell-体系结构"><a href="#考虑使用-PRPL-模式和-app-shell-体系结构" class="headerlink" title="考虑使用 PRPL 模式和 app shell 体系结构"></a>考虑使用 PRPL 模式和 app shell 体系结构</h3><p>不同的框架会对性能产生不同的影响，需要不同的优化策略，因此您必须清楚地了解您所依赖的框架的所有具体细节。在构建 web 应用程序时，要研究 PRPL 模式和 app shell 体系结构。这个想法非常简单：将交互所需的代码推入初始路由以快速呈现，然后使用 service worker 进行缓存和预缓存资源，然后异步加载所需的路由。</p>
+<p>可参考资料：</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://res.cloudinary.com/indysigner/image/fetch/f_auto,q_auto/w_2000/https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/bb4716e5-d25b-4b80-b468-f28d07bae685/app-build-components-dibweb-c-scalew-879-opt.png">PRPL 模式</a></li>
+<li><a target="_blank" rel="noopener" href="https://res.cloudinary.com/indysigner/image/fetch/f_auto,q_auto/w_2000/https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/6423db84-4717-4aeb-9174-7ae96bf4f3aa/appshell-1-o0t8qd-c-scalew-799-opt.jpg">app shell 体系结构</a></li>
+</ol>
+<h3 id="是否对-API-性能进行优化"><a href="#是否对-API-性能进行优化" class="headerlink" title="是否对 API 性能进行优化"></a>是否对 API 性能进行优化</h3><p>API 是应用程序的通信渠道，通过端点内部和第三方应用程序公开数据。在<a target="_blank" rel="noopener" href="https://www.smashingmagazine.com/2012/10/designing-javascript-apis-usability/">设计和构建 API</a> 时，我们需要一个合理的协议来实现服务器和第三方请求之间的通信。REST 是一个良好的、合乎逻辑的选择：它定义了一组约束，开发人员遵循这些约束，使内容以高性能、可靠和可伸缩的方式进行访问。符合 REST 约束的 Web 服务称为 RESTful Web 服务。</p>
+<p>与一个好的 HTTP 请求一样，当从 API 检索数据时，服务器响应中的任何延迟都会传播到最终用户，从而延迟渲染。当资源想要从 API 检索一些数据时，它将需要从相应的端点请求数据。一个组件渲染来自多个资源的数据，比如一篇带有评论的文章和每个评论中的作者照片，可能需要多次往返服务器以获取所有数据，然后才能渲染。此外，通过 REST 返回的数据量通常超过渲染 组件 所需的数据量。</p>
+<p>如果许多资源需要来自 API 的数据，那么 API 可能会成为性能瓶颈。GraphQL 为这些问题提供了一个性能解决方案。从本质上讲，GraphQL 是 API 的查询语言，是通过使用为数据定义的类型系统执行查询的服务器端运行时。与 REST 不同的是，GraphQL 可以在单个请求中检索所有数据，响应将完全符合所需，而不会像 REST 那样出现过度或过低获取数据的情况。</p>
+<p>此外，由于 GraphQL 使用模式(描述数据结构的元数据)，它已经可以组织数据为首选的结构。所以，例如，使用<a target="_blank" rel="noopener" href="https://wmdmark.medium.com/how-graphql-replaces-redux-3fff8289221d">GraphQL</a>，我们可以删除用于处理状态管理的 JavaScript 代码，生成在客户机上运行更快的更清晰的应用程序代码。</p>
+<p>GraphQL 参考资料：</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://www.smashingmagazine.com/2018/01/graphql-primer-new-api-part-1/">GraphQL 初识：为什么我们需要一种新的 API</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.smashingmagazine.com/2018/01/graphql-primer-new-api-part-2/">GraphQL 初识：API 设计的演变</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.logrocket.com/designing-graphql-server-optimal-performance/">设计一个 GraphQL 服务用于性能优化</a></li>
+<li><a target="_blank" rel="noopener" href="https://medium.com/@wtr/graphql-performance-explained-cb4b43412fb4">GraphQL 性能说明</a></li>
+</ol>
+<p>可参考资料：</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://medium.com/@wtr/graphql-performance-explained-cb4b43412fb4">REST 和 GraphQL 之间的不同</a></li>
+</ol>
+<h3 id="使用-AMP-还是-instant-articles"><a href="#使用-AMP-还是-instant-articles" class="headerlink" title="使用 AMP 还是 instant articles"></a>使用 AMP 还是 instant articles</h3><p>根据你组织的优先级和策略，你可能想考虑使用谷歌的 AMP 或 Facebook 的 instant articles 或苹果的 Apple News。你可以在没有他们的情况下实现良好的性能，但 AMP 提供了一个可靠的性能框架与免费内容交付网络(CDN)，而 instant articles 将提高你在 Facebook 上的能见度和性能。</p>
+<p>对于用户来说，这些技术看似明显的好处是保证了性能，因此有时他们甚至更喜欢 AMP-&#x2F;Apple News&#x2F;Instant Pages-links，而不是“常规”页面和可能臃肿的页面。对于处理大量第三方内容的内容较多的网站，这些选项可能有助于显著提高渲染时间。</p>
+<p>除非他们没有。例如，根据 Tim Kadlec 的说法，“AMP 文档往往比它们的同类文档更快，但它们并不一定意味着一个页面就是性能。从性能的角度来看，AMP 并不是最大的区别。</p>
+<p>对网站所有者的好处是显而易见的：这些格式在各自的平台上的可发现性和增加在搜索引擎中的可见性。</p>
+<p>至少以前是这样的。由于 AMP 不再是热门报道的必备条件，出版商可能会从 AMP 转移到传统的轨道上</p>
+<p>不过，您也可以通过重用 AMPs 作为 PWA 的数据源来构建渐进式 web AMPs。缺点就是，显然，在一个封闭的环境中，开发者可以制作和维护自己内容的独立版本，而即时文章和苹果新闻则没有真正的 url。</p>
+<h3 id="明智选择您的-CDN"><a href="#明智选择您的-CDN" class="headerlink" title="明智选择您的 CDN"></a>明智选择您的 CDN</h3><p>如上所述，取决于你有多少动态数据，你可能可以“外包”一些内容给一个<a target="_blank" rel="noopener" href="https://www.staticgen.com/">静态站点生成器</a>，将它推到一个 CDN，并从它提供一个静态版本，从而避免向服务器请求。事实上，其中一些生成器实际上是<a target="_blank" rel="noopener" href="https://tomdale.net/2017/09/compilers-are-the-new-frameworks/">网站编译器</a>，提供了许多开箱即用的自动优化。随着编译器不断添加优化，编译后的输出会越来越小，越来越快。</p>
+<p>请注意，CDN 也可以提供(和卸载)动态内容。因此，限制 CDN assets 文件是不必要的。仔细检查 CDN 是否执行压缩和转换(例如图像优化和网络连接大小调整) ，它们是否为<a target="_blank" rel="noopener" href="https://www.filamentgroup.com/lab/servers-workers.html">service worker</a>提供支持，a&#x2F;b 测试，以及网络连接端包括(在 CDN 网络连接组装静态和动态的页面部分(例如最接近用户的服务器) ，以及其他任务。另外，检查 <a target="_blank" rel="noopener" href="https://blog.cloudflare.com/the-quicening/">CDN 是否支持通过 QUIC (HTTP&#x2F;3)传输 HTTP</a>。</p>
+<p>Katie Hempenius 写了一篇关于 <a target="_blank" rel="noopener" href="https://web.dev/content-delivery-networks/">CDN 的精彩指南</a>，提供了关于如何选择一个好的 CDN，如何对其进行微调，以及在评估一个 CDN 时需要记住的所有小事情的见解。一般来说，尽可能积极地缓存内容并启用 CDN 性能特性(如 Brotli、 TLS 1.3、 HTTP&#x2F;2 和 HTTP&#x2F;3)是一个好主意。</p>
+<p>注意: 基于 Patrick Meenan 和 Andy Davies 的研究，HTTP&#x2F;2 的优先级在<a target="_blank" rel="noopener" href="https://github.com/andydavies/http2-prioritization-issues#cdns--cloud-hosting-services">许多 CDN 上实际上被打破了</a>，所以在选择 CDN 时要小心。Patrick 在他关于 <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?t=2626&v=sgjxuhFQktE&feature=youtu.be">HTTP&#x2F;2</a> 优化的演讲中有更多的细节。</p>
+<p>当你需要选择一个 CDN 时，你可以使用这些比较网站与他们的功能的详细概述：</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://cdncomparison.com/">CDN 比较</a>：一个 CDN 比较矩阵</li>
+<li><a target="_blank" rel="noopener" href="https://www.cdnperf.com/">CDNPerf</a>：衡量了每天收集和分析超过 3 亿个测试来衡量 CDN 的查询速度，所有结果基于 用户的 RUM 数据，也检测了<a target="_blank" rel="noopener" href="https://www.dnsperf.com/">DNS 性能</a>比较和<a target="_blank" rel="noopener" href="https://www.cloudperf.com/">云计算性能</a>比较</li>
+<li><a target="_blank" rel="noopener" href="https://www.cdnplanet.com/guides/">CDN Planet Guides</a>：提供了针对特定主题的 cdn 概述，例如服务陈旧、清除、原始屏蔽、预拉取和压缩</li>
+</ol>
+<p>可参考资料：</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://res.cloudinary.com/indysigner/image/fetch/f_auto,q_auto/w_2000/https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/647c043f-c4f7-4d6f-ad28-31ca1828352b/cdnperf-preview.png">CDNPerf 比较</a></li>
+</ol>
+<h2 id="静态资源优化"><a href="#静态资源优化" class="headerlink" title="静态资源优化"></a>静态资源优化</h2><p>关键词：Brotli、AVIF、WebP、响应式图片、自适应媒体，视频压缩，网页字体，谷歌字体</p>
+<h3 id="使用-Brotli-进行文本压缩"><a href="#使用-Brotli-进行文本压缩" class="headerlink" title="使用 Brotli 进行文本压缩"></a>使用 Brotli 进行文本压缩</h3><p>2015 年，谷歌提出<a target="_blank" rel="noopener" href="https://opensource.googleblog.com/2015/09/introducing-brotli-new-compression.html">Brotli</a>，这是一种新的开源无损数据格式，现在所有的现代浏览器<a target="_blank" rel="noopener" href="http://caniuse.com/#search=brotli">都支持该格式</a>。开源的 <a target="_blank" rel="noopener" href="https://github.com/google/brotli">Brotli</a> 库，为 Brotli 实现了一个编码器和解码器，为编码器有 <a target="_blank" rel="noopener" href="https://blog.cloudflare.com/brotli-compression-using-a-reduced-dictionary/">11 个预定义的质量级别</a>，更高的质量级别要求更多的 CPU，以换取更好的压缩比。较慢的压缩速度最终将导致更高的压缩率，然而 Brotli 解压速度仍然很快。值得注意的是，<a target="_blank" rel="noopener" href="https://expeditedsecurity.com/blog/nginx-brotli/">压缩级别为 4 的 Brotli 比 Gzip 更小，压缩速度更快</a>。</p>
+<p>实际上，Brotli 似乎比 Gzip <a target="_blank" rel="noopener" href="https://quixdb.github.io/squash-benchmark/#results-table">更有效</a>。选择和体验不同，但如果您的站点已经用 Gzip 进行了优化，您可能希望在<a target="_blank" rel="noopener" href="https://csswizardry.com/2020/04/real-world-effectiveness-of-brotli/">缩小大小</a>和 <a target="_blank" rel="noopener" href="https://expeditedsecurity.com/blog/nginx-brotli/">FCP 时间方面</a>至少得到个位数的改进，最多得到两位数的改进。您还可以尝试使用 <a target="_blank" rel="noopener" href="https://tools.paulcalvano.com/compression.php">Brotli 在网站上做改进</a>。</p>
+<p>只有当用户通过 HTTPS 访问网站时，浏览器才会接受 Brotli。Brotli 得到了广泛的支持，许多 cdn 支持它(Akamai, Netlify Edge, AWS, KeyCDN, fast(目前仅作为直通)，Cloudflare, cn77)，你甚至可以在还不支持它的 cdn 上启用 Brotli(使用 service worker)。</p>
+<p>问题是，因为用 Brotli 压缩所有 assets 产生的成本很高，许多主机提供商不能在 最低级别上使用它，因为它产生了巨大开销。事实上，在最高的压缩级别，Brotli 非常慢，任何潜在的文件大小增加都可能被服务器在等待动态压缩 assets 时开始发送响应所花费的时间所抵消。(但如果您在构建期间有时间使用静态压缩，当然，更高的压缩设置是首选。)</p>
+<p>不过，这种情况可能正在改变。Brotli 文件格式包括一个内置的静态字典，除了包含多种语言中的各种字符串外，它还支持对这些单词应用多种转换的选项，增加了它的通用性。Felix Hanau 发现了一种方法，通过使用“比默认值更专业的字典子集” ，并依靠 Content-Type 头部告诉压缩器是否应该使用 HTML、 JavaScript 或 CSS 的字典，来提高 5 到 9 级的压缩。结果是“在高压缩级别压缩 web 内容时，使用有限的字典使用方法，性能影响微不足道(CPU 增加 1% 到 3% ，而正常情况下为 12%)。”</p>
+<p>除此之外，通过 Elena Kirilenko 的研究，我们可以利用之前的压缩工件实现快速有效的 Brotli 再压缩。根据 Elena 的说法，“一旦我们有了一个通过 Brotli 进行压缩的 assets，并且我们试图对动态内容进行动态压缩，这些内容类似于提前提供给我们的内容，我们就可以在压缩时间方面取得显著的改进。”</p>
+<p>这种情况多久发生一次？例如，通过传递 JavaScript bundle 子集(例如，当部分代码已经缓存在客户端上或动态 bundle 服务于 WebBundles 时)。或者使用基于已知预先模板的动态 HTML，或者使用动态子设置的 WOFF2 字体。Elena 认为，去掉 10% 的内容后，压缩效率提高了 5.3% ，压缩速度提高了 39% ，去掉 50% 的内容后，压缩效率提高了 3.2% ，压缩速度提高了 26% 。</p>
+<p>Brotli 压缩变得越来越好，所以如果你可以绕过动态压缩静态文件的成本，这绝对是值得的。不用说，Brotli 可以用于任何纯文本有效负载 HTML、CSS、SVG、JavaScript、JSON 等等。</p>
+<p>注意：到 2021 年初，大约 60%的 HTTP 响应是在<a target="_blank" rel="noopener" href="https://almanac.httparchive.org/en/2020/compression#current-state-of-http-compression">不使用基于文本的压缩</a>的情况下发送的，其中 30.82%使用 Gzip 压缩，9.1%使用 Brotli 压缩(在移动设备和桌面设备上)。例如，23.4%的 Angular 页面没有被压缩(通过 gzip 或 Brotli)。然而，通常打开压缩是通过简单的配置来提高性能的最简单的可用方法之一。</p>
+<p>这一战略？用 Brotli+Gzip <a target="_blank" rel="noopener" href="https://css-tricks.com/brotli-static-compression/">在最高级别预压缩静态 assets</a>，用 Brotli 在级别 4 实时压缩(动态)HTML 确保服务器正确处理 Brotli 或 Gzip 的内容协商。</p>
+<p>可参考资料：</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://res.cloudinary.com/indysigner/image/fetch/f_auto,q_auto/w_2000/https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/b62dce07-c24b-443a-8722-e55d8981cfea/new-brotli-compression-opt.png">比较各种压缩方法后的后端时间</a></li>
+<li><a target="_blank" rel="noopener" href="https://res.cloudinary.com/indysigner/image/fetch/f_auto,q_auto/w_2000/https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/9e04e215-b689-4816-9c67-0674767d12fa/compression-gain-brotli-level5.png">使用改进的字典方法，我们可以在更高的压缩级别更快的压缩文件</a></li>
+<li><a target="_blank" rel="noopener" href="https://twitter.com/hdjirdeh/status/1280731085379211265">文件压缩统计</a></li>
+</ol>
+<h3 id="我们是否使用自适应媒体加载和客户端提示"><a href="#我们是否使用自适应媒体加载和客户端提示" class="headerlink" title="我们是否使用自适应媒体加载和客户端提示?"></a>我们是否使用自适应媒体加载和客户端提示?</h3><p>对于那些占用大量媒体资源的网站，我们可以进一步使用<a target="_blank" rel="noopener" href="https://glitch.com/~next-episode-adaptive-loading">自适应媒体加载</a>(在这个例子中是 React + Next.js)，为慢速网络和低内存设备提供轻体验，为快速网络和高内存设备提供全面体验。在 React 的上下文中，我们可以通过服务器上的客户端提示和客户端上的响应<a target="_blank" rel="noopener" href="https://github.com/GoogleChromeLabs/react-adaptive-hooks">react-adaptive-hooks</a>来实现它。</p>
+<p>随着<a target="_blank" rel="noopener" href="https://cloudfour.com/thinks/responsive-images-201-client-hints/">客户端提示</a>的广泛采用，响应式图像的未来可能会发生戏剧性的变化。客户端提示是 HTTP 请求报头字段，例如 DPR, Viewport-Width, Width, Save-Data, Accept(指定图像格式参数)等。它们应该通知服务器用户的浏览器、屏幕、网络连接等细节。</p>
+<p>因此，服务器可以决定如何用适当大小的图像填充布局，并仅以所需的格式提供这些图像。通过客户机提示，我们将资源选择从 HTML 标记转移到客户端和服务器之间的请求-响应协商中。</p>
+<p>正如 Ilya Grigorik 之前指出的那样，client hints 并不能替代响应图像。<code>&lt;picture&gt;</code>元素在 HTML 标记中提供了必要的艺术方向控制。client hints 提供了用于支持资源选择自动化的结果图像请求的注释。Service Worker 在客户机上提供完整的请求和响应管理功能。</p>
+<p>例如，service worker 可以向请求添加新的客户端提示头值，重写 URL 并将图像请求指向 CDN，根据连接性和用户首选项调整响应，等等。它不仅适用于图像资源，而且适用于几乎所有其他请求。</p>
+<p>对于支持 client hints 的客户端，<a target="_blank" rel="noopener" href="https://twitter.com/igrigorik/status/1032657105998700544">可以测量出图像节省 42% 的字节</a>，70% 以上节省 1MB+或者更少字节。在 Smashing Magazine 上，我们也可以测量出 <a target="_blank" rel="noopener" href="https://www.smashingmagazine.com/2016/01/leaner-responsive-images-client-hints/">19-32% 的改进</a>。基于 <a target="_blank" rel="noopener" href="https://caniuse.com/#search=client-hints">chromium</a> 的浏览器支持 client hints，但 Firefox 仍在考虑中。</p>
+<p>但是，如果你同时为 client hints 提供正常的响应图像标记和<code>&lt;meta&gt;</code>标记，那么支持浏览器将评估响应图像标记并使用 client hints HTTP 头请求适当的图像源。</p>
+<p>可参考资料：</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://res.cloudinary.com/indysigner/image/fetch/f_auto,q_auto/w_2000/https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/08a226c5-5a9a-4bd2-bba7-dad7e74f69e9/adaptive-media-serving-opt.png">自适应媒体加载</a></li>
+</ol>
+<h3 id="我们是否使用响应式图像作为背景图像"><a href="#我们是否使用响应式图像作为背景图像" class="headerlink" title="我们是否使用响应式图像作为背景图像"></a>我们是否使用响应式图像作为背景图像</h3><p>当然！我们应该使用 <code>image-set</code>，现在已经支持 <a target="_blank" rel="noopener" href="https://twitter.com/nomsternom/status/1298998112933916682">Safari 14</a> 和<a target="_blank" rel="noopener" href="https://caniuse.com/css-image-set">大部分的浏览器除了火狐</a>，我们也可以做一些兼容来使用响应式背景图片。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">background-image</span>: <span class="built_in">url</span>(<span class="string">&quot;fallback.jpg&quot;</span>);</span><br><span class="line"><span class="attribute">background-image</span>: <span class="built_in">image-set</span>(</span><br><span class="line">  <span class="string">&quot;photo-small.jpg&quot;</span> <span class="number">1</span>x,</span><br><span class="line">  <span class="string">&quot;photo-large.jpg&quot;</span> <span class="number">2</span>x,</span><br><span class="line">  <span class="string">&quot;photo-print.jpg&quot;</span> <span class="number">600dpi</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>基本上，我们可以有条件地使用 1x 的低分辨率背景图像，使用 2x 的高分辨率图像，甚至使用 600dpi 的打印质量图像。不过要注意: 浏览器并没有提供任何关于背景图片的特殊信息，所以理想的情况下，这些照片只是装饰辅具。</p>
+<h3 id="我们是否应该使用-WebP"><a href="#我们是否应该使用-WebP" class="headerlink" title="我们是否应该使用 WebP"></a>我们是否应该使用 WebP</h3><p>图像压缩通常被认为是一种快速取胜的方法，但它在实践中仍然未被大量使用。当然，图像不会阻碍渲染，但它们会导致较差的 LCP 分数，而且对于它们所消耗的设备来说，它们往往过于沉重和过大。</p>
+<p>所以至少，我们可以探索使用 WebP 格式的图片。事实上，随着苹果在 <a target="_blank" rel="noopener" href="https://developer.apple.com/documentation/safari-release-notes/safari-14-release-notes">Safari 14 中增加了对 WebP 的支持</a>。因此，经过多年的讨论和辩论，直到今天，WebP 在所有现代浏览器中都得到了支持。因此，如果需要，我们可以使用 <code>&lt;picture&gt;</code> 元素和 JPEG 兼容，或者使用内容协商来提供 WebP 图像。</p>
+<p>不过 WebP 也不是没有缺点。虽然 WebP 图像文件的大小<a target="_blank" rel="noopener" href="https://www.ctrl.blog/entry/webp-vs-guetzli-zopfli.html">与 Guetzli 和 Zopfli 相当</a>，但<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?t=630&v=jTXhYj2aCDU&feature=youtu.be">它不支持 JPEG 这样的渐进渲染</a>，这就是为什么用户可以通过一个好的 ol’JPEG 更快地看到完成的图像，尽管 WebP 图像可能通过网络更快。使用 JPEG，我们可以为一半甚至四分之一的数据提供“体面”的用户体验，然后再加载其余的数据，而不是像 WebP 那样只有一半的图像。</p>
+<p>您的决定取决于您所追求的：使用 WebP，您将减少有效负载，而使用 JPEG，您将提高感知的性能。你可以在谷歌的 Pascal Massimino 的 <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=MBVBfLdh984">WebP Rewind talk</a> 中了解更多关于 WebP 的内容。</p>
+<p>转换到 WebP，你可以使用 <a target="_blank" rel="noopener" href="https://webp-converter.com/">WebP 转换器</a>，cwebp 或 libwebp。Ire Aderinokun 也有一个非常详细的教程，<a target="_blank" rel="noopener" href="https://bitsofco.de/why-and-how-to-use-webp-images-today/">把图像转换成 WebP</a>, Josh Comeau 也在<a target="_blank" rel="noopener" href="https://www.joshwcomeau.com/performance/embracing-modern-image-formats/">他的文章中提出拥抱现代图像格式</a></p>
+<p>Sketch 支持 WebPack，而且可以通过 Photoshop 的 WebP 插件从 <a target="_blank" rel="noopener" href="http://telegraphics.com.au/sw/product/WebPFormat#webpformat">Photoshop 导出 WebP 图像</a>。但是<a target="_blank" rel="noopener" href="https://developers.google.com/speed/webp/docs/using">其他的选择也是可行的</a>。</p>
+<p>如果你使用 WordPress 或 Joomla，有一些扩展可以帮助你轻松实现对 WebP 的支持，例如 <a target="_blank" rel="noopener" href="https://wordpress.org/plugins/optimus/">Optimus</a> 和<a target="_blank" rel="noopener" href="https://wordpress.org/plugins/cache-enabler/">缓存启用器</a>，WordPress 和 Joomla <a target="_blank" rel="noopener" href="https://extensions.joomla.org/extension/webp/">自己支持的扩展</a>(通过 Cody Arsenault)。您还可以使用<a target="_blank" rel="noopener" href="https://www.joshwcomeau.com/performance/embracing-modern-image-formats/"> React、styled components 或 gatsby-image</a> 抽象出<code>&lt;picture&gt;</code>元素。</p>
+<p>可参考资料：</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://res.cloudinary.com/indysigner/image/fetch/f_auto,q_auto/w_2000/https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/cd5e6234-7669-4759-ab83-10f8dd0db976/maxresdefault-opt.jpg">关于 WebP 全面的讨论</a></li>
+</ol>
+<h3 id="我们是否应该使用-AVIF"><a href="#我们是否应该使用-AVIF" class="headerlink" title="我们是否应该使用 AVIF"></a>我们是否应该使用 AVIF</h3><p>你可能已经听说了这个大新闻：<a target="_blank" rel="noopener" href="https://jakearchibald.com/2020/avif-has-landed/">AVIF</a> 发布了。它是一种新的图像格式，源自 AV1 视频的关键帧。这是一个开放的，免费的格式，支持有损和无损压缩，动画，失真 alpha 通道，可以处理锐利的线条和纯色(这是 JPEG 的一个问题)，<a target="_blank" rel="noopener" href="https://netflixtechblog.com/avif-for-next-generation-image-coding-b1d75675fe4">同时提供更好的结果</a>。</p>
+<p>事实上，与 WebP 和 JPEG 相比，AVIF 性能显著更好，在相同的 DSSIM(使用近似人类视觉的算法，两个或更多图像之间的相似性)下，产生的中等文件大小<a target="_blank" rel="noopener" href="https://www.ctrl.blog/entry/webp-avif-comparison.html">节省高达 50%</a>。事实上，Malte Ubl 在他关于优化图像加载的详细文章中指出，AVIF“在一个非常重要的方面始终优于 JPEG”。这与 WebP 不同，WebP 并不总是产生比 JPEG 小的图像，而且由于缺乏对渐进加载的支持，实际上可能是一个倒退。</p>
+<p>具有讽刺意味的是，AVIF 甚至可以比大型 svg 表现得更好，尽管它当然不应该被视为 SVGs 的替代品。它也是最早支持 HDR 颜色支持的图像格式之一，提供更高的亮度、颜色位深度和色域。唯一的缺点是目前 AVIF 不支持<a target="_blank" rel="noopener" href="https://www.ctrl.blog/entry/jpeg-progressive-loading.html">渐进式图像解码</a>。而且，与 Brotli 类似，高压缩率编码目前相当缓慢，尽管<a target="_blank" rel="noopener" href="https://twitter.com/etportis/status/1298320096553705472">解码速度很快</a>。</p>
+<p>目前，Chrome、Firefox 和 Opera 支持 AVIF, Safari 的支持也将很快推出(因为苹果是 AV1 创建团队的成员之一)。</p>
+<p>那么，现在什么是呈现图像的最佳方式呢？对于插图和矢量图像，(压缩的)SVG 无疑是最佳选择。对于照片，我们使用图片元素的内容协商方法。如果支持 AVIF，我们发送一个 AVIF 图像;如果不是这样，我们首先退回到 WebP，如果 WebP 也不支持，我们切换到 JPEG 或 PNG 作为退回(如果需要，应用@media 条件)</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">picture</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">srcset</span>=<span class="string">&quot;image.avif&quot;</span> <span class="attr">type</span>=<span class="string">&quot;image/avif&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">srcset</span>=<span class="string">&quot;image.webp&quot;</span> <span class="attr">type</span>=<span class="string">&quot;image/webp&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;image.jpg&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;Photo&quot;</span> <span class="attr">width</span>=<span class="string">&quot;450&quot;</span> <span class="attr">height</span>=<span class="string">&quot;350&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">picture</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>坦率地说，我们更有可能在图片元素中使用一些条件</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">picture</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">source</span></span></span><br><span class="line"><span class="tag">    <span class="attr">sizes</span>=<span class="string">&quot;(max-width: 608px) 100vw, 608px&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">srcset</span>=<span class="string">&quot;</span></span></span><br><span class="line"><span class="string"><span class="tag">      /img/Z1s3TKV-1920w.avif 1920w,</span></span></span><br><span class="line"><span class="string"><span class="tag">      /img/Z1s3TKV-1280w.avif 1280w,</span></span></span><br><span class="line"><span class="string"><span class="tag">      /img/Z1s3TKV-640w.avif   640w,</span></span></span><br><span class="line"><span class="string"><span class="tag">      /img/Z1s3TKV-320w.avif   320w</span></span></span><br><span class="line"><span class="string"><span class="tag">    &quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">type</span>=<span class="string">&quot;image/avif&quot;</span></span></span><br><span class="line"><span class="tag">  /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">source</span></span></span><br><span class="line"><span class="tag">    <span class="attr">sizes</span>=<span class="string">&quot;(max-width: 608px) 100vw, 608px&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">srcset</span>=<span class="string">&quot;</span></span></span><br><span class="line"><span class="string"><span class="tag">      /img/Z1s3TKV-1920w.webp 1920w,</span></span></span><br><span class="line"><span class="string"><span class="tag">      /img/Z1s3TKV-1280w.webp 1280w,</span></span></span><br><span class="line"><span class="string"><span class="tag">      /img/Z1s3TKV-640w.webp   640w,</span></span></span><br><span class="line"><span class="string"><span class="tag">      /img/Z1s3TKV-320w.webp   320w</span></span></span><br><span class="line"><span class="string"><span class="tag">    &quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">type</span>=<span class="string">&quot;image/webp&quot;</span></span></span><br><span class="line"><span class="tag">  /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">source</span></span></span><br><span class="line"><span class="tag">    <span class="attr">sizes</span>=<span class="string">&quot;(max-width: 608px) 100vw, 608px&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">srcset</span>=<span class="string">&quot;</span></span></span><br><span class="line"><span class="string"><span class="tag">      /img/Z1s3TKV-1920w.jpg 1920w,</span></span></span><br><span class="line"><span class="string"><span class="tag">      /img/Z1s3TKV-1280w.jpg 1280w,</span></span></span><br><span class="line"><span class="string"><span class="tag">      /img/Z1s3TKV-640w.jpg   640w,</span></span></span><br><span class="line"><span class="string"><span class="tag">      /img/Z1s3TKV-320w.jpg   320w</span></span></span><br><span class="line"><span class="string"><span class="tag">    &quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">type</span>=<span class="string">&quot;image/jpeg&quot;</span></span></span><br><span class="line"><span class="tag">  /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;fallback-image.jpg&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;Photo&quot;</span> <span class="attr">width</span>=<span class="string">&quot;450&quot;</span> <span class="attr">height</span>=<span class="string">&quot;350&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">picture</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>您还可以更进一步，将<a target="_blank" rel="noopener" href="https://twitter.com/brucel/status/1326154982756929536">动态图像与静态图像交换</a>给那些选择使用 <code>prefers-reduced-motion</code> 的用户</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">picture</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">media</span>=<span class="string">&quot;(prefers-reduced-motion: reduce)&quot;</span> <span class="attr">srcset</span>=<span class="string">&quot;no-motion.avif&quot;</span> <span class="attr">type</span>=<span class="string">&quot;image/avif&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">source</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">media</span>=<span class="string">&quot;(prefers-reduced-motion: reduce)&quot;</span> <span class="attr">srcset</span>=<span class="string">&quot;no-motion.jpg&quot;</span> <span class="attr">type</span>=<span class="string">&quot;image/jpeg&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">source</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">srcset</span>=<span class="string">&quot;motion.avif&quot;</span> <span class="attr">type</span>=<span class="string">&quot;image/avif&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">source</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;motion.jpg&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;Animated AVIF&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">picture</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>在过去的几个月里，AVIF 也取得了相当多的关注：</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://twitter.com/addyosmani/status/1327174361942552576">我们可以在 DevTools 中的 render 面板 中尝试 WebP&#x2F;AVIF</a></li>
+<li>我们可以使用 <a target="_blank" rel="noopener" href="https://squoosh.app/">Squoosh</a>，<a target="_blank" rel="noopener" href="https://avif.io/">AVIF.io</a> 和 <a target="_blank" rel="noopener" href="https://github.com/AOMediaCodec/libavif">libavif</a> 去编码、解码和转换 AVIF 文件</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/jakearchibald/jakearchibald.com/blob/main/shared/demos/2020/avif-has-landed/DecodedImg/index.tsx">我们可以使用 AVIF Pract 组件来解码 AVIF 文件</a>，并在 canvas 上展示结果</li>
+<li>为了只将 AVIF 交付给支持的浏览器，我们可以使用一个 <a target="_blank" rel="noopener" href="https://github.com/nucliweb/avif-in-css">PostCSS 插件和一个 315B-script</a> 在你的 CSS 声明中使用 AVIF。</li>
+<li>我们可以使用 <a target="_blank" rel="noopener" href="https://jross.me/progressively-delivering-new-image-formats-with-css-and-cloudflare-workers/">CSS 和 Cloudlare Workers</a>逐步交付新的图像格式，以动态修改返回的 HTML 文档，从 accept 报头推断信息，然后增加 webp&#x2F;avif 等等</li>
+<li>AVIF 在 Cloudinary 已经可用了(具有使用限制)，Cloudflare 支持 AVIF 图像改变大小，你可以 在 Netlify 自定义 AVIF 头启用 AVIF。</li>
+<li>说到动画，AVIF 的表现和 Safari 的<code>&lt;img src=mp4&gt;</code>一样好，总体上优于 <a target="_blank" rel="noopener" href="https://twitter.com/colinbendell/status/1309253099836583942">GIF 和 WebP</a>，但 <a target="_blank" rel="noopener" href="https://colinbendell.github.io/webperf/animated-gif-decode/">mp4 的表现仍然更好</a>。</li>
+<li>总的来说，对于动画，<a target="_blank" rel="noopener" href="https://twitter.com/colinbendell/status/1309255819016523781">AVC1 (h264) &gt; HVC1 &gt; WebP &gt; AVIF &gt; GIF</a>,假设基于 chromium 的浏览器将永远支持<code>&lt;img src=mp4&gt;</code>。</li>
+<li>你可以在 <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=5RX6IgIF8bw&feature=youtu.be">AVIF 与下一代图像编码</a>了解更多关于 AVIF 的细节</li>
+</ol>
+<p>那么未来会是 AVIF 的 吗?Jon Sneyers 不同意：<a target="_blank" rel="noopener" href="https://twitter.com/jonsneyers/status/1298993416752074753">AVIF 的性能比 JPEG XL 差 60%</a>，后者是谷歌和 Cloudinary 开发的另一种自由开放格式。事实上，JPEG XL 似乎在各个方面都表现得更好。然而，JPEG XL 仍然处于标准化的最后阶段，还不能在任何浏览器中工作。</p>
+<p>可参考资料：</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/ce9d0632-604b-4e0d-b84e-3eb608644cf0/avif-progressive-enhancement.jpg">使用 AVIF 作为浏览器渐进增强，将 WebP，JPEG 或 PNG 提供给旧的浏览器</a></li>
+<li><a target="_blank" rel="noopener" href="https://res.cloudinary.com/indysigner/image/fetch/f_auto,q_auto/w_2000/https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/db62c469-bbfc-4959-839d-590abb41b64e/responsive-breakpoints-opt.png">可参考资料</a></li>
+</ol>
+<h3 id="JPEG-x2F-PNG-x2F-svg-是否正确优化"><a href="#JPEG-x2F-PNG-x2F-svg-是否正确优化" class="headerlink" title="JPEG&#x2F;PNG&#x2F;svg 是否正确优化"></a>JPEG&#x2F;PNG&#x2F;svg 是否正确优化</h3><p>当你打开一个登录页时，它的主题图片加载的非常快，这一点很关键，确保 jpeg 是渐进的并且是压缩的使用 mozJPEG(通过操作扫描级别提高开始渲染时间)或 Guetzli,谷歌开源编码器关注感知性能，并且利用 Zopfli 和 WebP。唯一的缺点是：处理时间较慢(每百万像素需要 1 分钟的 CPU)</p>
+<p>对于 PNG，我们可以使用 <a target="_blank" rel="noopener" href="http://css-ig.net/pingo">Pingo</a>，对于 SVG，我们可以使用 <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/svgo">SVGO</a> 或 <a target="_blank" rel="noopener" href="https://jakearchibald.github.io/svgomg/">SVGOMG</a>。如果您需要快速预览、复制或下载网站上的所有 SVG assets，SVG-grabber 也可以为您做到这一点。</p>
+<p>每一篇图像优化的文章都会提到这一点，但是保持矢量资产的整洁和紧凑总是值得一提的。确保清理未使用的 assets，删除不必要的元数据并减少美术作品中的路径点数量(从而减少 SVG 代码)。</p>
+<p>还有一些有用的在线工具：</p>
+<ol>
+<li>使用 <a target="_blank" rel="noopener" href="https://squoosh.app/">Squoosh</a>用于压缩，调整和处理图像在最佳压缩水平(有损或无损)</li>
+<li>使用 <a target="_blank" rel="noopener" href="http://www.guetzli.it/">Gyetzli.it</a>用于压缩优化 JPEG 图像，对于有锐利边缘和纯色的图像效果很好(但可能会慢一些)。</li>
+<li>使用 <a target="_blank" rel="noopener" href="https://www.responsivebreakpoints.com/">响应式图像生成</a>或者 <a target="_blank" rel="noopener" href="https://cloudinary.com/documentation/solution_overview#account_and_api_setup">Cloudinary</a> or <a target="_blank" rel="noopener" href="https://www.imgix.com/">Imgix</a> 提供的服务来自动优化图像。此外，在许多情况下，仅使用 srcset 和 size 将获得显著的效果。</li>
+<li>要检查响应式标记的效率，可以使用 image-heap，这是一个命令行工具，可以通过视口大小和设备像素比率来衡量效率。</li>
+<li>您可以添加自动图像压缩到您的<a target="_blank" rel="noopener" href="https://github.com/marketplace/actions/image-actions">GitHub 工作流程</a>。这个操作使用了 mozjpeg 和 libvip，它们可以处理 png 和 jpg。</li>
+<li>为了在内部优化存储，你可以使用 Dropbox 新的 Lepton 格式，对 jpeg 文件进行平均 22% 的无损压缩。</li>
+<li>如果您想要早期显示占位图像，请使用 <a target="_blank" rel="noopener" href="https://blurha.sh/">BlurHash</a>。BlurHash 获取一个图像，并为您提供一个短字符串(只有 20-30 个字符!)，它代表该图像的占位符。该字符串足够短，可以很容易地将其添加为 JSON 对象中的字段。</li>
+</ol>
+<p>有时候，优化图片并不能解决问题。为了缩短重要图像的渲染开始所需的时间，延迟加载不太重要的图像，并在重要图像已经渲染后推迟加载任何脚本。最有效的方法是懒加载，当我们使用本地延迟加载和懒加载时，一个库可以检测通过用户交互触发的任何可见性变化(使用 IntersectionObserver，我们将在后面探讨)。此外:</p>
+<ol>
+<li>考虑<a target="_blank" rel="noopener" href="https://twitter.com/glenngabe/status/1292801991715033091">预加载关键图像</a>，这样浏览器就不会发现得太晚。对于背景图像，如果您想要更加大胆，可以使用<code>&lt;img src&gt;</code>将图像添加为普通图像，然后将其隐藏在屏幕之外。</li>
+<li>考虑使用 <a target="_blank" rel="noopener" href="https://www.filamentgroup.com/lab/sizes-swap/">size 属性来控制图像</a>，根据媒体查询指定不同的图像显示尺寸。</li>
+<li>检查图像下载的不一致，以防止前景和背景图像的<a target="_blank" rel="noopener" href="https://csswizardry.com/2018/06/image-inconsistencies-how-and-when-browsers-download-images/">意外下载</a>。注意那些默认加载，但可能永远不会显示的图像，例如在旋转木马，手风琴和图片库。</li>
+<li>确保始终设置图像的宽度和高度。要注意 CSS 中的纵横比属性和 intrinsicsize 属性，它们允许我们设置图像的纵横比和尺寸，这样浏览器就可以提前预留一个预定义的布局槽，避免在页面加载时出现布局跳跃。</li>
+</ol>
+<p>如果你喜欢冒险，你可以使用 Edge workers (基本上是一个基于 CDN 的实时过滤器)来切断和重新排列 HTTP&#x2F;2 流，以便更快地通过网络发送图像。Edge worker 使用 JavaScript 流，使用 chunks，你可以控制(基本上他们是 JavaScript 运行在 CDN edge，可以修改流响应) ，所以你可以控制图像的传输。</p>
+<p>使用 service worker，已经太迟了，因为你无法控制在网络上的内容，但它确实与 Edge worker 一起工作。因此，你可以使用它们在静态 jpeg 文件上逐步保存为一个特定的页面。</p>
+<p>还不够好？当然，你也可以通过使用<a target="_blank" rel="noopener" href="https://jmperezperez.com/medium-image-progressive-loading-placeholder/">多背景图像技术</a>来提高图像的感知性能。请记住，使用<a target="_blank" rel="noopener" href="https://css-tricks.com/contrast-swap-technique-improved-image-performance-css-filters/">对比度和模糊掉</a>不必要的细节(或去掉颜色)也可以减少文件大小。啊，你需要放大一张小照片而不失去质量吗？考虑使用 <a target="_blank" rel="noopener" href="https://letsenhance.io/">Letsenhance.io</a>。</p>
+<p>到目前为止，这些优化只涵盖了基本的内容。Addy Osmani 已经发布了一个<a target="_blank" rel="noopener" href="https://images.guide/">非常详细的指南</a>，关于基本的图像优化，深入到图像压缩和颜色管理的细节。例如，你可以模糊掉图像中不必要的部分(通过对它们应用高斯模糊滤镜)，以减少文件大小，最终你甚至可以开始删除颜色或将图片变为黑色和白色，以进一步缩小大小。对于背景图片，从 Photoshop 中导出 0 到 10%的图片质量也是绝对可以接受的。</p>
+<p>在 Smashing Magazine 上，我们使用后缀-opt 来命名图像，例如:brotli-compression-opt.png;当一个图像包含这个后缀时，团队中的每个人都知道这个图像已经被优化过了。</p>
+<p>不要在网络上使用 <a target="_blank" rel="noopener" href="https://calendar.perfplanet.com/2018/dont-use-jpeg-xr-on-the-web/">JPEG-XR </a>ー“ CPU 处理解码 JPEG-XRs 软件的过程抵消甚至超过了节省字节大小的所带来的积极影响，特别是在 spi 环境下”(不要与 Cloudinary&#x2F;Google 的 JPEG XL 混淆)。</p>
+<p>可参考资料：</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://res.cloudinary.com/indysigner/image/fetch/f_auto,q_auto/w_2000/https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/1fbe4611-cbf9-4c7e-819d-1236eb2053ce/whyblurhash.png">占位图形式</a></li>
+<li><a target="_blank" rel="noopener" href="https://res.cloudinary.com/indysigner/image/fetch/f_auto,q_auto/w_2000/https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/ebcc7dad-3cbc-4595-b141-2c6c80ab8fc6/aspect-ratio-in-browsers.png">宽高比在浏览器展示</a></li>
+<li><a target="_blank" rel="noopener" href="https://res.cloudinary.com/indysigner/image/fetch/f_auto,q_auto/w_2000/https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/8422076c-6eea-4b35-a98c-b15445cb2dff/viewport-percentage-match.jpg">测试不同视口和不同设备像素比的效率</a></li>
+<li><a target="_blank" rel="noopener" href="https://res.cloudinary.com/indysigner/image/fetch/f_auto,q_auto/w_2000/https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/c987b182-0a0e-40e5-8f8d-dd81feb991f5/replace-animated-gifs.jpg">将 GIF 图替换为 video 图片，文件大小的差异很明显(节省 80%)</a></li>
+</ol>
+<h3 id="视频是否得到了适当的优化"><a href="#视频是否得到了适当的优化" class="headerlink" title="视频是否得到了适当的优化"></a>视频是否得到了适当的优化</h3><p>到目前为止我们已经讨论了图片，但是我们避开了关于好的 ol’gif 的讨论。尽管我们喜欢 gif，但现在是时候永远放弃它们了(至少在我们的网站和应用程序中是这样)。与其加载同时影响渲染性能和带宽的大量 GIF 动画，不如切换到动画 WebP (GIF 作为后备)或者替换为<a target="_blank" rel="noopener" href="https://web.dev/replace-gifs-with-videos/">循环的 H5 内嵌视频</a></p>
+<p>不同于图像，浏览器不会预加载<code>&lt;video&gt;</code>内容，但 HTML5 视频往往比 gif 更轻，更小。不是一个选择吗? 好吧，至少我们可以用<a target="_blank" rel="noopener" href="https://kornel.ski/lossygif">有损 GIF</a>, <a target="_blank" rel="noopener" href="https://github.com/kohler/gifsicle">gifsicle</a> 或 <a target="_blank" rel="noopener" href="https://github.com/kornelski/giflossy">gifflossy</a> 给 GIF 添加有损压缩。</p>
+<p>Colin Bendell 的测试表明，在 <a target="_blank" rel="noopener" href="https://calendar.perfplanet.com/2017/animated-gif-without-the-gif/">Safari 技术预览中</a>，img 标签内嵌的视频比 GIF 标签至少快 20 倍，解码速度也快 7 倍，而且在文件大小上只占一小部分。但是，其他浏览器不支持它。</p>
+<p>视频格式在过去几年里取得了巨大的进步。很长一段时间以来，我们都希望 WebM 能成为所有这些格式的主宰，而 WebP(基本上是 WebM 视频容器中的一个静态图像)将成为过时图像格式的替代品。的确，Safari 现在支持 WebP，但是尽管 WebP 和 WebM 这些天来获得了支持，这个突破并没有真正发生。</p>
+<p>尽管如此，我们还是可以在大多数现代浏览器上使用 WebM:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- By Houssein Djirdeh. https://web.dev/replace-gifs-with-videos/ --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- A common scenartio: MP4 with a WEBM fallback. --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">video</span> <span class="attr">autoplay</span> <span class="attr">loop</span> <span class="attr">muted</span> <span class="attr">playsinline</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">&quot;my-animation.webm&quot;</span> <span class="attr">type</span>=<span class="string">&quot;video/webm&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">&quot;my-animation.mp4&quot;</span> <span class="attr">type</span>=<span class="string">&quot;video/mp4&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">video</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>但也许我们可以重新考虑一下。2018 年，开放媒体联盟发布了一种新的有前途的视频格式，名为 AV1。AV1 具有类似于 h.265 编解码器的压缩(h.264 的进化) ，但与后者不同，AV1 是免费的。H.265 许可证定价促使浏览器厂商采用同等性能的 AV1: AV1(就像 h.265 一样)压缩效果是 WebM 的两倍。</p>
+<p>事实上，苹果目前使用 HEIF 格式和 HEVC (h.265) ，最新 iOS 上的所有照片和视频都以这些格式保存，而不是 JPEG。而 HEIF 和 HEVC (h.265)还没有正确地在网络上使用(还没有?)，而 AV1 正在获得浏览器支持。因此，在你的 <code>&lt;video&gt;</code> 标签中添加 AV1 源代码是合理的，因为所有的浏览器供应商似乎都在考虑这个问题。</p>
+<p>目前，最广泛使用和支持的编码是 h. 264，由 MP4 文件提供服务，因此在提供文件之前，请确保您的 MP4 是通过 multipass-encoding 处理的，使用 frei0r iirblur 效果(如果适用的话)进行模糊处理，moov 原子元数据移动到文件头，在您的服务器接受字节。Boris Schapira 为 <a target="_blank" rel="noopener" href="https://medium.com/@borisschapira/optimize-your-mp4-video-for-better-performance-dareboost-blog-fb2f3f3dce77">FFmpeg</a> 提供了最大限度优化视频的精确说明。当然，提供 WebM 格式作为替代也会有所帮助。</p>
+<p>需要开始渲染视频更快，但视频文件仍然太大？例如，当你的页面上有一个很大的背景视频时？一种常用的技术是先将第一帧显示为静态图像，或者显示经过高度优化的短循环片段，这些片段可以被解释为视频的一部分，然后，当视频缓冲足够时，就开始播放实际的视频。Doug Sillars 写了一份详细的<a target="_blank" rel="noopener" href="https://calendar.perfplanet.com/2019/performance-tips-for-background-video/">背景视频性能指南</a>，在这种情况下可能会有所帮助。</p>
+<p>研究表明，视频流质量影响观众的行为。事实上，如果启动延迟超过 2 秒，观众就会开始放弃视频。除此之外，延迟时间每增加 1 秒，放弃率就会增加大约 5.8% 。因此，视频开始时间的中位数为 12.8 秒并不奇怪，40% 的视频至少有一个延迟，20% 至少有 2 秒延迟视频播放。事实上，3G 上的视频暂停是不可避免的，因为视频播放速度比网络提供的内容还要快。</p>
+<p>那么，解决方案是什么呢？通常小屏幕设备不能处理我们提供给桌面的 720p 和 1080p。根据 Doug Sillars 的说法，我们既可以创建视频的小版本，也可以使用 Javascript 检测小屏幕的源代码，以确保在这些设备上快速、平滑地播放视频。或者，我们可以使用流媒体视频。HLS 视频流将向设备提供一个合适大小的视频，从而抽象出为不同屏幕创建不同视频的需求。它还将协商网络速度，并适应视频比特率的速度，您正在使用的网络。</p>
+<p>为了避免在带宽上的浪费，我们只能为能够很好地播放视频的设备添加视频源。或者，我们可以完全从视频标签中移除 autoplay 属性，然后使用 JavaScript 在更大的屏幕上插入 autoplay。此外，我们需要在视频中添加 preload &#x3D; “none” ，告诉浏览器在实际需要视频文件之前不要下载任何视频文件:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Based on Doug Sillars&#x27;s post. https://dougsillars.com/2020/01/06/hiding-videos-on-the-mbile-web/ --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">video</span></span></span><br><span class="line"><span class="tag">  <span class="attr">id</span>=<span class="string">&quot;hero-video&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">preload</span>=<span class="string">&quot;none&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">playsinline</span></span></span><br><span class="line"><span class="tag">  <span class="attr">muted</span></span></span><br><span class="line"><span class="tag">  <span class="attr">loop</span></span></span><br><span class="line"><span class="tag">  <span class="attr">width</span>=<span class="string">&quot;1920&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">height</span>=<span class="string">&quot;1080&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">poster</span>=<span class="string">&quot;poster.jpg&quot;</span></span></span><br><span class="line"><span class="tag">&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">&quot;video.webm&quot;</span> <span class="attr">type</span>=<span class="string">&quot;video/webm&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">&quot;video.mp4&quot;</span> <span class="attr">type</span>=<span class="string">&quot;video/mp4&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">video</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>然后我们可以针对实际上支持 AV1 的浏览器:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Based on Doug Sillars&#x27;s post. https://dougsillars.com/2020/01/06/hiding-videos-on-the-mbile-web/ --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">video</span></span></span><br><span class="line"><span class="tag">  <span class="attr">id</span>=<span class="string">&quot;hero-video&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">preload</span>=<span class="string">&quot;none&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">playsinline</span></span></span><br><span class="line"><span class="tag">  <span class="attr">muted</span></span></span><br><span class="line"><span class="tag">  <span class="attr">loop</span></span></span><br><span class="line"><span class="tag">  <span class="attr">width</span>=<span class="string">&quot;1920&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">height</span>=<span class="string">&quot;1080&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">poster</span>=<span class="string">&quot;poster.jpg&quot;</span></span></span><br><span class="line"><span class="tag">&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">&quot;video.av1.mp4&quot;</span> <span class="attr">type</span>=<span class="string">&quot;video/mp4; codecs=av01.0.05M.08&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">&quot;video.hevc.mp4&quot;</span> <span class="attr">type</span>=<span class="string">&quot;video/mp4; codecs=hevc&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">&quot;video.webm&quot;</span> <span class="attr">type</span>=<span class="string">&quot;video/webm&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">&quot;video.mp4&quot;</span> <span class="attr">type</span>=<span class="string">&quot;video/mp4&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">video</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>然后我们可以在某个阈值(例如 1000px)上重新添加自动播放:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">/* By Doug Sillars.</span><br><span class="line">https://dougsillars.com/2020/01/06/hiding-videos-on-the-mbile-web/ */</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="variable language_">window</span>.<span class="property">onload</span> = <span class="title function_">addAutoplay</span>();</span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">var</span> videoLocation = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;hero-video&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">function</span> <span class="title function_">addAutoplay</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">if</span> (<span class="variable language_">window</span>.<span class="property">innerWidth</span> &gt; <span class="number">1000</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      videoLocation.<span class="title function_">setAttribute</span>(<span class="string">&quot;autoplay&quot;</span>, <span class="string">&quot;&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">  &#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>可参考资料：</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://res.cloudinary.com/indysigner/image/fetch/f_auto,q_auto/w_2000/https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/b5a4354f-4a9b-420d-8979-bd7abb87aebc/av1-logo-2018-full.png">AV1 有可能成为未来网络视频的终极格式</a></li>
+<li><a target="_blank" rel="noopener" href="https://res.cloudinary.com/indysigner/image/fetch/f_auto,q_auto/w_2000/https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/952ad18f-bf8e-433e-a02d-1040d3aada55/new-stall-time-opt.png">在更快的网络和设备上几乎没有停顿</a></li>
+<li><a target="_blank" rel="noopener" href="https://res.cloudinary.com/indysigner/image/fetch/f_auto,q_auto/w_2000/https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/eb634666-55ab-4db3-aa40-4b146a859041/font-loading-strategies-opt.png">网页字体传递</a></li>
+</ol>
+<h3 id="是否进行了-web-font-优化"><a href="#是否进行了-web-font-优化" class="headerlink" title="是否进行了 web font 优化"></a>是否进行了 web font 优化</h3><p>第一个值得问的问题是，我们是否可以在一开始就使用 UI 系统字体，我们只需要确保重复检查它们在不同平台上的正确显示</p>
+<p>您提供的网络字体很有可能包含字形和其他并未真正使用的功能。</p>
+<ol>
+<li>最好使用 WOFF2 并将 WOFF 用作后备。</li>
+<li>当自定义字体没有下载下来时，立即以备用字体显示内容，异步加载字体，然后按顺序切换字体。</li>
+<li>最终解决方案：两阶段渲染，首先使用一个小的超级子集，然后其余系列异步加载。</li>
+<li>预加载每个系列的 1-2 种字体。避免在字体声明中使用 local（）值，但要考虑本地安装的 OS 字体。</li>
+<li>不要忘记包括 font-display：optional，并使用 Font Load Events 进行组重绘。</li>
+<li>使用“ Web 字体重排计数”和“实际斜体时间”度量标准。</li>
+</ol>
+<h2 id="构建优化"><a href="#构建优化" class="headerlink" title="构建优化"></a>构建优化</h2><p>关键词：JavaScript 模块，module&#x2F;nomodule 模式，tree-shaking，code-splitting，scope-hoisting，Webpack，差异服务，web worker，WebAssembly，JavaScript bundle，React，SPA，partial hydration，按需加载，第三方服务，cache</p>
+<h3 id="设置优先级"><a href="#设置优先级" class="headerlink" title="设置优先级"></a>设置优先级</h3><ol>
+<li>对所有文件（JavaScript，图像，字体，第三方脚本，页面上的“耗费性能的”模块）运行清单，并将其按组细分。</li>
+<li>定义基本的核心体验（旧式浏览器可以完全访问的核心内容），增强的体验（对于功能强大的浏览器来说是丰富的，完整的体验）和其他功能（不是绝对必需的，可以延迟加载的资源）。</li>
+</ol>
+<h3 id="在生产环境中使用自定义-JavaScript"><a href="#在生产环境中使用自定义-JavaScript" class="headerlink" title="在生产环境中使用自定义 JavaScript"></a>在生产环境中使用自定义 JavaScript</h3><ol>
+<li>将核心体验发送到旧版浏览器，并将增强的体验发送到现代浏览器。</li>
+<li>使用 <code>ES2017 + &lt;script type=&quot;module&quot;&gt;</code> 加载 JavaScript：现代浏览器会将脚本解释为 JavaScript 模块并按预期运行，而旧版浏览器无法识别该脚本，因此将其忽略。</li>
+<li>使用 <a target="_blank" rel="noopener" href="https://philipwalton.com/articles/using-native-javascript-modules-in-production-today/">module&#x2F;nomodule 模式</a>，同时提供两个 script，由浏览器决定加载哪个文件，通过减少浏览器需要处理的脚本数量来帮助减少主线程阻塞。默认情况下，本地 JavaScript 模块脚本是延迟的，因此当 HTML 解析发生时，浏览器将下载主模块。</li>
+</ol>
+<p>可参考资料：</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://res.cloudinary.com/indysigner/image/fetch/f_auto,q_auto/w_2000/https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/cc4a5548-f5a3-41ea-b881-39f9a366261b/js-modules-deferred-default.jpg">JavaScript Modules</a></li>
+</ol>
+<h3 id="运行-js-是耗费性能的，优化-js"><a href="#运行-js-是耗费性能的，优化-js" class="headerlink" title="运行 js 是耗费性能的，优化 js"></a>运行 js 是耗费性能的，优化 js</h3><ol>
+<li>使用 SPA，您可能需要一些时间来初始化应用程序，然后才能呈现页面。</li>
+<li>寻找可以加快初始渲染时间的模块和技术（在低端移动设备上，其渲染时间很容易会高出 2 到 5 倍）。</li>
+</ol>
+<h3 id="使用-tree-shaking-scope-hoisting-和-code-splitting-来减少加载"><a href="#使用-tree-shaking-scope-hoisting-和-code-splitting-来减少加载" class="headerlink" title="使用 tree-shaking, scope hoisting 和 code-splitting 来减少加载"></a>使用 tree-shaking, scope hoisting 和 code-splitting 来减少加载</h3><ol>
+<li><a target="_blank" rel="noopener" href="https://developers.google.com/web/fundamentals/performance/optimizing-javascript/tree-shaking/">Tree-shaking</a> 是仅包含生产中实际使用的代码来清理构建过程的一种方法。</li>
+<li><a target="_blank" rel="noopener" href="https://webpack.js.org/guides/code-splitting/">code-splitting: 代码拆分</a> 将您的代码库根据分割点分为按需加载的“块”，不是所有的 js 文件都需要立刻被下载、解析和渲染的。<ol>
+<li>如何确定代码分割点：通过跟踪哪些 CSS&#x2F;JavaScript 块被使用，哪些没有被使用。<a target="_blank" rel="noopener" href="https://vimeo.com/235431630#t=11m37s">Umar Hansa</a> 解释了如何使用来自 Devtools 的代码覆盖来实现它。</li>
+</ol>
+</li>
+<li>范围提升可以检测到导入链可以在何处打平并转换为一个内联函数而不会破坏代码（例如通过 Webpack）。</li>
+<li>使用提前编译器将一些客户端渲染卸载到服务器。</li>
+<li>也考虑在程序包级别进行代码拆分。</li>
+</ol>
+<p>可参考资料：</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://hackernoon.com/lessons-learned-code-splitting-with-webpack-and-react-f012a989113">code splitting</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.logrocket.com/death-by-a-thousand-cuts-a-checklist-for-eliminating-common-react-performance-issues/">react 性能优化</a></li>
+<li><a target="_blank" rel="noopener" href="https://building.calibreapp.com/debugging-react-performance-with-react-16-and-chrome-devtools-c90698a522ad">使用 React 16 和 Chrome Devtools 分析 React 性能</a></li>
+</ol>
+<h3 id="是否可以将-JavaScript-卸载到-Web-Worker-或-WebAssembly-中"><a href="#是否可以将-JavaScript-卸载到-Web-Worker-或-WebAssembly-中" class="headerlink" title="是否可以将 JavaScript 卸载到 Web Worker 或 WebAssembly 中"></a>是否可以将 JavaScript 卸载到 Web Worker 或 WebAssembly 中</h3><p>随着代码库的发展，UI 性能瓶颈将开始显现。 发生这种情况是因为 DOM 操作与您的 JS 一起在主线程上运行。 考虑将这些耗费性能的操作转移到后台进程，该后台进程与 Web Worker 一起在不同的线程上运行。 典型的用例：预拉取数据和 PWA。 考虑将繁重的计算任务卸载到 WebAssembly 上，这最适合计算密集型 Web 应用程序，例如 Web 游戏。</p>
+<h3 id="仅向旧版浏览器提供旧版代码（差异服务）"><a href="#仅向旧版浏览器提供旧版代码（差异服务）" class="headerlink" title="仅向旧版浏览器提供旧版代码（差异服务）"></a>仅向旧版浏览器提供旧版代码（差异服务）</h3><ol>
+<li>使用 babel-preset-env 仅可转换您要定位的现代浏览器不支持的 ES2015 +功能。 然后设置两个构建，一个在 ES6 中，一个在 ES5 中。</li>
+<li>对于 lodash，请使用 babel-plugin-lodash，它将仅加载您在源代码中使用的模块。</li>
+<li>转换通用 lodash 要求精心挑选，以避免代码重复。</li>
+<li>使用标头<code>&lt;link rel =&quot; modulepreload&quot;&gt;</code>启动模块脚本的早期（和高优先级）加载。</li>
+</ol>
+<h3 id="通过增量解耦识别和重写旧代码"><a href="#通过增量解耦识别和重写旧代码" class="headerlink" title="通过增量解耦识别和重写旧代码"></a>通过增量解耦识别和重写旧代码</h3><ol>
+<li>重新访问您的依赖关系，并评估重构或重写最近引起问题的旧代码需要多少时间。</li>
+<li>首先，设置度量标准，以跟踪旧代码调用比例是保持不变还是下降，而不是上升。</li>
+<li>公开劝阻团队不要使用该库，并确保您的 CI， 如果在请求请求中使用了 CI，则会提醒开发人员。</li>
+</ol>
+<h3 id="识别并删除未使用的-CSS-x2F-JavaScript。"><a href="#识别并删除未使用的-CSS-x2F-JavaScript。" class="headerlink" title="识别并删除未使用的 CSS &#x2F; JavaScript。"></a>识别并删除未使用的 CSS &#x2F; JavaScript。</h3><ol>
+<li>Chrome 中的 CSS 和 JavaScript 代码覆盖率使您可以了解哪些代码已执行&#x2F;应用，哪些未执行。</li>
+<li>一旦检测到未使用的代码，请找到那些模块并使用 import（）延迟加载。</li>
+<li>然后重复覆盖率配置文件，并验证它现在在初始加载时正在交付更少的代码。</li>
+<li>使用 Puppeteer 以编程方式收集代码覆盖率。</li>
+</ol>
+<h3 id="缩小-JavaScript-依赖项的大小。"><a href="#缩小-JavaScript-依赖项的大小。" class="headerlink" title="缩小 JavaScript 依赖项的大小。"></a>缩小 JavaScript 依赖项的大小。</h3><ol>
+<li>当您只需要一小部分时，很有可能会交付完整的 JavaScript 库。 为了避免开销，请考虑使用 webpack-libs-optimizations 在构建过程中删除未使用的方法和 polyfill。 将捆绑包审核添加到常规工作流程中。</li>
+<li>Bundlephobia 帮助您找到向软件包中添加 npm 软件包的成本，size-limit 扩展了基本软件包的大小检查，并提供了有关 JavaScript 执行时间的详细信息。</li>
+</ol>
+<h3 id="是否正在对-JavaScript-块使用预加载"><a href="#是否正在对-JavaScript-块使用预加载" class="headerlink" title="是否正在对 JavaScript 块使用预加载"></a>是否正在对 JavaScript 块使用预加载</h3><p>使用 heuristics 确定何时预加载 JavaScript 块。 Guess.js 是使用 Google Analytics（分析）数据确定用户最有可能访问下一页的一组工具。 另外，考虑使用 Quicklink，Instant.page 和 DNStradamus。 注意：您可能会提示浏览器使用不需要的数据并预取不需要的页面，因此对预请求的数量保持在一定范围内是个好的方式。</p>
+<h3 id="针对您的目标-JavaScript-引擎进行优化。"><a href="#针对您的目标-JavaScript-引擎进行优化。" class="headerlink" title="针对您的目标 JavaScript 引擎进行优化。"></a>针对您的目标 JavaScript 引擎进行优化。</h3><p>利用整体脚本的脚本流，因此一旦开始下载，就可以在单独的后台线程上对它们进行解析。 也可以通过使用库将 V8 的代码缓存从代码中分离出来，或者通过其他方法来使用 V8 的代码缓存。 同时考虑 Firefox 的 Baseline Interpeter 的 JIT 优化策略。</p>
+<h3 id="找到一种将客户端渲染和服务器端渲染结合起来的方法"><a href="#找到一种将客户端渲染和服务器端渲染结合起来的方法" class="headerlink" title="找到一种将客户端渲染和服务器端渲染结合起来的方法"></a>找到一种将客户端渲染和服务器端渲染结合起来的方法</h3><ol>
+<li>通常，目标是在客户端和服务器端渲染之间找到最佳平衡。</li>
+<li>如果页面变化不大，请考虑预渲染；如果可以，请考虑推迟框架的启动。</li>
+<li>通过服务器端渲染以流方式分块传输 HTML，并通过客户端渲染为单个组件实现 progressive hydration，并在可见性，交互性或空闲时间进行 hydration 处理，以充分利用两者。（使用 progressive hydration 流式传输服务器端渲染）。</li>
+</ol>
+<h3 id="考虑进行微优化和逐步引导"><a href="#考虑进行微优化和逐步引导" class="headerlink" title="考虑进行微优化和逐步引导"></a>考虑进行微优化和逐步引导</h3><ol>
+<li>使用服务器端渲染可以快速获得第一个有意义的图形，同时还包含一些最小的 JS，以使交互时间接近第一个有意义的图形。</li>
+<li>然后，根据需要或在时间允许的情况下，启动应用程序的非必需部分。</li>
+<li>始终将功能的执行分解为单独的异步任务。</li>
+<li>尽可能使用 requestIdleCallback。</li>
+</ol>
+<h3 id="始终自己控制第三方脚本"><a href="#始终自己控制第三方脚本" class="headerlink" title="始终自己控制第三方脚本"></a>始终自己控制第三方脚本</h3><ol>
+<li>使用公共 CDN 不会自动导致更好的性能。</li>
+<li>即使两个站点指向完全相同的第三方资源 URL，每个域也会下载一次代码，并且缓存“沙盒”到该域。</li>
+<li>第一方资产比第三方资产更有可能保留在缓存中。</li>
+<li>自我托管更加可靠，安全，并且性能更高。</li>
+</ol>
+<h3 id="限制第三方脚本的影响"><a href="#限制第三方脚本的影响" class="headerlink" title="限制第三方脚本的影响"></a>限制第三方脚本的影响</h3><ol>
+<li>通常，一个第三方脚本最终会调用链式很长的脚本。 考虑通过超时加速资源下载来使用 service worker。</li>
+<li>建立内容安全政策（CSP），以限制第三方脚本的影响，例如 禁止下载音频或视频。</li>
+<li>通过 iframe 嵌入脚本，因此脚本无权访问 DOM。</li>
+<li>也将它们沙箱化。</li>
+<li>要对脚本进行压力测试，请在“性能”概要文件页面（DevTools）中检查自底向上的摘要。</li>
+</ol>
+<h3 id="正确设置-HTTP-缓存头"><a href="#正确设置-HTTP-缓存头" class="headerlink" title="正确设置 HTTP 缓存头"></a>正确设置 HTTP 缓存头</h3><ol>
+<li>仔细检查是否过期，正确设置了缓存控制，最大使用期限和其他 HTTP 缓存头。 通常，资源应该在很短的时间内（如果它们可能会更改）或无限期（如果它们是静态的）可缓存。</li>
+<li>使用高速缓存控制：不可变，设计用于指纹静态资源，以避免重新验证。</li>
+<li>检查您是否没有发送不必要的标头（例如 x-by-by，pragma，x-ua-compatible，expire）。</li>
+<li>通过使用 stale-while-revalidate 将零 RTT 用于重复视图。</li>
+</ol>
+<h2 id="加载优化"><a href="#加载优化" class="headerlink" title="加载优化"></a>加载优化</h2><p>关键词：延迟加载，交叉观察，延迟渲染和解码，关键的 CSS，流，资源提示，布局偏移，service worker</p>
+<h3 id="异步加载-JavaScript"><a href="#异步加载-JavaScript" class="headerlink" title="异步加载 JavaScript"></a>异步加载 JavaScript</h3><ol>
+<li>作为开发人员，我们必须明确告知浏览器不要等待，并开始使用 HTML 中的 defer 和 async 属性来呈现页面。</li>
+<li>如果您不必为 IE 9 及更低版本担心，那么最好选择延迟到异步。</li>
+<li>使用 defer，浏览器在解析 HTML 之前不会执行脚本。</li>
+<li>因此，除非需要 JS 在开始渲染之前执行，否则最好使用 defer。</li>
+</ol>
+<h3 id="使用-IntersectionObserver-懒加载耗费性能的组件"><a href="#使用-IntersectionObserver-懒加载耗费性能的组件" class="headerlink" title="使用 IntersectionObserver 懒加载耗费性能的组件"></a>使用 IntersectionObserver 懒加载耗费性能的组件</h3><p>延迟加载所有耗费性能的组件，例如沉重的 JavaScript，视频，iframe，小部件以及可能的图像。 最有效的方法是使用本机延迟加载（加载和重要性属性）或使用 IntersectionObserver-后者也可用于执行滚动显示，视差和广告跟踪。</p>
+<h3 id="快速推送关键-CSS"><a href="#快速推送关键-CSS" class="headerlink" title="快速推送关键 CSS"></a>快速推送关键 CSS</h3><ol>
+<li>收集开始渲染页面的第一个可见部分所需的所有 CSS（“关键 CSS”或需要提前下载的 CSS），并将其内联添加到页面的<code>&lt;head&gt;</code>中。</li>
+<li>考虑条件内联方法。</li>
+<li>或者，考虑使用 HTTP&#x2F;2 服务器推送，但是您可能需要创建一个支持缓存的 HTTP&#x2F;2 服务器推送机制。</li>
+<li>将关键 CSS 放在根域上的单独文件中有很多好处，有时达到的效果甚至比缓存的效果要好</li>
+</ol>
+<h3 id="尝试重新组合-CSS-规则"><a href="#尝试重新组合-CSS-规则" class="headerlink" title="尝试重新组合 CSS 规则"></a>尝试重新组合 CSS 规则</h3><ol>
+<li>考虑将主 CSS 文件拆分为各个媒体查询</li>
+<li>避免在异步代码片段之前放置<code>&lt;link rel =“ stylesheet” /&gt;</code>。 如果脚本不依赖样式表，请考虑将阻止脚本置于阻止样式之上。 如果可以，请将 JavaScript 分成两部分，然后在 CSS 的任一侧加载</li>
+<li>与 service worker 一起缓存内联 CSS 并尝试使用 在 body 内写 CSS 样式</li>
+<li>动态样式可能会很昂贵：当 CSS 不依赖主题&#x2F;属性，不要过度组合样式化组件时，请检查 CSS-in-JS 库是否优化了执行。</li>
+</ol>
+<h3 id="流响应"><a href="#流响应" class="headerlink" title="流响应"></a>流响应</h3><ol>
+<li>流提供了一个用于读取或写入异步数据块的接口，在任何给定时间它的子集仅在内存中可用。</li>
+<li>让 service worker 构造一个流，其中外壳程序来自缓存，而主体来自网络，而不是提供一个空的 UI Shell 并让 JavaScript 填充它。</li>
+<li>然后，在初始导航请求期间呈现的 HTML 可以充分利用浏览器的流 HTML 解析器。</li>
+</ol>
+<h3 id="考虑使您的组件知道连接-x2F-设备内存"><a href="#考虑使您的组件知道连接-x2F-设备内存" class="headerlink" title="考虑使您的组件知道连接&#x2F;设备内存"></a>考虑使您的组件知道连接&#x2F;设备内存</h3><ol>
+<li>Save-Data 客户端提示请求标头使我们能够为成本和性能受限制的用户定制应用程序和有效负载。</li>
+<li>例如，您可以将对高 DPI 图像的请求重写为低 DPI 图像，删除 Web 字体和奇特的视差效果，关闭视频自动播放，服务器推送，甚至更改标记的交付方式。</li>
+<li>使用网络信息 API 根据网络类型交付重型组件的变体。</li>
+<li>也可以使用设备内存 API 根据可用的设备内存动态调整资源。</li>
+</ol>
+<h3 id="预热连接以加快交付速度"><a href="#预热连接以加快交付速度" class="headerlink" title="预热连接以加快交付速度"></a>预热连接以加快交付速度</h3><p>使用资源提示来节省 dns-prefetch（在后台进行 DNS 查找），预连接（启动连接握手（DNS，TCP，TLS）），预取（请求资源），预加载（不执行它们就预取资源）上的时间。 东西）和预渲染（提前获取资源，但不执行 JS 或不提前渲染页面的任何部分）。 使用预加载时，必须定义或不加载； 没有 cross origin 属性的预加载字体将加倍获取。对于预加载，优先级会令人困惑，因此请考虑在外部阻止脚本之前将 rel&#x3D;”preload” 元素注入 DOM。</p>
+<h3 id="使用-service-worker-进行缓存和网络后备"><a href="#使用-service-worker-进行缓存和网络后备" class="headerlink" title="使用 service worker 进行缓存和网络后备"></a>使用 service worker 进行缓存和网络后备</h3><p>如果您的网站通过 HTTPS 运行，则将静态资源缓存在 service worker 缓存中，并存储脱机后备（甚至脱机页面），并从用户的计算机中检索它们，而不是去网络。 将应用程序 shell 以及一些关键页面（例如脱机页面或主页）存储在 service worker 的缓存中。 但是：请确保跨域资源存在正确的 CORS 响应标头，不要缓存不透明的响应，并且选择将跨域图像资源选择进入 CORS 模式。</p>
+<h3 id="在-CDN-x2F-Edge-上使用-service-workers-on-the-e-g-A-x2F-B-testing"><a href="#在-CDN-x2F-Edge-上使用-service-workers-on-the-e-g-A-x2F-B-testing" class="headerlink" title="在 CDN&#x2F;Edge 上使用 service workers on the (e.g. A&#x2F;B testing)."></a>在 CDN&#x2F;Edge 上使用 service workers on the (e.g. A&#x2F;B testing).</h3><p>通过 CDN 在服务器上实现 service workers，请考虑 service workers 也在 Edge 上调整性能。 例如。 在 A &#x2F; B 测试中，当 HTML 需要为不同的用户更改其内容时，请使用 CDN 上的 service workers 来处理逻辑。 或流式 HTML 重写以加快使用 Google 字体的网站的速度。</p>
+<h3 id="优化渲染性能"><a href="#优化渲染性能" class="headerlink" title="优化渲染性能"></a>优化渲染性能</h3><ol>
+<li>使用 CSS 隔离耗费性能组件。</li>
+<li>确保在滚动页面或为元素设置动画时没有滞后，并且始终保持每秒 60 帧的速度。</li>
+<li>如果无法做到这一点，则最好使每秒帧数保持一致，至少应介于 60 到 15 的混合范围内。</li>
+<li>使用 CSS will-change 可以通知浏览器哪些元素将发生变化。</li>
+</ol>
+<h3 id="预防页面重绘和重排"><a href="#预防页面重绘和重排" class="headerlink" title="预防页面重绘和重排"></a>预防页面重绘和重排</h3><ol>
+<li>回流是由重新缩放的图像和视频，Web 字体，注入的广告或后来发现的脚本（这些脚本用实际内容填充组件）引起的</li>
+<li>在图像上设置宽度和高度属性，因此默认情况下，现代浏览器会分配框并保留空间</li>
+<li>使用 SVG 占位符保留将在其中显示视频和图像的显示框</li>
+<li>仅在不支持本机延迟加载的情况下，使用混合延迟加载来加载外部延迟加载脚本</li>
+<li>Web 字体分组重新绘制并使用 font-style-matcher 匹配行高和间距</li>
+<li>使用 Layout Instability API 和累积布局移位（CLS）跟踪界面的稳定性</li>
+</ol>
+<h2 id="网络和-HTTP-x2F-2"><a href="#网络和-HTTP-x2F-2" class="headerlink" title="网络和 HTTP&#x2F;2"></a>网络和 HTTP&#x2F;2</h2><p>关键词：OCSP stapling，EV&#x2F;DV 证书，打包，IPv6，QUIC，HTTP&#x2F;3</p>
+<h3 id="是否启用了-OCSP-stapling"><a href="#是否启用了-OCSP-stapling" class="headerlink" title="是否启用了 OCSP stapling"></a>是否启用了 OCSP stapling</h3><p>通过在服务器上启用 OCSP 装订，可以加快 TLS 握手的速度。 OCSP 协议不需要浏览器花时间下载，然后在列表中搜索证书信息，因此减少了握手所需的时间。</p>
+<h3 id="您是否已采用-IPv6"><a href="#您是否已采用-IPv6" class="headerlink" title="您是否已采用 IPv6"></a>您是否已采用 IPv6</h3><p>研究表明，由于 NDP 和路由优化，IPv6 使网站的速度提高了 10％至 15％。 更新 IPv6 的 DNS，以防将来发生故障。只需确保在网络上提供双栈支持即可，它使 IPv6 和 IPv4 可以同时并行运行。毕竟，IPv6 不向后兼容。</p>
+<h3 id="是否正在使用-TCP-BBR"><a href="#是否正在使用-TCP-BBR" class="headerlink" title="是否正在使用 TCP BBR"></a>是否正在使用 TCP BBR</h3><p>BBR 是一种相对较新的 TCP 延迟控制 TCP 流控制算法。它可以响应实际的拥塞，而不是像 TCP 那样处理数据包丢失，因此速度更快，吞吐量更高，延迟更短 启用 BBR 拥塞控制并将 tcp_notsent_lowat 设置为 16KB，以使 HTTP&#x2F;2 优先级在 Linux 4.9 内核及更高版本上可靠地工作。</p>
+<h3 id="准备使用-HTTP-x2F-2"><a href="#准备使用-HTTP-x2F-2" class="headerlink" title="准备使用 HTTP&#x2F;2"></a>准备使用 HTTP&#x2F;2</h3><p>很好地支持 HTTP&#x2F;2，并提高了性能。它无处不在，在大多数情况下，您最好选择它。根据您的移动用户群的大小，您可能需要发送不同的构建，并且可以从适应不同的构建过程中受益。（在丢包率明显的网络上， HTTP&#x2F;2 的速度通常较慢。）</p>
+<h3 id="正确部署-HTTP-x2F-2"><a href="#正确部署-HTTP-x2F-2" class="headerlink" title="正确部署 HTTP&#x2F;2"></a>正确部署 HTTP&#x2F;2</h3><p>您需要在包装模块和并行加载许多小模块之间找到良好的平衡。将整个界面分为许多小模块； 然后将它们分组，压缩并打包。在打包级别或通过跟踪&#x2F;不使用 CSS&#x2F;JS 块进行拆分。单独的第三方脚本和客户代码，以及单独的第三方脚本依赖关系，这些依赖关系很少且经常更改。大约发送 6-10 个软件包似乎是一个不错的妥协（对于旧版浏览器来说还算不错）。试验并测量以找到合适的平衡。</p>
+<h3 id="服务器和-CDN-是否支持-HTTP-x2F-2"><a href="#服务器和-CDN-是否支持-HTTP-x2F-2" class="headerlink" title="服务器和 CDN 是否支持 HTTP&#x2F;2"></a>服务器和 CDN 是否支持 HTTP&#x2F;2</h3><p>不同的服务器和 CDN 对 HTTP&#x2F;2 的支持不同。 使用 TLS 快速来检查您的选项，或快速查找可以支持的功能。 启用 BBR 拥塞控制，为 HTTP&#x2F;2 优先级设置 tcp_notsent_lowat 为 16KB。</p>
+<h3 id="服务器和-CDN-是否支持基于-QUIC-的-HTTP（HTTP-x2F-3）"><a href="#服务器和-CDN-是否支持基于-QUIC-的-HTTP（HTTP-x2F-3）" class="headerlink" title="服务器和 CDN 是否支持基于 QUIC 的 HTTP（HTTP&#x2F;3）"></a>服务器和 CDN 是否支持基于 QUIC 的 HTTP（HTTP&#x2F;3）</h3><p>QUIC 和 HTTP&#x2F;3 更好，更安全：具有更快的握手，更好的加密，更可靠的独立流，更多加密，并且如果客户端以前与服务器建立连接，则使用 0-RTT。但是，这会占用大量 CPU 资源（在相同带宽下，CPU 使用率是 2-3 倍）。检查您的服务器或 CDN 是否支持基于 QUIC 的 HTTP（也称为 HTTP&#x2F;3），以及是否可以启用它。</p>
+<h3 id="是否正在使用-HPACK-压缩"><a href="#是否正在使用-HPACK-压缩" class="headerlink" title="是否正在使用 HPACK 压缩"></a>是否正在使用 HPACK 压缩</h3><p>如果您使用的是 HTTP&#x2F;2，请仔细检查您的服务器是否对 HTTP 响应标头实施了 HPACK 压缩，以减少不必要的开销。由于 HTTP&#x2F;2 服务器相对较新，因此它们可能不完全支持该规范，以 HPACK 为例。 H2spec 是一个很棒的工具，可以进行检查。</p>
+<h3 id="确保服务器上的内容非常安全的"><a href="#确保服务器上的内容非常安全的" class="headerlink" title="确保服务器上的内容非常安全的"></a>确保服务器上的内容非常安全的</h3><p>仔细检查您的安全标头设置正确，消除已知漏洞并检查证书。确保所有外部插件和跟踪脚本均通过 HTTPS 加载，无法进行跨站点脚本编写，并且正确设置了 HTTP Strict Transport Security 标头和 Content Security Policy 标头。</p>
+<h2 id="测试与监控"><a href="#测试与监控" class="headerlink" title="测试与监控"></a>测试与监控</h2><p>关键词：Auditing workflow，代理浏览器，404 page，GDPR cookie 同意提示，性能诊断 CSS，可访问性</p>
+<h3 id="监控混合内容警告"><a href="#监控混合内容警告" class="headerlink" title="监控混合内容警告"></a>监控混合内容警告</h3><p>如果您最近从 HTTP 迁移到 HTTPS，请确保使用 Report-URI.io 之类的工具 监控主动和被动混合内容警告。 您还可以使用“混合内容扫描”来扫描启用 HTTPS 的网站中的混合内容。</p>
+<h3 id="是否优化了-Auditing-workflow"><a href="#是否优化了-Auditing-workflow" class="headerlink" title="是否优化了 Auditing workflow"></a>是否优化了 Auditing workflow</h3><p>花时间研究调试器，WebPageTest，Lighthouse 中的调试和审核技术，并增强文本编辑器的功能。例如，您可以通过 Google Spreadsheet 驱动 WebPageTest，并通过 Lighthouse CI 将可访问性，性能和 SEO 得分纳入 Travis 设置中，或直接纳入 Webpack 中。</p>
+<h3 id="是否在代理浏览器和旧版浏览器中进行了测试"><a href="#是否在代理浏览器和旧版浏览器中进行了测试" class="headerlink" title="是否在代理浏览器和旧版浏览器中进行了测试"></a>是否在代理浏览器和旧版浏览器中进行了测试</h3><p>在 Chrome 和 Firefox 中进行测试还不够。研究您的网站在代理浏览器和旧版浏览器（包括 UC 浏览器和 Opera Mini）中的工作方式。衡量用户群中的平均 Internet 速度，注重用户体验。使用网络限制进行测试，并仿真高 DPI 设备。 BrowserStack 很棒，但也可以在真实设备上进行测试。</p>
+<h3 id="是否测试了对可访问性的影响"><a href="#是否测试了对可访问性的影响" class="headerlink" title="是否测试了对可访问性的影响"></a>是否测试了对可访问性的影响</h3><p>大页面和使用 JavaScript 进行的 DOM 操作将导致屏幕阅读器延迟。快速互动时间表示屏幕阅读器可以宣布在给定页面上的导航并且屏幕阅读器用户实际上可以按下键盘进行交互之前要经过多少时间。</p>
+<h3 id="是否设置了持续监控"><a href="#是否设置了持续监控" class="headerlink" title="是否设置了持续监控"></a>是否设置了持续监控</h3><p>良好的性能指标是被动和主动监控工具的结合。 拥有 WebPagetest 的私有实例并使用 Lighthouse 对于快速测试总是有好处的，但同时也可以使用 SpeedTracker，SpeedCurve 等 RUM 工具设置连续监控。 设置您自己的用户计时标记，以测量和监控特定于业务的指标。</p>
+<h2 id="快速优化清单"><a href="#快速优化清单" class="headerlink" title="快速优化清单"></a>快速优化清单</h2><ol>
+<li>衡量真实的性能现状并设定适当的目标。目标是比你最快的竞争对手至少快 20%。保持在 LCP &lt; 2.5s，FID &lt; 100ms，在慢速 3G 上交互时间 &lt; 5s，对于重复访问，TTI &lt; 2s。至少优化 LCP 和 TTI</li>
+<li>使用 Squoosh, mozjpeg, guetzli, pingo 和 SVGOMG 优化图像，并提供一个图像 CDN 的 AVIF&#x2F;WebP</li>
+<li>为主要的页面准备关键的 CSS，并将它们内联到 <code>&lt;head&gt;</code>，对于 CSS&#x2F;JS，控制关键文件的大小在 170KB 以内</li>
+<li>修改、优化、推迟和延迟加载脚本。在打包工具中中进行配置，以消除冗余并检查轻量级替代方案</li>
+<li>始终自行控制静态资源，始终倾向于自行控制第三方库。限制第三方库的影响。在交互中加载窗口小部件，注意防止有快速变化的代码片段</li>
+<li>在选择框架时要有选择性。对于单页面应用程序，确定关键页面并静态地服务它们，或者至少预渲染它们，并在组件级别上使用 progressive hydration，在交互中导入模块。</li>
+<li>单独的客户端渲染对于性能来说不是一个好的选择。如果页面变化不大，则提前渲染，如果可以，则推迟框架的启动。如果可能的话，使用流服务器端渲染</li>
+<li>向旧版浏览器提供旧版的代码</li>
+<li>尝试重新组合 CSS 规则并测试在<code>&lt;body&gt;</code>的 CSS</li>
+<li>添加资源提示以加快交付速度 dns-lookup, preconnect, prefetch, 及 prerender</li>
+<li>将 web 字体子集分组异步加载，并利用 CSS 中的字体显示快速首次呈现</li>
+<li>检查 HTTP 缓存标头和安全标头是否设置正确</li>
+<li>在服务器上启用 Brotli 压缩。(如果无法做到，至少确保启用 Gzip 压缩。)</li>
+<li>启用 TCP BBR 拥塞，只要您的服务器运行在 Linux 内核版本 4.9+上</li>
+<li>如果可能，启用 OCSP stapling 和 IPv6。始终提供一个 OCSP stapled DV 证书</li>
+<li>允许在 HTTP&#x2F;2 上使用 HPACK 压缩；如果可以的话，迁移到 HTTP&#x2F;3</li>
+<li>将字体、样式、JavaScript 和图像等资源缓存到 service worker 的缓存中</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://limoon7.github.io">lemon</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://limoon7.github.io/2021/01/07/tech/FE%E6%80%A7%E8%83%BDcheckList/">http://limoon7.github.io/2021/01/07/tech/FE%E6%80%A7%E8%83%BDcheckList/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://limoon7.github.io" target="_blank">Thatched house</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">性能优化</a></div><div class="post_share"><div class="social-share" data-image="/img/cover4.jpg" data-sites="wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.png" target="_blank"><img class="post-qr-code-img" src="/img/wechat.png" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/alipay.png" target="_blank"><img class="post-qr-code-img" src="/img/alipay.png" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/01/26/documentary/%E6%B2%B3%E8%A5%BF%E8%B5%B0%E5%BB%8A/"><img class="prev-cover" src="/img/cover2.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">《河西走廊》</div></div></a></div><div class="next-post pull-right"><a href="/2020/12/28/tech/css2020%E6%8A%A5%E5%91%8A/"><img class="next-cover" src="/img/cover6.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">CSS 2020报告</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/lemon.ico" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">lemon</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">59</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/limoon7"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">愿坚定而有力量，自信而有内涵</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Front-End-Performance-Checklist-2021"><span class="toc-text">Front-End Performance Checklist 2021</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E5%88%92%E5%92%8C%E5%BA%A6%E9%87%8F"><span class="toc-text">计划和度量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8%E5%9B%A2%E9%98%9F%E5%86%85%E5%9F%B9%E5%85%BB%E6%80%A7%E8%83%BD%E6%96%87%E5%8C%96%E7%9A%84%E6%B0%9B%E5%9B%B4"><span class="toc-text">在团队内培养性能文化的氛围</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AF%94%E4%BD%A0%E6%9C%80%E5%BF%AB%E7%9A%84%E7%AB%9E%E4%BA%89%E5%AF%B9%E6%89%8B%E8%87%B3%E5%B0%91%E5%BF%AB-20"><span class="toc-text">比你最快的竞争对手至少快 20%</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E6%AD%A3%E7%A1%AE%E7%9A%84%E6%8C%87%E6%A0%87"><span class="toc-text">选择正确的指标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8B%E9%87%8F%E5%92%8C%E4%BC%98%E5%8C%96%E5%85%B3%E9%94%AE-Web-%E6%8C%87%E6%A0%87"><span class="toc-text">测量和优化关键 Web 指标</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Largest-Contentful-Paint-LCP-lt-2-5-s"><span class="toc-text">Largest Contentful Paint (LCP) &lt; 2.5 s</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#First-Input-Delay-FID-lt-100ms"><span class="toc-text">First Input Delay (FID) &lt; 100ms</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Cumulative-Layout-Shift-CLS-lt-0-1"><span class="toc-text">Cumulative Layout Shift (CLS) &lt; 0.1</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8%E5%85%B7%E6%9C%89%E7%94%A8%E6%88%B7%E4%BB%A3%E8%A1%A8%E6%80%A7%E7%9A%84%E8%AE%BE%E5%A4%87%E4%B8%8A%E6%94%B6%E9%9B%86%E6%95%B0%E6%8D%AE"><span class="toc-text">在具有用户代表性的设备上收集数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8%E6%B5%8B%E8%AF%95%E6%97%B6%E4%BD%BF%E7%94%A8%E5%B9%B2%E5%87%80%E7%9A%84%E7%BD%91%E7%AB%99%E9%85%8D%E7%BD%AE%EF%BC%8C%E6%8E%92%E9%99%A4%E5%8F%98%E9%87%8F"><span class="toc-text">在测试时使用干净的网站配置，排除变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8E%E5%90%8C%E4%BA%8B%E5%85%B1%E6%8B%85%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%9B%AE%E6%A0%87"><span class="toc-text">与同事共担性能优化目标</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E5%AE%9A%E7%8E%B0%E5%AE%9E%E6%94%B9%E8%BF%9B%E7%9B%AE%E6%A0%87"><span class="toc-text">设定现实改进目标</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#100ms-%E7%9A%84%E5%93%8D%E5%BA%94%E6%97%B6%E9%97%B4%EF%BC%8C60fps"><span class="toc-text">100ms 的响应时间，60fps</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FID-lt-100ms-LCP-lt-2-5s-TTI-lt-5s-on-3G-%E5%85%B3%E9%94%AE%E6%96%87%E4%BB%B6%E5%A4%A7%E5%B0%8F-lt-170KB"><span class="toc-text">FID &lt; 100ms, LCP &lt; 2.5s, TTI &lt; 5s on 3G, 关键文件大小 &lt; 170KB</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E7%8E%AF%E5%A2%83"><span class="toc-text">定义环境</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E5%B9%B6%E9%85%8D%E7%BD%AE%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7"><span class="toc-text">选择并配置构建工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%B8%90%E8%BF%9B%E5%A2%9E%E5%BC%BA%E4%BD%9C%E4%B8%BA%E9%BB%98%E8%AE%A4%E5%80%BC"><span class="toc-text">使用渐进增强作为默认值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E4%B8%80%E4%B8%AA%E5%BC%BA%E6%9C%89%E5%8A%9B%E7%9A%84%E6%80%A7%E8%83%BD%E5%9F%BA%E5%87%86"><span class="toc-text">选择一个强有力的性能基准</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%84%E4%BC%B0%E6%A1%86%E6%9E%B6%E5%92%8C%E4%BE%9D%E8%B5%96%E6%80%A7"><span class="toc-text">评估框架和依赖性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%B8%B2%E6%9F%93%E8%BF%98%E6%98%AF%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%B8%B2%E6%9F%93%EF%BC%9F%E4%B8%A4%E7%A7%8D%E4%B8%80%E8%B5%B7"><span class="toc-text">客户端渲染还是服务端渲染？两种一起</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%88%91%E4%BB%AC%E5%8F%AF%E4%BB%A5%E6%8F%90%E4%BE%9B%E5%A4%9A%E5%B0%91%E9%9D%99%E6%80%81%E7%9A%84%E5%86%85%E5%AE%B9"><span class="toc-text">我们可以提供多少静态的内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%80%83%E8%99%91%E4%BD%BF%E7%94%A8-PRPL-%E6%A8%A1%E5%BC%8F%E5%92%8C-app-shell-%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="toc-text">考虑使用 PRPL 模式和 app shell 体系结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%98%AF%E5%90%A6%E5%AF%B9-API-%E6%80%A7%E8%83%BD%E8%BF%9B%E8%A1%8C%E4%BC%98%E5%8C%96"><span class="toc-text">是否对 API 性能进行优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-AMP-%E8%BF%98%E6%98%AF-instant-articles"><span class="toc-text">使用 AMP 还是 instant articles</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%98%8E%E6%99%BA%E9%80%89%E6%8B%A9%E6%82%A8%E7%9A%84-CDN"><span class="toc-text">明智选择您的 CDN</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E4%BC%98%E5%8C%96"><span class="toc-text">静态资源优化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-Brotli-%E8%BF%9B%E8%A1%8C%E6%96%87%E6%9C%AC%E5%8E%8B%E7%BC%A9"><span class="toc-text">使用 Brotli 进行文本压缩</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%88%91%E4%BB%AC%E6%98%AF%E5%90%A6%E4%BD%BF%E7%94%A8%E8%87%AA%E9%80%82%E5%BA%94%E5%AA%92%E4%BD%93%E5%8A%A0%E8%BD%BD%E5%92%8C%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%8F%90%E7%A4%BA"><span class="toc-text">我们是否使用自适应媒体加载和客户端提示?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%88%91%E4%BB%AC%E6%98%AF%E5%90%A6%E4%BD%BF%E7%94%A8%E5%93%8D%E5%BA%94%E5%BC%8F%E5%9B%BE%E5%83%8F%E4%BD%9C%E4%B8%BA%E8%83%8C%E6%99%AF%E5%9B%BE%E5%83%8F"><span class="toc-text">我们是否使用响应式图像作为背景图像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%88%91%E4%BB%AC%E6%98%AF%E5%90%A6%E5%BA%94%E8%AF%A5%E4%BD%BF%E7%94%A8-WebP"><span class="toc-text">我们是否应该使用 WebP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%88%91%E4%BB%AC%E6%98%AF%E5%90%A6%E5%BA%94%E8%AF%A5%E4%BD%BF%E7%94%A8-AVIF"><span class="toc-text">我们是否应该使用 AVIF</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JPEG-x2F-PNG-x2F-svg-%E6%98%AF%E5%90%A6%E6%AD%A3%E7%A1%AE%E4%BC%98%E5%8C%96"><span class="toc-text">JPEG&#x2F;PNG&#x2F;svg 是否正确优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%86%E9%A2%91%E6%98%AF%E5%90%A6%E5%BE%97%E5%88%B0%E4%BA%86%E9%80%82%E5%BD%93%E7%9A%84%E4%BC%98%E5%8C%96"><span class="toc-text">视频是否得到了适当的优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%98%AF%E5%90%A6%E8%BF%9B%E8%A1%8C%E4%BA%86-web-font-%E4%BC%98%E5%8C%96"><span class="toc-text">是否进行了 web font 优化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%84%E5%BB%BA%E4%BC%98%E5%8C%96"><span class="toc-text">构建优化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E4%BC%98%E5%85%88%E7%BA%A7"><span class="toc-text">设置优先级</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E4%B8%AD%E4%BD%BF%E7%94%A8%E8%87%AA%E5%AE%9A%E4%B9%89-JavaScript"><span class="toc-text">在生产环境中使用自定义 JavaScript</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C-js-%E6%98%AF%E8%80%97%E8%B4%B9%E6%80%A7%E8%83%BD%E7%9A%84%EF%BC%8C%E4%BC%98%E5%8C%96-js"><span class="toc-text">运行 js 是耗费性能的，优化 js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-tree-shaking-scope-hoisting-%E5%92%8C-code-splitting-%E6%9D%A5%E5%87%8F%E5%B0%91%E5%8A%A0%E8%BD%BD"><span class="toc-text">使用 tree-shaking, scope hoisting 和 code-splitting 来减少加载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%98%AF%E5%90%A6%E5%8F%AF%E4%BB%A5%E5%B0%86-JavaScript-%E5%8D%B8%E8%BD%BD%E5%88%B0-Web-Worker-%E6%88%96-WebAssembly-%E4%B8%AD"><span class="toc-text">是否可以将 JavaScript 卸载到 Web Worker 或 WebAssembly 中</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%85%E5%90%91%E6%97%A7%E7%89%88%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8F%90%E4%BE%9B%E6%97%A7%E7%89%88%E4%BB%A3%E7%A0%81%EF%BC%88%E5%B7%AE%E5%BC%82%E6%9C%8D%E5%8A%A1%EF%BC%89"><span class="toc-text">仅向旧版浏览器提供旧版代码（差异服务）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E8%BF%87%E5%A2%9E%E9%87%8F%E8%A7%A3%E8%80%A6%E8%AF%86%E5%88%AB%E5%92%8C%E9%87%8D%E5%86%99%E6%97%A7%E4%BB%A3%E7%A0%81"><span class="toc-text">通过增量解耦识别和重写旧代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%86%E5%88%AB%E5%B9%B6%E5%88%A0%E9%99%A4%E6%9C%AA%E4%BD%BF%E7%94%A8%E7%9A%84-CSS-x2F-JavaScript%E3%80%82"><span class="toc-text">识别并删除未使用的 CSS &#x2F; JavaScript。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%A9%E5%B0%8F-JavaScript-%E4%BE%9D%E8%B5%96%E9%A1%B9%E7%9A%84%E5%A4%A7%E5%B0%8F%E3%80%82"><span class="toc-text">缩小 JavaScript 依赖项的大小。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%98%AF%E5%90%A6%E6%AD%A3%E5%9C%A8%E5%AF%B9-JavaScript-%E5%9D%97%E4%BD%BF%E7%94%A8%E9%A2%84%E5%8A%A0%E8%BD%BD"><span class="toc-text">是否正在对 JavaScript 块使用预加载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%92%88%E5%AF%B9%E6%82%A8%E7%9A%84%E7%9B%AE%E6%A0%87-JavaScript-%E5%BC%95%E6%93%8E%E8%BF%9B%E8%A1%8C%E4%BC%98%E5%8C%96%E3%80%82"><span class="toc-text">针对您的目标 JavaScript 引擎进行优化。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%BE%E5%88%B0%E4%B8%80%E7%A7%8D%E5%B0%86%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%B8%B2%E6%9F%93%E5%92%8C%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E6%B8%B2%E6%9F%93%E7%BB%93%E5%90%88%E8%B5%B7%E6%9D%A5%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-text">找到一种将客户端渲染和服务器端渲染结合起来的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%80%83%E8%99%91%E8%BF%9B%E8%A1%8C%E5%BE%AE%E4%BC%98%E5%8C%96%E5%92%8C%E9%80%90%E6%AD%A5%E5%BC%95%E5%AF%BC"><span class="toc-text">考虑进行微优化和逐步引导</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A7%8B%E7%BB%88%E8%87%AA%E5%B7%B1%E6%8E%A7%E5%88%B6%E7%AC%AC%E4%B8%89%E6%96%B9%E8%84%9A%E6%9C%AC"><span class="toc-text">始终自己控制第三方脚本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%99%90%E5%88%B6%E7%AC%AC%E4%B8%89%E6%96%B9%E8%84%9A%E6%9C%AC%E7%9A%84%E5%BD%B1%E5%93%8D"><span class="toc-text">限制第三方脚本的影响</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A3%E7%A1%AE%E8%AE%BE%E7%BD%AE-HTTP-%E7%BC%93%E5%AD%98%E5%A4%B4"><span class="toc-text">正确设置 HTTP 缓存头</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A0%E8%BD%BD%E4%BC%98%E5%8C%96"><span class="toc-text">加载优化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%82%E6%AD%A5%E5%8A%A0%E8%BD%BD-JavaScript"><span class="toc-text">异步加载 JavaScript</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-IntersectionObserver-%E6%87%92%E5%8A%A0%E8%BD%BD%E8%80%97%E8%B4%B9%E6%80%A7%E8%83%BD%E7%9A%84%E7%BB%84%E4%BB%B6"><span class="toc-text">使用 IntersectionObserver 懒加载耗费性能的组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E6%8E%A8%E9%80%81%E5%85%B3%E9%94%AE-CSS"><span class="toc-text">快速推送关键 CSS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%9D%E8%AF%95%E9%87%8D%E6%96%B0%E7%BB%84%E5%90%88-CSS-%E8%A7%84%E5%88%99"><span class="toc-text">尝试重新组合 CSS 规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%81%E5%93%8D%E5%BA%94"><span class="toc-text">流响应</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%80%83%E8%99%91%E4%BD%BF%E6%82%A8%E7%9A%84%E7%BB%84%E4%BB%B6%E7%9F%A5%E9%81%93%E8%BF%9E%E6%8E%A5-x2F-%E8%AE%BE%E5%A4%87%E5%86%85%E5%AD%98"><span class="toc-text">考虑使您的组件知道连接&#x2F;设备内存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%84%E7%83%AD%E8%BF%9E%E6%8E%A5%E4%BB%A5%E5%8A%A0%E5%BF%AB%E4%BA%A4%E4%BB%98%E9%80%9F%E5%BA%A6"><span class="toc-text">预热连接以加快交付速度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-service-worker-%E8%BF%9B%E8%A1%8C%E7%BC%93%E5%AD%98%E5%92%8C%E7%BD%91%E7%BB%9C%E5%90%8E%E5%A4%87"><span class="toc-text">使用 service worker 进行缓存和网络后备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8-CDN-x2F-Edge-%E4%B8%8A%E4%BD%BF%E7%94%A8-service-workers-on-the-e-g-A-x2F-B-testing"><span class="toc-text">在 CDN&#x2F;Edge 上使用 service workers on the (e.g. A&#x2F;B testing).</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E6%B8%B2%E6%9F%93%E6%80%A7%E8%83%BD"><span class="toc-text">优化渲染性能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%84%E9%98%B2%E9%A1%B5%E9%9D%A2%E9%87%8D%E7%BB%98%E5%92%8C%E9%87%8D%E6%8E%92"><span class="toc-text">预防页面重绘和重排</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E5%92%8C-HTTP-x2F-2"><span class="toc-text">网络和 HTTP&#x2F;2</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%98%AF%E5%90%A6%E5%90%AF%E7%94%A8%E4%BA%86-OCSP-stapling"><span class="toc-text">是否启用了 OCSP stapling</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%82%A8%E6%98%AF%E5%90%A6%E5%B7%B2%E9%87%87%E7%94%A8-IPv6"><span class="toc-text">您是否已采用 IPv6</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%98%AF%E5%90%A6%E6%AD%A3%E5%9C%A8%E4%BD%BF%E7%94%A8-TCP-BBR"><span class="toc-text">是否正在使用 TCP BBR</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E4%BD%BF%E7%94%A8-HTTP-x2F-2"><span class="toc-text">准备使用 HTTP&#x2F;2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A3%E7%A1%AE%E9%83%A8%E7%BD%B2-HTTP-x2F-2"><span class="toc-text">正确部署 HTTP&#x2F;2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%92%8C-CDN-%E6%98%AF%E5%90%A6%E6%94%AF%E6%8C%81-HTTP-x2F-2"><span class="toc-text">服务器和 CDN 是否支持 HTTP&#x2F;2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%92%8C-CDN-%E6%98%AF%E5%90%A6%E6%94%AF%E6%8C%81%E5%9F%BA%E4%BA%8E-QUIC-%E7%9A%84-HTTP%EF%BC%88HTTP-x2F-3%EF%BC%89"><span class="toc-text">服务器和 CDN 是否支持基于 QUIC 的 HTTP（HTTP&#x2F;3）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%98%AF%E5%90%A6%E6%AD%A3%E5%9C%A8%E4%BD%BF%E7%94%A8-HPACK-%E5%8E%8B%E7%BC%A9"><span class="toc-text">是否正在使用 HPACK 压缩</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A1%AE%E4%BF%9D%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84%E5%86%85%E5%AE%B9%E9%9D%9E%E5%B8%B8%E5%AE%89%E5%85%A8%E7%9A%84"><span class="toc-text">确保服务器上的内容非常安全的</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E4%B8%8E%E7%9B%91%E6%8E%A7"><span class="toc-text">测试与监控</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%91%E6%8E%A7%E6%B7%B7%E5%90%88%E5%86%85%E5%AE%B9%E8%AD%A6%E5%91%8A"><span class="toc-text">监控混合内容警告</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%98%AF%E5%90%A6%E4%BC%98%E5%8C%96%E4%BA%86-Auditing-workflow"><span class="toc-text">是否优化了 Auditing workflow</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%98%AF%E5%90%A6%E5%9C%A8%E4%BB%A3%E7%90%86%E6%B5%8F%E8%A7%88%E5%99%A8%E5%92%8C%E6%97%A7%E7%89%88%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E8%BF%9B%E8%A1%8C%E4%BA%86%E6%B5%8B%E8%AF%95"><span class="toc-text">是否在代理浏览器和旧版浏览器中进行了测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%98%AF%E5%90%A6%E6%B5%8B%E8%AF%95%E4%BA%86%E5%AF%B9%E5%8F%AF%E8%AE%BF%E9%97%AE%E6%80%A7%E7%9A%84%E5%BD%B1%E5%93%8D"><span class="toc-text">是否测试了对可访问性的影响</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%98%AF%E5%90%A6%E8%AE%BE%E7%BD%AE%E4%BA%86%E6%8C%81%E7%BB%AD%E7%9B%91%E6%8E%A7"><span class="toc-text">是否设置了持续监控</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E4%BC%98%E5%8C%96%E6%B8%85%E5%8D%95"><span class="toc-text">快速优化清单</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/09/06/book/%E5%BF%AB%E9%80%9F%E9%98%85%E8%AF%BB/" title="快速阅读"><img src="/img/cover1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="快速阅读"/></a><div class="content"><a class="title" href="/2022/09/06/book/%E5%BF%AB%E9%80%9F%E9%98%85%E8%AF%BB/" title="快速阅读">快速阅读</a><time datetime="2022-09-05T16:00:00.000Z" title="发表于 2022-09-06 00:00:00">2022-09-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/31/monthly/22%E5%B9%B48%E6%9C%88/" title="22年8月"><img src="/img/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="22年8月"/></a><div class="content"><a class="title" href="/2022/08/31/monthly/22%E5%B9%B48%E6%9C%88/" title="22年8月">22年8月</a><time datetime="2022-08-30T16:00:00.000Z" title="发表于 2022-08-31 00:00:00">2022-08-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/30/monthly/22%E5%B9%B45%E6%9C%88/" title="22年5月"><img src="/img/cover6.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="22年5月"/></a><div class="content"><a class="title" href="/2022/05/30/monthly/22%E5%B9%B45%E6%9C%88/" title="22年5月">22年5月</a><time datetime="2022-05-29T16:00:00.000Z" title="发表于 2022-05-30 00:00:00">2022-05-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/04/30/monthly/22%E5%B9%B44%E6%9C%88/" title="22年4月"><img src="/img/cover3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="22年4月"/></a><div class="content"><a class="title" href="/2022/04/30/monthly/22%E5%B9%B44%E6%9C%88/" title="22年4月">22年4月</a><time datetime="2022-04-29T16:00:00.000Z" title="发表于 2022-04-30 00:00:00">2022-04-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/31/monthly/22%E5%B9%B43%E6%9C%88/" title="22年3月"><img src="/img/cover5.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="22年3月"/></a><div class="content"><a class="title" href="/2022/03/31/monthly/22%E5%B9%B43%E6%9C%88/" title="22年3月">22年3月</a><time datetime="2022-03-30T16:00:00.000Z" title="发表于 2022-03-31 00:00:00">2022-03-31</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2018 - 2022 By lemon</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
