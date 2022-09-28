@@ -1,7 +1,9 @@
 /* 背景渐变 */
 #web_bg{
-  background-image: linear-gradient(to top, #9890e3 0%, #b1f4cf 100%);
+
   /* background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); */
+  /* background-image: linear-gradient(180deg, #405777, #806964, #b37b4e, #e28e2f); */
+  background-image: linear-gradient(180deg, #3f5678, #8c665f, #c77740, #ff8701)
 }
 #footer, #nav {
   background: none
